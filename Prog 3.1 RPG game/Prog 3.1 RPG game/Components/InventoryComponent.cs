@@ -17,8 +17,26 @@ namespace Prog_3._1_RPG_game.Components
             _money = starting_money;
             _itemTable = new string[starting_item_table_size];
         }
-
+        
         //Ajout d'objet dans le tableau
-        //Créer augmentation du tableau quand devient trop petit
+        public void AddItem(string item)
+        {
+            for (int item_table_index = 0; item_table_index < _itemTable.Length; item_table_index++)
+            {
+                if (_itemTable[item_table_index] == null)
+                {
+                    _itemTable[item_table_index] = item;
+                    break;
+                }
+            }
+
+
+            //Créer augmentation du tableau quand devient trop petit
+
+        }
+
+
+
+
     }
 }

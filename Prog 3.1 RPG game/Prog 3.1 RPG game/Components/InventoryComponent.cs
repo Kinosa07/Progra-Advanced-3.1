@@ -17,7 +17,7 @@ namespace Prog_3._1_RPG_game.Components
             _money = starting_money;
             _itemTable = new string[starting_item_table_size];
         }
-        
+
         //Ajout d'objet dans le tableau
         public void AddItem(string item)
         {
@@ -41,6 +41,18 @@ namespace Prog_3._1_RPG_game.Components
                 }
                 _itemTable = temporary_table;
             }
+        }
+
+        //Fonction Update
+        public override void Update(float time_since_last_update)
+        {
+
+        }
+
+        //Fonction FixedUpdate
+        public override void FixedUpdate(float fixed_update_time)
+        {
+            
         }
     }
 }

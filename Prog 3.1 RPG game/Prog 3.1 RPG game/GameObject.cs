@@ -30,6 +30,25 @@ namespace Prog_3._1_RPG_game
         }
 
         //Récupérer un Component
+        public TYPE GetComponent<TYPE>() where TYPE : Component
+        {
+            TYPE result_component = null;
 
+            for (int component_table_index = 0; component_table_index < _componentTable.Length; component_table_index++)
+            {
+                if (_componentTable[component_table_index] != null)
+                {
+                    result_component = _componentTable[component_table_index] as TYPE;
+
+                    if (result_component != null)
+                    {
+                        break;
+                    }
+                    //QUESTION: Comment fonctionne le code. Plus précisement, comment le code permet l'extraction du Type spécifié lors de l'appel de la fonction
+                }
+            }
+
+            return result_component;
+        }
     }
 }

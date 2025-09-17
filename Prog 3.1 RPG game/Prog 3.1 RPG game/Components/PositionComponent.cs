@@ -28,13 +28,14 @@ namespace Prog_3._1_RPG_game.Components
 
         }
 
-        public int[] GetPosition()
+        public int GetPositionX()
         {
-            int[] position_table = new int[2];
-            position_table[0] = _xPos;
-            position_table[1] = _yPos;
+            return _xPos;
+        }
 
-            return position_table;
+        public int GetPositionY()
+        {
+            return _yPos;
         }
 
         public void SetPosition(int new_x_position, int new_y_position)

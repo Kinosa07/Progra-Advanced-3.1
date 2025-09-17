@@ -8,9 +8,11 @@ namespace Prog_3._1_RPG_game.Components
 {
     internal class MovementComponent : Component
     {
-        public MovementComponent()
-        {
+        PositionComponent _positionComponent;
 
+        public MovementComponent(PositionComponent position_component)
+        {
+            _positionComponent = position_component;
         }
 
         //Fonction Update

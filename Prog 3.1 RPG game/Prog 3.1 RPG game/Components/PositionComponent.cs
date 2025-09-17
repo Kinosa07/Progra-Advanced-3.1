@@ -11,9 +11,9 @@ namespace Prog_3._1_RPG_game.Components
         private int _xPos;
         private int _yPos;
 
-        public PositionComponent()
+        public PositionComponent(int starting_x_position, int starting_y_position)
         {
-
+            SetPosition(starting_x_position, starting_y_position);
         }
 
         //Fonction Update

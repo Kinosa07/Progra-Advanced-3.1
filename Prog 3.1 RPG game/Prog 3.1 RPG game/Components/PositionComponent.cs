@@ -8,6 +8,9 @@ namespace Prog_3._1_RPG_game.Components
 {
     internal class PositionComponent : Component
     {
+        private int _xPos;
+        private int _yPos;
+
         public PositionComponent()
         {
 
@@ -23,6 +26,15 @@ namespace Prog_3._1_RPG_game.Components
         public override void FixedUpdate(float fixed_update_time)
         {
 
+        }
+
+        public int[] GetPosition()
+        {
+            int[] position_table = new int[2];
+            position_table[0] = _xPos;
+            position_table[1] = _yPos;
+
+            return position_table;
         }
     }
 }

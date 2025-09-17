@@ -11,9 +11,10 @@ namespace Prog_3._1_RPG_game.Components
         private PositionComponent _positionComponent;
         private string _appearance;
 
-        public RenderComponent()
+        public RenderComponent(PositionComponent position_component, string wanted_appearance)
         {
-
+            _positionComponent = position_component;
+            _appearance = wanted_appearance;
         }
 
         public override void Update(float time_since_last_update)

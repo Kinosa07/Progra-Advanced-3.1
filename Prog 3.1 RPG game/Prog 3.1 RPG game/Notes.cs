@@ -4,7 +4,7 @@
  * 
  * Addition fight ennemis quand pas sur les senties battus (Forcer le joueur a sortir des sentiers battus)
  * 
- * Component List[ Inventaire:OK Movement:pas OK Position:pas OK Render:pas OK ]
+ * Component List[ Inventaire:OK Movement:pas OK Position:pas OK Render:pas OK Collision:pas OK ]
  * 
  * Menu Component???
  * Shop Component???

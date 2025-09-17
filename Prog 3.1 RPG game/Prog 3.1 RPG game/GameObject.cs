@@ -9,11 +9,27 @@ namespace Prog_3._1_RPG_game
 {
     public class GameObject
     {
-        private Component[] _componenttable = new Component[5];
+        private Component[] _componentTable = new Component[5];
 
-        public GameObject() 
+        public GameObject()
         {
-            
+
         }
+
+        //Ajouter un Component
+        public void AddComponent(Component component_to_add)
+        {
+            for (int component_table_index = 0; component_table_index < _componentTable.Length; component_table_index++)
+            {
+                if (_componentTable[component_table_index] == null)
+                {
+                    _componentTable[component_table_index] = component_to_add;
+                    break;
+                }
+            }
+        }
+
+        //Récupérer un Component
+
     }
 }

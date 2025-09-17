@@ -36,5 +36,11 @@ namespace Prog_3._1_RPG_game.Components
 
             return position_table;
         }
+
+        public void SetPosition(int new_x_position, int new_y_position)
+        {
+            _xPos = new_x_position;
+            _yPos = new_y_position;
+        }
     }
 }

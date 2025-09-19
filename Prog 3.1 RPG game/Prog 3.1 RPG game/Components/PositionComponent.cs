@@ -10,6 +10,8 @@ namespace Prog_3._1_RPG_game.Components
     {
         private int _xPos;
         private int _yPos;
+        private int _previousXPos;
+        private int _previousYPos;
 
         public PositionComponent(int starting_x_position, int starting_y_position)
         {
@@ -25,6 +27,10 @@ namespace Prog_3._1_RPG_game.Components
         //Fonction FixedUpdate
         public override void FixedUpdate(float fixed_update_time)
         {
+            //Update previousPos
+            _previousXPos = _xPos;
+            _previousYPos = _yPos;
+
 
         }
 

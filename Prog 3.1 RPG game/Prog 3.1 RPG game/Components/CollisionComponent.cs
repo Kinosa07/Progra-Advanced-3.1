@@ -55,6 +55,10 @@ namespace Prog_3._1_RPG_game.Components
         public override void FixedUpdate(float fixed_update_time)
         {
             //Repousser les objets au positions de base
+            if (_isColliding && (_tablePositionOfCollider >= 0))
+            {
+                _mapComponent.GetAllObjectsInside()[_tablePositionOfCollider].GetComponent<MovementComponent>().MoveObject(_previousColliderPosX, _previousColliderPosY);
+            }
         }
     }
 }

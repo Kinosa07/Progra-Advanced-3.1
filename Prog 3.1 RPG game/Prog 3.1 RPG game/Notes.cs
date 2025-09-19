@@ -13,7 +13,7 @@
  * 
  * Ligne 47 Game Object
  * 
- * 
+ * TODO: Ok-fy Movement et Render
  * 
  * 
  * 

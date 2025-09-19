@@ -26,5 +26,11 @@ namespace Prog_3._1_RPG_game.Components
         {
 
         }
+
+        public void MoveObject(int new_x_position, int new_y_position)
+        {
+            //Bouger l'objet selon de nouvelles positions
+            _positionComponent.SetPosition(new_x_position,new_y_position);
+        }
     }
 }

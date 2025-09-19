@@ -10,6 +10,9 @@ namespace Prog_3._1_RPG_game.Components
     {
         GameObject[] _mapContentsTable = new GameObject[4];
 
+        public MapComponent()
+        {
 
+        }
     }
 }

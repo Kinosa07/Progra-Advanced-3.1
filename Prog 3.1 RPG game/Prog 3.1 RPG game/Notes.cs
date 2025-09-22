@@ -16,7 +16,11 @@
  * TODO: Ok-fy Movement et Render
  * 
  * 
+ * State Machine
  * 
+ * 
+ * 
+ * Event Manager
  * 
  * 
  * 

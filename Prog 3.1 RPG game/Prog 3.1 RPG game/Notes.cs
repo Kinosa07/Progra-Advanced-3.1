@@ -15,6 +15,8 @@
  * 
  * TODO: Ok-fy Movement et Render
  * 
+ * Doing: RenderManager & RenderComponent (4 directions)
+ * 
  * 
  * State Machine
  * 1 State par Type de Location (Shop/Inn, City, country, Planet, ...)

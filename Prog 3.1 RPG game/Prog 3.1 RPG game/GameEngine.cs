@@ -44,7 +44,30 @@ namespace Prog_3._1_RPG_game
 
         public void ProcessInput()
         {
+            if (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                
+                if (key.Key == ConsoleKey.UpArrow)
+                {
+                    //Move Up
+                }
 
+                if (key.Key == ConsoleKey.DownArrow)
+                {
+                    //Move Down
+                }
+
+                if (key.Key == ConsoleKey.LeftArrow)
+                {
+                    //Move Left
+                }
+
+                if (key.Key == ConsoleKey.RightArrow)
+                {
+                    //Move Right
+                }
+            }
         }
     }
 }

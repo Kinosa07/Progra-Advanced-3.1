@@ -41,6 +41,7 @@ namespace Prog_3._1_RPG_game
         }
 
         //Récupérer un Component
+        //Le morceau de code "<TYPE>" demande un TYPE (int, string, etc...). "Where TYPE : Component" s'assure que la fonction cherche un Component
         public TYPE GetComponent<TYPE>() where TYPE : Component
         {
             TYPE result_component = null;
@@ -49,13 +50,15 @@ namespace Prog_3._1_RPG_game
             {
                 if (_componentTable[component_table_index] != null)
                 {
+                    //Cette ligne s'assure que le type du component trouvé correspond à celui utilisé pour appeler la fonction
+                    //Cad: GetComponent<PositionComponent> donnera result_component = _componentTable[component_table_index] as PositionComponent
+                    //Pas d'extraction accidentelle d'un autre component présent dans l'objet
                     result_component = _componentTable[component_table_index] as TYPE;
 
                     if (result_component != null)
                     {
                         break;
                     }
-                    //QUESTION: Comment fonctionne le code. Plus précisement, comment le code permet l'extraction du Type spécifié lors de l'appel de la fonction
                 }
             }
 

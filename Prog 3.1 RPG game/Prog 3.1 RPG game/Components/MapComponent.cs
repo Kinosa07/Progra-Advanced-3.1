@@ -18,7 +18,7 @@ namespace Prog_3._1_RPG_game.Components
         {
             _mapSizeX = map_size_x;
             _mapSizeY = map_size_y;
-            _mapBordersTable = new GameObject[(2 * _mapSizeX) + (2 * _mapSizeY) - 4];
+            _mapBordersTable = new GameObject[(2 * _mapSizeX) + (2 * _mapSizeY - 2)];
 
             for (int border_table_index = 0; border_table_index < _mapBordersTable.Length; border_table_index++)
             {

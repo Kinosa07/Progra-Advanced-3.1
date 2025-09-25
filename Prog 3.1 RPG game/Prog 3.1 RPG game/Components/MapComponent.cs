@@ -38,7 +38,7 @@ namespace Prog_3._1_RPG_game.Components
 
             for (int horizontal_map_size_index = 0; horizontal_map_size_index < _mapSizeX; horizontal_map_size_index++)
             {
-                PositionComponent game_object_position_component = new PositionComponent(horizontal_map_size_index, _mapSizeY);
+                PositionComponent game_object_position_component = new PositionComponent(horizontal_map_size_index, _mapSizeY - 1);
                 CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component, this);
                 RenderComponent game_object_render_component = new RenderComponent(game_object_position_component, "=");
 
@@ -47,7 +47,27 @@ namespace Prog_3._1_RPG_game.Components
                 _mapBordersTable[horizontal_map_size_index + _mapSizeX].AddComponent(game_object_render_component);
             }
 
+            for (int vertical_map_size_index = 0; vertical_map_size_index < _mapSizeY - 2; vertical_map_size_index++)
+            {
+                PositionComponent game_object_position_component = new PositionComponent(0, vertical_map_size_index + 1);
+                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component, this);
+                RenderComponent game_object_render_component = new RenderComponent(game_object_position_component, "|");
 
+                _mapBordersTable[vertical_map_size_index + (2 * _mapSizeX)].AddComponent(game_object_position_component);
+                _mapBordersTable[vertical_map_size_index + (2 * _mapSizeX)].AddComponent(game_object_collision_component);
+                _mapBordersTable[vertical_map_size_index + (2 * _mapSizeX)].AddComponent(game_object_render_component);
+            }
+
+            for (int vertical_map_size_index = 0; vertical_map_size_index < _mapSizeY - 2; vertical_map_size_index++)
+            {
+                PositionComponent game_object_position_component = new PositionComponent(_mapSizeX - 1, vertical_map_size_index + 1);
+                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component, this);
+                RenderComponent game_object_render_component = new RenderComponent(game_object_position_component, "|");
+
+                _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)].AddComponent(game_object_position_component);
+                _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)].AddComponent(game_object_collision_component);
+                _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)].AddComponent(game_object_render_component);
+            }
         }
 
         public override void Update(float time_since_last_update)

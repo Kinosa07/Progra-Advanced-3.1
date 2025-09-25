@@ -9,6 +9,7 @@ namespace Prog_3._1_RPG_game.Components
     internal class CollisionComponent : Component
     {
         private PositionComponent _positionComponent = new PositionComponent(-1, -1);
+        //RETOURNER ICI PAS OK
         private MapComponent _mapComponent = new MapComponent();
 
         private int _previousColliderPosX;

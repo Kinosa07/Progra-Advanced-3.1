@@ -9,9 +9,14 @@ namespace Prog_3._1_RPG_game.Components
     internal class MapComponent : Component
     {
         GameObject[] _mapContentsTable = new GameObject[4];
+        //créer des bordures de map
+        private int _mapSizeX;
+        private int _mapSizeY;
 
-        public MapComponent()
+        public MapComponent(int map_size_x, int map_size_y)
         {
+            _mapSizeX = map_size_x;
+            _mapSizeY = map_size_y;
 
         }
 

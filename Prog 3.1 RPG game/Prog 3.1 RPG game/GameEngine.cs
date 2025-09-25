@@ -31,14 +31,14 @@ namespace Prog_3._1_RPG_game
 
         public void Update(float time_since_last_update)
         {
-
+            _lastUpdateTime = _stopWatch.ElapsedMilliseconds;
         }
 
         public void FixedUpdate(float fixed_time_until_update)
         {
-            if (fixed_time_until_update <= )
+            if (fixed_time_until_update <= _lastUpdateTime)
             {
-
+                //Work your magic
             }
         }
 

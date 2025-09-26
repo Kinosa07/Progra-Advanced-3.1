@@ -47,7 +47,7 @@ namespace Prog_3._1_RPG_game
             if (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
-                
+
                 if (key.Key == ConsoleKey.UpArrow)
                 {
                     //Move Up
@@ -68,6 +68,11 @@ namespace Prog_3._1_RPG_game
                     //Move Right
                 }
             }
+        }
+
+        private GameObject CreatePlayer()
+        {
+            GameObject player = null;
         }
     }
 }

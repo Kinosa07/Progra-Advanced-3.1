@@ -14,9 +14,10 @@ namespace Prog_3._1_RPG_game.Components
         private int _previousYPos;
         private GameObject _parentGameObject;
 
-        public PositionComponent(int starting_x_position, int starting_y_position)
+        public PositionComponent(int starting_x_position, int starting_y_position, GameObject parent)
         {
             SetPosition(starting_x_position, starting_y_position);
+            _parentGameObject = parent;
         }
 
         //Fonction Update

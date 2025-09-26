@@ -13,10 +13,11 @@ namespace Prog_3._1_RPG_game.Components
         private string[] _itemTable = new string[0];
         private GameObject _parentGameObject;
 
-        public InventoryComponent(int starting_money, int starting_item_table_size)
+        public InventoryComponent(int starting_money, int starting_item_table_size, GameObject parent)
         {
             _money = starting_money;
             _itemTable = new string[starting_item_table_size];
+            _parentGameObject = parent;
         }
 
         //Ajout d'objet dans le tableau

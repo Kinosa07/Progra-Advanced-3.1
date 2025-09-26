@@ -11,9 +11,10 @@ namespace Prog_3._1_RPG_game.Components
         private PositionComponent _positionComponent;
         private GameObject _parentGameObject;
 
-        public MovementComponent(PositionComponent position_component)
+        public MovementComponent(PositionComponent position_component, GameObject parent)
         {
             _positionComponent = position_component;
+            _parentGameObject = parent;
         }
 
         //Fonction Update

@@ -15,13 +15,14 @@ namespace Prog_3._1_RPG_game.Components
         private int _mapSizeY;
         private GameObject _parentGameObject;
 
-        public MapComponent(RenderManager game_render_manager, int map_size_x, int map_size_y)
+        public MapComponent(RenderManager game_render_manager, int map_size_x, int map_size_y, GameObject parent)
         {
 
             _mapContentsTable = new GameObject[4];
             _mapSizeX = map_size_x;
             _mapSizeY = map_size_y;
             _mapBordersTable = new GameObject[(2 * _mapSizeX) + (2 * _mapSizeY - 2)];
+            _parentGameObject = parent;
 
             for (int border_table_index = 0; border_table_index < _mapBordersTable.Length; border_table_index++)
             {

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Prog_3._1_RPG_game.Components;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace Prog_3._1_RPG_game
 {
@@ -14,6 +16,8 @@ namespace Prog_3._1_RPG_game
         private float _lastUpdateTime = 0;
         public void Run()
         {
+            GameObject _player = CreatePlayer(1,1);
+
             while (!_shouldQuit)
             {
                 ProcessInput();
@@ -70,9 +74,20 @@ namespace Prog_3._1_RPG_game
             }
         }
 
-        private GameObject CreatePlayer()
+        private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos)
         {
-            GameObject player = null;
+            GameObject player = new GameObject();
+            PositionComponent player_pos_comp = new PositionComponent(starting_x_pos, starting_y_pos);
+            MovementComponent player_move_comp = new MovementComponent(player_pos_comp);
+            RenderComponent player_render = new RenderComponent(player_pos_comp, "^", "v", "<", ">");
+            CollisionComponent player_collision = new CollisionComponent(player_pos_comp);
+
+            player.AddComponent(player_pos_comp);
+            player.AddComponent(player_move_comp);
+            player.AddComponent(player_render);
+            player.AddComponent(player_collision);
+
+            return player;
         }
     }
 }

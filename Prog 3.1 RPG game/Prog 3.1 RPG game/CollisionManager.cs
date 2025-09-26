@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace Prog_3._1_RPG_game
         private bool _isColliding;
         private int _previousColliderPosX;
         private int _previousColliderPosY;
+        private MapComponent _mapComponent; //modifier nom SUPPOSED player Map, modifer quand StateMachine
 
         public CollisionManager()
         {
@@ -59,7 +61,7 @@ namespace Prog_3._1_RPG_game
         }
         
         //Analyser si Collisions
-        private void Update()
+        public void Update()
         {
 
             for (int internal_table_index = 0; internal_table_index < _collisonComponentsCollection.Length; internal_table_index++)
@@ -95,7 +97,7 @@ namespace Prog_3._1_RPG_game
                 _previousColliderPosY = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionY();
             }
         }
-        private void FixedUpdate()
+        public void FixedUpdate()
         { 
             //Repousser les objets au positions de base
             if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() == null))
@@ -105,8 +107,13 @@ namespace Prog_3._1_RPG_game
 
             else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() != null))
             {
-                //Enter new map
+                _mapComponent = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>();
             }
+        }
+
+        public  MapComponent GetMap()
+        {
+            return _mapComponent;
         }
     }
 }

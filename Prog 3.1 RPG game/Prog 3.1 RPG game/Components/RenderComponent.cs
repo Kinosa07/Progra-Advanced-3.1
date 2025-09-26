@@ -40,5 +40,10 @@ namespace Prog_3._1_RPG_game.Components
         {
             return _positionComponent;
         }
+
+        public string GetAppearance(string key)
+        {
+            return _appearanceTable[key];
+        }
     }
 }

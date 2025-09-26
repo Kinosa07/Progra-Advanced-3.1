@@ -74,6 +74,8 @@ namespace Prog_3._1_RPG_game
 
         public void Render(MapComponent current_map)
         {
+            Console.Clear();
+
             //Taille a parcourir de render
             int horizontal_position = 0;
             int vertical_position = 0;

@@ -12,7 +12,8 @@ namespace Prog_3._1_RPG_game.Components
 
         private int _previousColliderPosX;
         private int _previousColliderPosY;
-        int _tablePositionOfCollider = -1;
+        private int _tablePositionOfCollider = -1;
+        private GameObject _parentGameObject;
 
         private bool _isColliding;
 

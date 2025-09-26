@@ -11,6 +11,7 @@ namespace Prog_3._1_RPG_game.Components
         private PositionComponent _positionComponent;
         private Dictionary<string, string> _appearanceTable = new Dictionary<string, string>();
         private string _currentLookingDirection;
+        private GameObject _parentGameObject;
 
         public RenderComponent(RenderManager game_render_manager, PositionComponent position_component, string immobile_image)
         {

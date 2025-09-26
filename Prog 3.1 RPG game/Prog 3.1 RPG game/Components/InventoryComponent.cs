@@ -11,6 +11,7 @@ namespace Prog_3._1_RPG_game.Components
         //Contenu: Argent, objets, ???
         private int _money;
         private string[] _itemTable = new string[0];
+        private GameObject _parentGameObject;
 
         public InventoryComponent(int starting_money, int starting_item_table_size)
         {

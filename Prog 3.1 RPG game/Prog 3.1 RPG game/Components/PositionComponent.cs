@@ -12,6 +12,7 @@ namespace Prog_3._1_RPG_game.Components
         private int _yPos;
         private int _previousXPos;
         private int _previousYPos;
+        private GameObject _parentGameObject;
 
         public PositionComponent(int starting_x_position, int starting_y_position)
         {

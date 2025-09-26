@@ -9,6 +9,7 @@ namespace Prog_3._1_RPG_game.Components
     internal class MovementComponent : Component
     {
         private PositionComponent _positionComponent;
+        private GameObject _parentGameObject;
 
         public MovementComponent(PositionComponent position_component)
         {

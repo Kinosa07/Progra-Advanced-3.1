@@ -33,7 +33,12 @@ namespace Prog_3._1_RPG_game.Components
 
         public override void FixedUpdate(float fixed_update_time)
         {
-            
+
+        }
+
+        public PositionComponent GetPositionComponent()
+        {
+            return _positionComponent;
         }
     }
 }

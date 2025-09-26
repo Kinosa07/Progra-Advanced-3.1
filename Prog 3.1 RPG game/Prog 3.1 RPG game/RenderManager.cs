@@ -44,6 +44,13 @@ namespace Prog_3._1_RPG_game
             if (is_table_full == false)
             {
                 //NOT FINISHED
+                for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)
+                {
+                    if (_renderComponentsCollection[collection_index] == null)
+                    {
+                        _renderComponentsCollection[collection_index] = render_component_to_add;
+                    }
+                }
             }
         }
     }

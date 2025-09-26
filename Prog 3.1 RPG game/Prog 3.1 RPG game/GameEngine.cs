@@ -14,9 +14,10 @@ namespace Prog_3._1_RPG_game
         private bool _shouldQuit = false;
         private Stopwatch _stopWatch = new Stopwatch();
         private float _lastUpdateTime = 0;
+        GameObject _player = new GameObject();
         public void Run()
         {
-            GameObject _player = CreatePlayer(1,1);
+            _player = CreatePlayer(1,1);
 
             while (!_shouldQuit)
             {
@@ -55,21 +56,25 @@ namespace Prog_3._1_RPG_game
                 if (key.Key == ConsoleKey.UpArrow)
                 {
                     //Move Up
+                    _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX(), _player.GetComponent<PositionComponent>().GetPositionY() - 1);
                 }
 
                 if (key.Key == ConsoleKey.DownArrow)
                 {
                     //Move Down
+                    _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX(), _player.GetComponent<PositionComponent>().GetPositionY() + 1);
                 }
 
                 if (key.Key == ConsoleKey.LeftArrow)
                 {
                     //Move Left
+                    _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX() - 1, _player.GetComponent<PositionComponent>().GetPositionY());
                 }
 
                 if (key.Key == ConsoleKey.RightArrow)
                 {
                     //Move Right
+                    _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX() + 1, _player.GetComponent<PositionComponent>().GetPositionY());
                 }
             }
         }

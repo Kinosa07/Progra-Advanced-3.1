@@ -92,10 +92,10 @@ namespace Prog_3._1_RPG_game
         private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos)
         {
             GameObject player = new GameObject();
-            PositionComponent player_pos_comp = new PositionComponent(starting_x_pos, starting_y_pos);
-            MovementComponent player_move_comp = new MovementComponent(player_pos_comp);
-            RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">");
-            CollisionComponent player_collision = new CollisionComponent(player_pos_comp);
+            PositionComponent player_pos_comp = new PositionComponent(starting_x_pos, starting_y_pos, player);
+            MovementComponent player_move_comp = new MovementComponent(player_pos_comp, player);
+            RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">", player);
+            CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player);
 
             player.AddComponent(player_pos_comp);
             player.AddComponent(player_move_comp);
@@ -108,7 +108,7 @@ namespace Prog_3._1_RPG_game
         private GameObject CreateLocation(int x_size, int y_size)
         {
             GameObject location = new GameObject();
-            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size);
+            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location);
 
             location.AddComponent(location_map_component);
 

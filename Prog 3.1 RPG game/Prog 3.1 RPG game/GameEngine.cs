@@ -15,9 +15,11 @@ namespace Prog_3._1_RPG_game
         private Stopwatch _stopWatch = new Stopwatch();
         private float _lastUpdateTime = 0;
         GameObject _player = new GameObject();
+        GameObject _worldMap = new GameObject();
         public void Run()
         {
             _player = CreatePlayer(1,1);
+            _worldMap = CreateLocation(10, 7);
 
             while (!_shouldQuit)
             {
@@ -100,6 +102,16 @@ namespace Prog_3._1_RPG_game
             player.AddComponent(player_collision);
 
             return player;
+        }
+
+        private GameObject CreateLocation(int x_size, int y_size)
+        {
+            GameObject location = new GameObject();
+            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size);
+
+            location.AddComponent(location_map_component);
+
+            return location;
         }
     }
 }

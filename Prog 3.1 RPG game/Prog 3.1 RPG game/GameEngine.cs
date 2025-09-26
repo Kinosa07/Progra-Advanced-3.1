@@ -16,11 +16,14 @@ namespace Prog_3._1_RPG_game
         private float _lastUpdateTime = 0;
         GameObject _player = new GameObject();
         GameObject _worldMap = new GameObject();
+        GameObject _townMap = new GameObject();
+        GameObject _shop = new GameObject();
+        GameObject _currentLocation = new GameObject();
         RenderManager _renderManager = new RenderManager();
         public void Run()
         {
             _player = CreatePlayer(1, 1);
-            _worldMap = CreateLocation(10, 7);
+            _worldMap = CreateWorld(10, 7);
 
             while (!_shouldQuit)
             {
@@ -105,7 +108,25 @@ namespace Prog_3._1_RPG_game
             return player;
         }
 
-        private GameObject CreateLocation(int x_size, int y_size)
+        private GameObject CreateWorld(int x_size, int y_size)
+        {
+            GameObject location = new GameObject();
+            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location);
+
+            location.AddComponent(location_map_component);
+
+            return location;
+        }
+        private GameObject CreateCity(int x_size, int y_size, int x_exit_position, int y_exit_position)
+        {
+            GameObject location = new GameObject();
+            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location);
+
+            location.AddComponent(location_map_component);
+
+            return location;
+        }
+        private GameObject CreateShop(int x_size, int y_size)
         {
             GameObject location = new GameObject();
             MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location);

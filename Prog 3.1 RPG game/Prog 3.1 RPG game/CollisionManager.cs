@@ -68,23 +68,26 @@ namespace Prog_3._1_RPG_game
             {
                 for (int internal_table_index_2 = 0; internal_table_index_2 < _collisonComponentsCollection.Length; internal_table_index_2++)
                 {
-                    _tablePositionOfCollider = internal_table_index;
-                    if (_collisonComponentsCollection[internal_table_index].GetPositionComponent().GetPositionX() == _collisonComponentsCollection[internal_table_index].GetPositionComponent().GetPositionX())
+                    if (_collisonComponentsCollection[internal_table_index] != null && _collisonComponentsCollection[internal_table_index_2] != null)
                     {
-                        _isColliding = true;
-                        if (_collisonComponentsCollection[internal_table_index].GetParentGameObject().GetComponent<MovementComponent>().GetHasMoved())
+
+                        if (_collisonComponentsCollection[internal_table_index].GetPositionComponent().GetPositionX() == _collisonComponentsCollection[internal_table_index_2].GetPositionComponent().GetPositionX())
                         {
-                            _tablePositionOfCollider = internal_table_index;
-                            _tablePositionOfCollidee = internal_table_index_2;
-                        }
+                            _isColliding = true;
+                            if (_collisonComponentsCollection[internal_table_index].GetParentGameObject().GetComponent<MovementComponent>().GetHasMoved())
+                            {
+                                _tablePositionOfCollider = internal_table_index;
+                                _tablePositionOfCollidee = internal_table_index_2;
+                            }
                         else if (_collisonComponentsCollection[internal_table_index_2].GetParentGameObject().GetComponent<MovementComponent>().GetHasMoved())
-                        {
-                            _tablePositionOfCollider = internal_table_index_2;
-                            _tablePositionOfCollidee = internal_table_index;
+                            {
+                                _tablePositionOfCollider = internal_table_index_2;
+                                _tablePositionOfCollidee = internal_table_index;
+                            }
                         }
                     }
 
-                    if (_collisonComponentsCollection[internal_table_index].GetPositionComponent().GetPositionY() == _collisonComponentsCollection[internal_table_index].GetPositionComponent().GetPositionY())
+                    if (_collisonComponentsCollection[internal_table_index].GetPositionComponent().GetPositionY() == _collisonComponentsCollection[internal_table_index_2].GetPositionComponent().GetPositionY())
                     {
                         _isColliding = true;
                     }

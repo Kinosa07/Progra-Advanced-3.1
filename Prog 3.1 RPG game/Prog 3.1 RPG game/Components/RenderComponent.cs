@@ -9,7 +9,7 @@ namespace Prog_3._1_RPG_game.Components
     internal class RenderComponent : Component
     {
         private PositionComponent _positionComponent;
-        private Dictionary<string, string> _appearanceTable;
+        private Dictionary<string, string> _appearanceTable = new Dictionary<string, string>();
 
 
         public RenderComponent(PositionComponent position_component, string immobile_image)
@@ -20,6 +20,7 @@ namespace Prog_3._1_RPG_game.Components
         public RenderComponent(PositionComponent position_component, string looking_up, string looking_down, string looking_left, string looking_right)
         {
             _positionComponent = position_component;
+            _appearanceTable.Add("base", looking_up);
             _appearanceTable.Add("up", looking_up);
             _appearanceTable.Add("down", looking_down);
             _appearanceTable.Add("left", looking_left);

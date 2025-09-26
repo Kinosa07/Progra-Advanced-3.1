@@ -33,5 +33,10 @@ namespace Prog_3._1_RPG_game.Components
         {
             
         }
+
+        public PositionComponent GetPositionComponent()
+        {
+            return _positionComponent;  
+        }
     }
 }

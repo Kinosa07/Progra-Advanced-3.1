@@ -102,5 +102,42 @@ namespace Prog_3._1_RPG_game.Components
         {
             return _mapSizeY;
         }
+
+        public void AddMapElement(GameObject element_to_add)
+        {
+            //Is table Full
+            bool is_table_full = true;
+            for (int collection_index = 0; collection_index < _mapContentsTable.Length; collection_index++)
+            {
+                if (_mapContentsTable[collection_index] == null)
+                {
+                    is_table_full = false;
+                    break;
+                }
+            }
+
+            if (is_table_full == true)
+            {
+                //magic to expand Table
+                GameObject[] temporary_table = new GameObject[_mapContentsTable.Length + 3];
+                for (int collection_index = 0; collection_index < _mapContentsTable.Length; collection_index++)
+                {
+                    temporary_table[collection_index] = _mapContentsTable[collection_index];
+                }
+                _mapContentsTable = temporary_table;
+                is_table_full = false;
+            }
+
+            if (is_table_full == false)
+            {
+                for (int collection_index = 0; collection_index < _mapContentsTable.Length; collection_index++)
+                {
+                    if (_mapContentsTable[collection_index] == null)
+                    {
+                        _mapContentsTable[collection_index] = element_to_add;
+                    }
+                }
+            }
+        }
     }
 }

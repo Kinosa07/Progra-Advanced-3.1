@@ -89,10 +89,13 @@ namespace Prog_3._1_RPG_game
                     //prendre en compte tout les RenderComponents
                     for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)
                     {
-                        is_location_empty = !(_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionX() == horizontal_position) && (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionY() == vertical_position);
-                        if (!is_location_empty)
+                        if (_renderComponentsCollection[collection_index] != null)
                         {
-                            Console.WriteLine(_renderComponentsCollection[collection_index].GetAppearance());
+                            is_location_empty = !(_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionX() == horizontal_position) && (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionY() == vertical_position);
+                            if (!is_location_empty)
+                            {
+                                Console.WriteLine(_renderComponentsCollection[collection_index].GetAppearance());
+                            }
                         }
                     }
 

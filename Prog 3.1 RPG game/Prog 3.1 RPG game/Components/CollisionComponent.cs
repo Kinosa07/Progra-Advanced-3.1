@@ -8,7 +8,7 @@ namespace Prog_3._1_RPG_game.Components
 {
     internal class CollisionComponent : Component
     {
-        private PositionComponent _positionComponent = new PositionComponent(1, 1);
+        private PositionComponent _positionComponent = new PositionComponent(1, 1, new GameObject());
 
         private int _previousColliderPosX;
         private int _previousColliderPosY;

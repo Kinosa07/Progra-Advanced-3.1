@@ -10,7 +10,7 @@ namespace Prog_3._1_RPG_game.Components
     {
         private PositionComponent _positionComponent = new PositionComponent(-1, -1);
         //RETOURNER ICI PAS OK
-        private MapComponent _mapComponent = new MapComponent(2,2);
+        private MapComponent _mapComponent = new MapComponent(new RenderManager(),2,2);
 
         private int _previousColliderPosX;
         private int _previousColliderPosY;

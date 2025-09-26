@@ -18,10 +18,9 @@ namespace Prog_3._1_RPG_game.Components
 
         private bool _isColliding;
 
-        public CollisionComponent (PositionComponent object_position_component, MapComponent location_map_component)
+        public CollisionComponent (PositionComponent object_position_component)
         {
             _positionComponent = object_position_component;
-            _mapComponent = location_map_component;
         }
 
         //Ce que CollCompo doit faire: Repousser les objets vers leurs positions initiales : Get Previous X & Y et utiliser Movement Component

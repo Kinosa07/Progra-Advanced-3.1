@@ -124,12 +124,14 @@ namespace Prog_3._1_RPG_game
             MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location);
             PositionComponent location_exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
             CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit);
+            RenderComponent location_exit_render = new RenderComponent(_renderManager, location_exit_position, "O", location_exit);
             MapComponent location_exit_new_map = exit_map;
 
             location.AddComponent(location_map_component);
             location_exit.AddComponent(location_exit_position);
             location_exit.AddComponent(location_exit_collision);
             location_exit.AddComponent(location_exit_new_map);
+            location_exit.AddComponent(location_exit_render);
 
             location.GetComponent<MapComponent>().AddMapElement(location_exit);
 
@@ -143,12 +145,15 @@ namespace Prog_3._1_RPG_game
             InventoryComponent shop_inventory = new InventoryComponent(300, 4, location);
             PositionComponent location_exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
             CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit);
+            RenderComponent location_exit_render = new RenderComponent(_renderManager, location_exit_position, "O", location_exit);
             MapComponent location_exit_new_map = exit_map;
 
             location.AddComponent(location_map_component);
+            location.AddComponent(shop_inventory);
             location_exit.AddComponent(location_exit_position);
             location_exit.AddComponent(location_exit_collision);
             location_exit.AddComponent(location_exit_new_map);
+            location_exit.AddComponent(location_exit_render);
 
             location.GetComponent<MapComponent>().AddMapElement(location_exit);
 

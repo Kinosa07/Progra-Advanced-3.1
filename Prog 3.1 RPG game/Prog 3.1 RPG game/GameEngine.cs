@@ -76,6 +76,11 @@ namespace Prog_3._1_RPG_game
                     //Move Right
                     _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX() + 1, _player.GetComponent<PositionComponent>().GetPositionY());
                 }
+
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    _shouldQuit = true;
+                }
             }
         }
 

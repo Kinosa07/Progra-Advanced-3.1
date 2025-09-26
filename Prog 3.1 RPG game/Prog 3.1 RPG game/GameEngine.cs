@@ -16,6 +16,7 @@ namespace Prog_3._1_RPG_game
         private float _lastUpdateTime = 0;
         GameObject _player = new GameObject();
         GameObject _worldMap = new GameObject();
+        RenderManager _renderManager = new RenderManager();
         public void Run()
         {
             _player = CreatePlayer(1,1);
@@ -33,7 +34,7 @@ namespace Prog_3._1_RPG_game
 
         public void Render()
         {
-
+            _renderManager.Render(_worldMap.GetComponent<MapComponent>());
         }
 
         public void Update(float time_since_last_update)

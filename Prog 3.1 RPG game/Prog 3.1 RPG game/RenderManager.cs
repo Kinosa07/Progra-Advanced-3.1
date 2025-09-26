@@ -71,5 +71,43 @@ namespace Prog_3._1_RPG_game
                 }
             }
         }
+
+        public void Render(MapComponent current_map)
+        {
+            //Taille a parcourir de render
+            int horizontal_position = 0;
+            int vertical_position = 0;
+            bool is_location_empty = true;
+            RenderComponent potential_object = null;
+
+            //Parcourir le "Tableau" vide a remplir d'éléments (Vertical)
+            for (int vertical_index_map = 0; vertical_index_map < current_map.GetSizeY(); vertical_index_map++)
+            {
+                //Parcourir le "tableau" vide à remplir d'éléments 2 (Horizontal)
+                for (int horizontal_index_map = 0; horizontal_index_map < current_map.GetSizeX(); horizontal_index_map++)
+                {
+                    //prendre en compte tout les RenderComponents
+                    for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)
+                    {
+                        is_location_empty = !(_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionX() == horizontal_position) && (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionY() == vertical_position);
+                        if (!is_location_empty)
+                        {
+                            Console.WriteLine(_renderComponentsCollection[collection_index].GetAppearance());
+                        }
+                    }
+
+                    //vérifier si la position est déja prise
+                    if (is_location_empty && horizontal_index_map != current_map.GetSizeX() - 1)
+                    {
+                        Console.Write(" ");
+                    }
+                    
+                    else if (is_location_empty && horizontal_index_map == current_map.GetSizeX() - 1)
+                    {
+                        Console.WriteLine(" ");
+                    }
+                }
+            }
+        }
     }
 }

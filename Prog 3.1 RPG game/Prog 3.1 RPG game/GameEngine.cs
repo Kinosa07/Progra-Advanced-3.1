@@ -19,7 +19,7 @@ namespace Prog_3._1_RPG_game
         RenderManager _renderManager = new RenderManager();
         public void Run()
         {
-            _player = CreatePlayer(1,1);
+            _player = CreatePlayer(1, 1);
             _worldMap = CreateLocation(10, 7);
 
             while (!_shouldQuit)

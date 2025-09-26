@@ -41,5 +41,10 @@ namespace Prog_3._1_RPG_game.Components
             _positionComponent.SetPosition(new_x_position, new_y_position);
             _hasMovedlast = true;
         }
+
+        public bool GetHasMoved()
+        { 
+            return _hasMovedlast; 
+        }
     }
 }

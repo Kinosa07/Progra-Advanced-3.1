@@ -23,7 +23,9 @@ namespace Prog_3._1_RPG_game
         public void Run()
         {
             _player = CreatePlayer(1, 1);
-            _worldMap = CreateWorld(10, 7);
+            _worldMap = CreateWorld(20, 15);
+            _townMap = CreateCity(10, 7, 1, 2, _worldMap.GetComponent<MapComponent>());
+            _shop = CreateShop(5, 5, 3, 5, _townMap.GetComponent<MapComponent>());
 
             while (!_shouldQuit)
             {

@@ -93,6 +93,7 @@ namespace Prog_3._1_RPG_game
                     {
                         if (_renderComponentsCollection[collection_index] != null)
                         {
+                            //L'action est effectuée trois fois???
                             is_location_empty = !(_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionX() == horizontal_position) && (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionY() == vertical_position);
                             if (!is_location_empty && horizontal_index_map != current_map.GetSizeX() - 1)
                             {

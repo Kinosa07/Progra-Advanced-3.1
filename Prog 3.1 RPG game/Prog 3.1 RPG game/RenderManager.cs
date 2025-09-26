@@ -98,11 +98,13 @@ namespace Prog_3._1_RPG_game
                             if (!is_location_empty && horizontal_index_map != current_map.GetSizeX() - 1)
                             {
                                 Console.Write(_renderComponentsCollection[collection_index].GetAppearance());
+                                break;
                             }
 
                             else if (!is_location_empty && horizontal_index_map == current_map.GetSizeX() - 1)
                             {
                                 Console.WriteLine(_renderComponentsCollection[collection_index].GetAppearance());
+                                break;
                             }
                         }
                     }

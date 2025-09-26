@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prog_3._1_RPG_game.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,11 @@ namespace Prog_3._1_RPG_game
 {
     internal class CollisionManager
     {
+        private CollisionComponent[] _collisonComponentsCollection = new CollisionComponent[1];
+        public CollisionManager()
+        {
+
+        }
         /*
         //Analyser si Collisions
             Update()

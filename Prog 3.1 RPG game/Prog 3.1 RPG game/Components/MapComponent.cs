@@ -8,14 +8,16 @@ namespace Prog_3._1_RPG_game.Components
 {
     internal class MapComponent : Component
     {
-        GameObject[] _mapContentsTable = new GameObject[4];
-        private GameObject[] _mapBordersTable = new GameObject[1];
+        GameObject[] _mapContentsTable;
+        private GameObject[] _mapBordersTable;
         //créer des bordures de map
         private int _mapSizeX;
         private int _mapSizeY;
 
         public MapComponent(RenderManager game_render_manager, int map_size_x, int map_size_y)
         {
+
+            _mapContentsTable = new GameObject[4];
             _mapSizeX = map_size_x;
             _mapSizeY = map_size_y;
             _mapBordersTable = new GameObject[(2 * _mapSizeX) + (2 * _mapSizeY - 2)];

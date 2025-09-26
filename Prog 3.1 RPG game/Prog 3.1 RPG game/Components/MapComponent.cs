@@ -31,9 +31,9 @@ namespace Prog_3._1_RPG_game.Components
 
             for (int horizontal_map_size_index = 0; horizontal_map_size_index < _mapSizeX; horizontal_map_size_index++)
             {
-                PositionComponent game_object_position_component = new PositionComponent(horizontal_map_size_index, 0);
-                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component);
-                RenderComponent game_object_render_component = new RenderComponent(game_render_manager, game_object_position_component, "=");
+                PositionComponent game_object_position_component = new PositionComponent(horizontal_map_size_index, 0, _mapBordersTable[horizontal_map_size_index]);
+                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component, _mapBordersTable[horizontal_map_size_index]);
+                RenderComponent game_object_render_component = new RenderComponent(game_render_manager, game_object_position_component, "=", _mapBordersTable[horizontal_map_size_index]);
 
                 _mapBordersTable[horizontal_map_size_index].AddComponent(game_object_position_component);
                 _mapBordersTable[horizontal_map_size_index].AddComponent(game_object_collision_component);
@@ -42,9 +42,9 @@ namespace Prog_3._1_RPG_game.Components
 
             for (int horizontal_map_size_index = 0; horizontal_map_size_index < _mapSizeX; horizontal_map_size_index++)
             {
-                PositionComponent game_object_position_component = new PositionComponent(horizontal_map_size_index, _mapSizeY - 1);
-                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component);
-                RenderComponent game_object_render_component = new RenderComponent(game_render_manager, game_object_position_component, "=");
+                PositionComponent game_object_position_component = new PositionComponent(horizontal_map_size_index, _mapSizeY - 1, _mapBordersTable[horizontal_map_size_index + _mapSizeX]);
+                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component, _mapBordersTable[horizontal_map_size_index + _mapSizeX]);
+                RenderComponent game_object_render_component = new RenderComponent(game_render_manager, game_object_position_component, "=", _mapBordersTable[horizontal_map_size_index + _mapSizeX]);
 
                 _mapBordersTable[horizontal_map_size_index + _mapSizeX].AddComponent(game_object_position_component);
                 _mapBordersTable[horizontal_map_size_index + _mapSizeX].AddComponent(game_object_collision_component);
@@ -53,9 +53,9 @@ namespace Prog_3._1_RPG_game.Components
 
             for (int vertical_map_size_index = 0; vertical_map_size_index < _mapSizeY - 2; vertical_map_size_index++)
             {
-                PositionComponent game_object_position_component = new PositionComponent(0, vertical_map_size_index + 1);
-                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component);
-                RenderComponent game_object_render_component = new RenderComponent(game_render_manager, game_object_position_component, "|");
+                PositionComponent game_object_position_component = new PositionComponent(0, vertical_map_size_index + 1, _mapBordersTable[vertical_map_size_index + (2 * _mapSizeX)]);
+                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component, _mapBordersTable[vertical_map_size_index + (2 * _mapSizeX)]);
+                RenderComponent game_object_render_component = new RenderComponent(game_render_manager, game_object_position_component, "|", _mapBordersTable[vertical_map_size_index + (2 * _mapSizeX)]);
 
                 _mapBordersTable[vertical_map_size_index + (2 * _mapSizeX)].AddComponent(game_object_position_component);
                 _mapBordersTable[vertical_map_size_index + (2 * _mapSizeX)].AddComponent(game_object_collision_component);
@@ -64,9 +64,9 @@ namespace Prog_3._1_RPG_game.Components
 
             for (int vertical_map_size_index = 0; vertical_map_size_index < _mapSizeY - 2; vertical_map_size_index++)
             {
-                PositionComponent game_object_position_component = new PositionComponent(_mapSizeX - 1, vertical_map_size_index + 1);
-                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component);
-                RenderComponent game_object_render_component = new RenderComponent(game_render_manager, game_object_position_component, "|");
+                PositionComponent game_object_position_component = new PositionComponent(_mapSizeX - 1, vertical_map_size_index + 1, _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)]);
+                CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component, _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)]);
+                RenderComponent game_object_render_component = new RenderComponent(game_render_manager, game_object_position_component, "|", _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)]);
 
                 _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)].AddComponent(game_object_position_component);
                 _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)].AddComponent(game_object_collision_component);

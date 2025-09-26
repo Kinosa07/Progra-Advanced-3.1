@@ -10,11 +10,13 @@ namespace Prog_3._1_RPG_game.Components
     {
         private PositionComponent _positionComponent;
         private GameObject _parentGameObject;
+        private bool _hasMovedlast;
 
         public MovementComponent(PositionComponent position_component, GameObject parent)
         {
             _positionComponent = position_component;
             _parentGameObject = parent;
+            _hasMovedlast = false;
         }
 
         //Fonction Update
@@ -26,7 +28,7 @@ namespace Prog_3._1_RPG_game.Components
         //Fonction FixedUpdate
         public override void FixedUpdate(float fixed_update_time)
         {
-
+            _hasMovedlast = false;
         }
         public override GameObject GetParentGameObject()
         {
@@ -36,7 +38,8 @@ namespace Prog_3._1_RPG_game.Components
         public void MoveObject(int new_x_position, int new_y_position)
         {
             //Bouger l'objet selon de nouvelles positions
-            _positionComponent.SetPosition(new_x_position,new_y_position);
+            _positionComponent.SetPosition(new_x_position, new_y_position);
+            _hasMovedlast = true;
         }
     }
 }

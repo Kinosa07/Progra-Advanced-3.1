@@ -135,12 +135,22 @@ namespace Prog_3._1_RPG_game
 
             return location;
         }
-        private GameObject CreateShop(int x_size, int y_size)
+        private GameObject CreateShop(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map)
         {
             GameObject location = new GameObject();
+            GameObject location_exit = new GameObject();
             MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location);
+            InventoryComponent shop_inventory = new InventoryComponent(300, 4, location);
+            PositionComponent location_exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
+            CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit);
+            MapComponent location_exit_new_map = exit_map;
 
             location.AddComponent(location_map_component);
+            location_exit.AddComponent(location_exit_position);
+            location_exit.AddComponent(location_exit_collision);
+            location_exit.AddComponent(location_exit_new_map);
+
+            location.GetComponent<MapComponent>().AddMapElement(location_exit);
 
             return location;
         }

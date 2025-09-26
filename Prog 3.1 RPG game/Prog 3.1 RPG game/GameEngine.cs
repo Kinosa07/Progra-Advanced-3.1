@@ -20,6 +20,7 @@ namespace Prog_3._1_RPG_game
         GameObject _shop = new GameObject();
         GameObject _currentLocation = new GameObject();
         RenderManager _renderManager = new RenderManager();
+        CollisionManager _collisionManager = new CollisionManager();
         public void Run()
         {
             _player = CreatePlayer(1, 1);
@@ -39,13 +40,15 @@ namespace Prog_3._1_RPG_game
 
         public void Render()
         {
-            _renderManager.Render(_worldMap.GetComponent<MapComponent>());
+            _renderManager.Render(_currentLocation.GetComponent<MapComponent>());
         }
 
         public void Update(float time_since_last_update)
         {
             _lastUpdateTime = _stopWatch.ElapsedMilliseconds;
             _player.Update(time_since_last_update);
+            _collisionManager.Update();
+            _currentLocation = _collisionManager.GetMap().GetParentGameObject();
         }
 
         public void FixedUpdate(float fixed_time_until_update)
@@ -54,6 +57,7 @@ namespace Prog_3._1_RPG_game
             {
                 //Work your magic
                 _player.FixedUpdate(_lastUpdateTime);
+                _collisionManager.Update();
             }
         }
 

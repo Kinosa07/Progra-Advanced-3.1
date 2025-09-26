@@ -14,6 +14,43 @@ namespace Prog_3._1_RPG_game
         {
 
         }
+
+        public void AddCollisionComponent(CollisionComponent collision_component_to_add)
+        {
+            //Is table Full
+            bool is_table_full = true;
+            for (int collection_index = 0; collection_index < _collisonComponentsCollection.Length; collection_index++)
+            {
+                if (_collisonComponentsCollection[collection_index] == null)
+                {
+                    is_table_full = false;
+                    break;
+                }
+            }
+
+            if (is_table_full == true)
+            {
+                //magic to expand Table
+                CollisionComponent[] temporary_table = new CollisionComponent[_collisonComponentsCollection.Length + 3];
+                for (int collection_index = 0; collection_index < _collisonComponentsCollection.Length; collection_index++)
+                {
+                    temporary_table[collection_index] = _collisonComponentsCollection[collection_index];
+                }
+                _collisonComponentsCollection = temporary_table;
+                is_table_full = false;
+            }
+
+            if (is_table_full == false)
+            {
+                for (int collection_index = 0; collection_index < _collisonComponentsCollection.Length; collection_index++)
+                {
+                    if (_collisonComponentsCollection[collection_index] == null)
+                    {
+                        _collisonComponentsCollection[collection_index] = collision_component_to_add;
+                    }
+                }
+            }
+        }
         /*
         //Analyser si Collisions
             Update()

@@ -94,14 +94,14 @@ namespace Prog_3._1_RPG_game
                         if (_renderComponentsCollection[collection_index] != null)
                         {
                             //L'action est effectuée trois fois??? Not Intended
-                            is_location_empty = !(_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionX() == horizontal_position) && (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionY() == vertical_position);
-                            if (!is_location_empty && horizontal_index_map != current_map.GetSizeX() - 1)
+                            is_location_empty = !( (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionX() == horizontal_index_map) && (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionY() == vertical_index_map) );
+                            if (!is_location_empty && (horizontal_index_map != current_map.GetSizeX() - 1))
                             {
                                 Console.Write(_renderComponentsCollection[collection_index].GetAppearance());
                                 break;
                             }
 
-                            else if (!is_location_empty && horizontal_index_map == current_map.GetSizeX() - 1)
+                            else if (!is_location_empty && (horizontal_index_map == current_map.GetSizeX() - 1))
                             {
                                 Console.WriteLine(_renderComponentsCollection[collection_index].GetAppearance());
                                 break;

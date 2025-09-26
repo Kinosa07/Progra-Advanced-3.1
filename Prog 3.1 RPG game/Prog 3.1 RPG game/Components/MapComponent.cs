@@ -84,5 +84,15 @@ namespace Prog_3._1_RPG_game.Components
         {
             return _mapContentsTable;
         }
+
+        public int GetSizeX()
+        {
+            return _mapSizeX;
+        }
+
+        public int GetSizeY()
+        {
+            return _mapSizeY;
+        }
     }
 }

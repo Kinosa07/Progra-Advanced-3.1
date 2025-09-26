@@ -43,13 +43,31 @@ namespace Prog_3._1_RPG_game
 
             if (is_table_full == false)
             {
-                //NOT FINISHED
                 for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)
                 {
                     if (_renderComponentsCollection[collection_index] == null)
                     {
                         _renderComponentsCollection[collection_index] = render_component_to_add;
                     }
+                }
+            }
+        }
+
+        public void Update(float delta_time)
+        {
+            for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)
+            {
+                _renderComponentsCollection[collection_index].Update(delta_time);
+            }
+        }
+
+        public void FixedUpdate(float fixed_time_until_update, float delta_time)
+        {
+            if (delta_time >= fixed_time_until_update)
+            {
+                for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)
+                {
+                    _renderComponentsCollection[collection_index].FixedUpdate(fixed_time_until_update);
                 }
             }
         }

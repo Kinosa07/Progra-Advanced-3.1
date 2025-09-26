@@ -19,24 +19,30 @@ namespace Prog_3._1_RPG_game
         //Ajouter un Component
         public void AddComponent(Component component_to_add)
         {
-            bool was_added = false;
-            while (!was_added) 
+            bool is_table_full = true;
+            int free_table_slot = -1;
+            for (int component_table_index = 0; component_table_index < _componentTable.Length; component_table_index++)
             {
-                for (int component_table_index = 0; component_table_index < _componentTable.Length; component_table_index++)
+                if (_componentTable[component_table_index] == null)
                 {
-                    if (_componentTable[component_table_index] == null)
-                    {
-                        _componentTable[component_table_index] = component_to_add;
-                        was_added = true;
-                        break;
-                    }
+                    is_table_full = false;
+                    free_table_slot = component_table_index;
+                    break;
                 }
+            }
+            if (is_table_full)
+            { 
                 Component[] temporary_table = new Component[_componentTable.Length + 5];
                 for (int item_table_index = 0; item_table_index < _componentTable.Length; item_table_index++)
                 {
                     temporary_table[item_table_index] = _componentTable[item_table_index];
                 }
                 _componentTable = temporary_table;
+                is_table_full = false;
+            }
+            if (!is_table_full)
+            {
+                _componentTable[free_table_slot] = component_to_add;
             }
         }
 

@@ -35,7 +35,34 @@ namespace Prog_3._1_RPG_game.States
 
         public void ProcessInput()
         {
+            if (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                if (key.Key == ConsoleKey.UpArrow)
+                {
+                    //GameEvent: Going Up
+                }
 
+                if (key.Key == ConsoleKey.DownArrow)
+                {
+                    //GameEvent: Going Down
+                }
+
+                if (key.Key == ConsoleKey.LeftArrow)
+                {
+                    //GameEvent: Going Left
+                }
+
+                if (key.Key == ConsoleKey.RightArrow)
+                {  
+                    //GameEvent: going right
+                }
+
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    //GameEvent: Going to Menu
+                }
+            }       
         }
 
         public void Render()

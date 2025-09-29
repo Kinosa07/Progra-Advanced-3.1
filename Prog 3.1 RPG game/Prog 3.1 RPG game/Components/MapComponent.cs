@@ -91,7 +91,8 @@ namespace Prog_3._1_RPG_game.Components
 
         public GameObject[] GetAllObjectsInside()
         {
-            return _mapContentsTable;
+            GameObject[] copy_of_map_contents = _mapContentsTable; 
+            return copy_of_map_contents;
         }
 
         public int GetSizeX()

@@ -8,10 +8,14 @@ namespace Prog_3._1_RPG_game.States
 {
     public interface IState
     {
-        //Nécessaire?
+        public void Enter();
 
-        // public abstract void Enter();
+        public void Exit();
 
-        // public abstract void Exit();
+        public void ProcessInput();
+
+        public void Update();
+
+        public void Render();
     }
 }

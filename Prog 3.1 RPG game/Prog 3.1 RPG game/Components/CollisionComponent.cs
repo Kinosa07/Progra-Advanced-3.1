@@ -55,5 +55,11 @@ namespace Prog_3._1_RPG_game.Components
         {
             return _positionComponent;  
         }
+
+        public MovementComponent GetMovementComponent()
+        {
+            MovementComponent copy_of_movement_component = _movementComponent;
+            return copy_of_movement_component;
+        }
     }
 }

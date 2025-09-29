@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.States
 {
-    public abstract class GameState
+    public interface IState
     {
         //Nécessaire?
 

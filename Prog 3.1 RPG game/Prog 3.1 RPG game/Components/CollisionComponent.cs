@@ -12,12 +12,8 @@ namespace Prog_3._1_RPG_game.Components
         private PositionComponent _positionComponent = new PositionComponent(1, 1, new GameObject());
         private MovementComponent _movementComponent = null;
 
-        private int _previousColliderPosX;
-        private int _previousColliderPosY;
-        private int _tablePositionOfCollider = -1;
         private GameObject _parentGameObject;
 
-        private bool _isColliding;
 
         public CollisionComponent (PositionComponent object_position_component, GameObject parent)
         {
@@ -33,9 +29,6 @@ namespace Prog_3._1_RPG_game.Components
             _parentGameObject = parent;
         }
 
-        //Ce que CollCompo doit faire: Repousser les objets vers leurs positions initiales : Get Previous X & Y et utiliser Movement Component
-        //Comment trouver si un objet collisione: Utiliser MapComponent et parcourir TOUT les objets présents
-
         public override void Update(float deltaTime)
         {
             
@@ -48,12 +41,14 @@ namespace Prog_3._1_RPG_game.Components
 
         public override GameObject GetParentGameObject()
         {
-            return _parentGameObject;
+            GameObject copy_of_parent = _parentGameObject;
+            return copy_of_parent;
         }
 
         public PositionComponent GetPositionComponent()
         {
-            return _positionComponent;  
+            PositionComponent copy_of_position_component = _positionComponent;
+            return copy_of_position_component;  
         }
 
         public MovementComponent GetMovementComponent()

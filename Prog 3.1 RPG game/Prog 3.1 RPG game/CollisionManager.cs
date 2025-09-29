@@ -67,31 +67,36 @@ namespace Prog_3._1_RPG_game
             for (int internal_table_index = 0; internal_table_index < _collisonComponentsCollection.Length; internal_table_index++)
             {
                 CollisionComponent first_collision_component = _collisonComponentsCollection[internal_table_index];
+                PositionComponent first_position_component = first_collision_component.GetPositionComponent();
+                MovementComponent first_movement_component = first_collision_component.GetMovementComponent();
+                int first_element_pos_x = first_position_component.GetPositionX();
+                int first_element_pos_y = first_position_component.GetPositionY();
+
                 for (int internal_table_index_2 = 0; internal_table_index_2 < _collisonComponentsCollection.Length; internal_table_index_2++)
                 {
                     CollisionComponent second_collision_component = _collisonComponentsCollection[internal_table_index_2];
+                    PositionComponent second_position_component = second_collision_component.GetPositionComponent();
+                    MovementComponent second_movement_component = second_collision_component.GetMovementComponent();
+                    int second_element_pos_x = second_position_component.GetPositionX();
+                    int second_element_pos_y = second_position_component.GetPositionY();
+
                     if (first_collision_component != null && second_collision_component != null)
                     {
 
-                        if (first_collision_component.GetPositionComponent().GetPositionX() ==  second_collision_component.GetPositionComponent().GetPositionX())
+                        if ((first_element_pos_x ==  second_element_pos_x) && (first_element_pos_y == second_element_pos_y))
                         {
                             _isColliding = true;
-                            if (first_collision_component.GetParentGameObject().GetComponent<MovementComponent>().GetHasMoved())
+                            if ((first_movement_component != null) && (first_movement_component.GetHasMoved()))
                             {
                                 _tablePositionOfCollider = internal_table_index;
                                 _tablePositionOfCollidee = internal_table_index_2;
                             }
-                        else if (second_collision_component.GetParentGameObject().GetComponent<MovementComponent>().GetHasMoved())
+                        else if ((second_movement_component != null) && (second_movement_component.GetHasMoved()))
                             {
                                 _tablePositionOfCollider = internal_table_index_2;
                                 _tablePositionOfCollidee = internal_table_index;
                             }
                         }
-                    }
-
-                    if (_collisonComponentsCollection[internal_table_index].GetPositionComponent().GetPositionY() == _collisonComponentsCollection[internal_table_index_2].GetPositionComponent().GetPositionY())
-                    {
-                        _isColliding = true;
                     }
                 }
             }

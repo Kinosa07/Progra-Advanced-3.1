@@ -20,12 +20,9 @@
  * 
  * State Machine
  * 1 State par Type de Location (Shop/Inn, City, country, Planet, ...)
- * Qui gère la sortie du village/shop/inn etc...
+ * Qui gère la sortie du village/shop/inn etc... CollisionManager
  * 
  * Event Manager
- * 
- * RenderManager??? Et que fait RenderCompo si RenderManager existe
- * Fonctionnemtn Render: Parcourir un tableau de case. Ecrire " " si la case est vide et utiliser le render d'un objet a sa position
  * 
  * 
  * 

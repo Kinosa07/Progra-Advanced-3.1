@@ -24,7 +24,9 @@
  * 
  * Event Manager
  * 
- * 
+ * IStates: Render normal pour City et World ET SHOP
+ * Comportement spécifique Shop: collision avec objet proposer achat.
+ * Comportement colision City et Shop, si collision Exit, exit location
  * 
  * Event: Touches
  * 

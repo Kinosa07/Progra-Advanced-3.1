@@ -33,7 +33,7 @@ namespace Prog_3._1_RPG_game
 
             while (!_shouldQuit)
             {
-                ProcessInput();
+                ReadInput();
                 Update(_lastUpdateTime);
                 FixedUpdate(1.0f);
                 Render();
@@ -59,45 +59,75 @@ namespace Prog_3._1_RPG_game
             if (fixed_time_until_update <= _lastUpdateTime)
             {
                 //Work your magic
+                ProcessInput();
                 _player.FixedUpdate(_lastUpdateTime);
                 _collisionManager.Update();
             }
         }
 
-        public void ProcessInput()
+        private void ReadInput()
         {
             if (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
-
                 if (key.Key == ConsoleKey.UpArrow)
                 {
-                    //Move Up
-                    _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX(), _player.GetComponent<PositionComponent>().GetPositionY() - 1);
+                    _playerInput = "up";
                 }
 
                 if (key.Key == ConsoleKey.DownArrow)
                 {
-                    //Move Down
-                    _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX(), _player.GetComponent<PositionComponent>().GetPositionY() + 1);
+                    _playerInput = "down";
                 }
 
                 if (key.Key == ConsoleKey.LeftArrow)
                 {
-                    //Move Left
-                    _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX() - 1, _player.GetComponent<PositionComponent>().GetPositionY());
+                    _playerInput = "left";
                 }
 
                 if (key.Key == ConsoleKey.RightArrow)
                 {
-                    //Move Right
-                    _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX() + 1, _player.GetComponent<PositionComponent>().GetPositionY());
+                    _playerInput = "right";
                 }
 
                 if (key.Key == ConsoleKey.Escape)
                 {
-                    _shouldQuit = true;
+
+                    _playerInput = "Escape";
                 }
+            }
+        }
+
+        public void ProcessInput()
+        {
+            if (_playerInput == "up")
+            {
+                //Move Up
+                _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX(), _player.GetComponent<PositionComponent>().GetPositionY() - 1);
+            }
+
+            if (_playerInput == "down")
+            {
+                //Move Down
+                _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX(), _player.GetComponent<PositionComponent>().GetPositionY() + 1);
+            }
+
+            if (_playerInput == "left")
+            {
+                //Move Left
+                _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX() - 1, _player.GetComponent<PositionComponent>().GetPositionY());
+            }
+
+            if (_playerInput == "right")
+            {
+                //Move Right
+                _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX() + 1, _player.GetComponent<PositionComponent>().GetPositionY());
+            }
+
+            if (_playerInput == "escape")
+            {
+                //Quitting
+                _shouldQuit = true;
             }
         }
 

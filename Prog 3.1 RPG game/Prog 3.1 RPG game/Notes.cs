@@ -28,8 +28,6 @@
  * 
  * Event: Touches
  * 
- * Déplacement via touches
- * 
  * 
  * 
  * 

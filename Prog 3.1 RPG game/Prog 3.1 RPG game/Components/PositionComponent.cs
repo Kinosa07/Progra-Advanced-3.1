@@ -32,12 +32,11 @@ namespace Prog_3._1_RPG_game.Components
             //Update previousPos
             _previousXPos = _xPos;
             _previousYPos = _yPos;
-
-
         }
         public override GameObject GetParentGameObject()
         {
-            return _parentGameObject;
+            GameObject copy_of_parent = _parentGameObject;
+            return copy_of_parent;
         }
 
         public int GetPositionX()

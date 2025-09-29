@@ -32,7 +32,8 @@ namespace Prog_3._1_RPG_game.Components
         }
         public override GameObject GetParentGameObject()
         {
-            return _parentGameObject;
+            GameObject copy_of_parent = _parentGameObject;
+            return copy_of_parent;
         }
 
         public void MoveObject(int new_x_position, int new_y_position)

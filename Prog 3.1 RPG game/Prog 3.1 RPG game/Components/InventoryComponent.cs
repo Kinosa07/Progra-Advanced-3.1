@@ -58,7 +58,8 @@ namespace Prog_3._1_RPG_game.Components
         }
         public override GameObject GetParentGameObject()
         {
-            return _parentGameObject;
+            GameObject copy_of_parent = _parentGameObject;
+            return copy_of_parent;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Prog_3._1_RPG_game
         private bool _isColliding;
         private int _previousColliderPosX;
         private int _previousColliderPosY;
-        private MapComponent _mapComponent; //modifier nom SUPPOSED player Map, modifer quand StateMachine
+        private MapComponent _supposedPlayerLocation; //modifier quand StateMachine
 
         public CollisionManager()
         {
@@ -110,13 +110,13 @@ namespace Prog_3._1_RPG_game
 
             else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() != null))
             {
-                _mapComponent = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>();
+                _supposedPlayerLocation = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>();
             }
         }
 
         public  MapComponent GetMap()
         {
-            return _mapComponent;
+            return _supposedPlayerLocation;
         }
     }
 }

@@ -11,16 +11,19 @@ namespace Prog_3._1_RPG_game
 {
     internal class GameEngine
     {
-        private bool _shouldQuit = false;
-        private Stopwatch _stopWatch = new Stopwatch();
+        //élément du GameEngine
+        RenderManager _renderManager = new RenderManager();
+        CollisionManager _collisionManager = new CollisionManager();
         private float _lastUpdateTime = 0;
+        private bool _shouldQuit = false;
+        private string _playerInput = "null";
+        //Elements du Jeu
+        private Stopwatch _stopWatch = new Stopwatch();
         GameObject _player = new GameObject();
         GameObject _worldMap = new GameObject();
         GameObject _townMap = new GameObject();
         GameObject _shop = new GameObject();
         GameObject _currentLocation = new GameObject();
-        RenderManager _renderManager = new RenderManager();
-        CollisionManager _collisionManager = new CollisionManager();
         public void Run()
         {
             _player = CreatePlayer(1, 1);

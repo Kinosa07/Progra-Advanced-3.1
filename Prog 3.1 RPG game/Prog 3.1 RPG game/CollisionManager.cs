@@ -66,20 +66,22 @@ namespace Prog_3._1_RPG_game
 
             for (int internal_table_index = 0; internal_table_index < _collisonComponentsCollection.Length; internal_table_index++)
             {
+                CollisionComponent first_collision_component = _collisonComponentsCollection[internal_table_index];
                 for (int internal_table_index_2 = 0; internal_table_index_2 < _collisonComponentsCollection.Length; internal_table_index_2++)
                 {
-                    if (_collisonComponentsCollection[internal_table_index] != null && _collisonComponentsCollection[internal_table_index_2] != null)
+                    CollisionComponent second_collision_component = _collisonComponentsCollection[internal_table_index_2];
+                    if (first_collision_component != null && second_collision_component != null)
                     {
 
-                        if (_collisonComponentsCollection[internal_table_index].GetPositionComponent().GetPositionX() == _collisonComponentsCollection[internal_table_index_2].GetPositionComponent().GetPositionX())
+                        if (first_collision_component.GetPositionComponent().GetPositionX() ==  second_collision_component.GetPositionComponent().GetPositionX())
                         {
                             _isColliding = true;
-                            if (_collisonComponentsCollection[internal_table_index].GetParentGameObject().GetComponent<MovementComponent>().GetHasMoved())
+                            if (first_collision_component.GetParentGameObject().GetComponent<MovementComponent>().GetHasMoved())
                             {
                                 _tablePositionOfCollider = internal_table_index;
                                 _tablePositionOfCollidee = internal_table_index_2;
                             }
-                        else if (_collisonComponentsCollection[internal_table_index_2].GetParentGameObject().GetComponent<MovementComponent>().GetHasMoved())
+                        else if (second_collision_component.GetParentGameObject().GetComponent<MovementComponent>().GetHasMoved())
                             {
                                 _tablePositionOfCollider = internal_table_index_2;
                                 _tablePositionOfCollidee = internal_table_index;

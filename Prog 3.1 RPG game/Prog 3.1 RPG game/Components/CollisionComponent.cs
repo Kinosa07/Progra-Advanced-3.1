@@ -9,8 +9,8 @@ namespace Prog_3._1_RPG_game.Components
 {
     internal class CollisionComponent : Component
     {
-        private PositionComponent _positionComponent = new PositionComponent(1, 1, new GameObject());
-        private MovementComponent _movementComponent = null;
+        private PositionComponent _positionComponent;
+        private MovementComponent _movementComponent;
 
         private GameObject _parentGameObject;
 

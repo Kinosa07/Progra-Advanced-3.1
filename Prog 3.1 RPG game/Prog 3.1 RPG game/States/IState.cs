@@ -8,6 +8,8 @@ namespace Prog_3._1_RPG_game.States
 {
     public interface IState
     {
+        //Chaque GameState fonctionne essentiellement comme son propre mini-jeu
+
         public void Enter();
 
         public void Exit();

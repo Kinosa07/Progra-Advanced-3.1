@@ -14,6 +14,7 @@ namespace Prog_3._1_RPG_game
         //élément du GameEngine
         RenderManager _renderManager = new RenderManager();
         CollisionManager _collisionManager = new CollisionManager();
+        GameManager _gameManager = new GameManager();
         private float _lastUpdateTime = 0;
         private bool _shouldQuit = false;
         private string _playerInput = "null";
@@ -34,13 +35,13 @@ namespace Prog_3._1_RPG_game
 
         public void Render()
         {
-            _renderManager.Render(_currentLocation.GetComponent<MapComponent>());
+            _gameManager.Render();
         }
 
         public void Update(float time_since_last_update)
         {
             _lastUpdateTime = _stopWatch.ElapsedMilliseconds;
-            _player.Update(time_since_last_update);
+            _gameManager.Update(time_since_last_update);
             _collisionManager.Update();
         }
 
@@ -93,25 +94,25 @@ namespace Prog_3._1_RPG_game
             if (_playerInput == "up")
             {
                 //Move Up
-                _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX(), _player.GetComponent<PositionComponent>().GetPositionY() - 1);
+                
             }
 
             if (_playerInput == "down")
             {
                 //Move Down
-                _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX(), _player.GetComponent<PositionComponent>().GetPositionY() + 1);
+                
             }
 
             if (_playerInput == "left")
             {
                 //Move Left
-                _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX() - 1, _player.GetComponent<PositionComponent>().GetPositionY());
+               
             }
 
             if (_playerInput == "right")
             {
                 //Move Right
-                _player.GetComponent<MovementComponent>().MoveObject(_player.GetComponent<PositionComponent>().GetPositionX() + 1, _player.GetComponent<PositionComponent>().GetPositionY());
+                
             }
 
             if (_playerInput == "escape")

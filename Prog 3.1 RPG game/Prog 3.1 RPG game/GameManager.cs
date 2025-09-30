@@ -42,6 +42,16 @@ namespace Prog_3._1_RPG_game
             return player;
         }
 
+        public void Render()
+        {
+            _renderManager.Render(_currentLocation.GetComponent<MapComponent>());
+        }
+
+        public void Update()
+        {
+
+        }
+
         private GameObject CreateWorld(int x_size, int y_size)
         {
             GameObject location = new GameObject();

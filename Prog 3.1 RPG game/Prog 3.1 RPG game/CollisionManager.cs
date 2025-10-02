@@ -61,7 +61,7 @@ namespace Prog_3._1_RPG_game
         }
         
         //Analyser si Collisions
-        public void Update()
+        public void Update(float delta_time)
         {
 
             for (int internal_table_index = 0; internal_table_index < _collisonComponentsCollection.Length; internal_table_index++)
@@ -110,7 +110,7 @@ namespace Prog_3._1_RPG_game
                 _previousColliderPosY = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionY();
             }
         }
-        public void FixedUpdate()
+        public void FixedUpdate(float fixed_time_until_update, float delta_time)
         { 
             //Repousser les objets au positions de base
             if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() == null))

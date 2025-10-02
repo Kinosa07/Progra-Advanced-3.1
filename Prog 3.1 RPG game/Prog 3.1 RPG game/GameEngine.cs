@@ -23,7 +23,6 @@ namespace Prog_3._1_RPG_game
 
         public void Run()
         {
-
             while (!_shouldQuit)
             {
                 

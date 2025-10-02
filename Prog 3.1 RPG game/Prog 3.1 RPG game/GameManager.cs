@@ -47,7 +47,7 @@ namespace Prog_3._1_RPG_game
             _renderManager.Render(_currentLocation.GetComponent<MapComponent>());
         }
 
-        public void Update()
+        public void Update(float time_since_last_update)
         {
 
         }

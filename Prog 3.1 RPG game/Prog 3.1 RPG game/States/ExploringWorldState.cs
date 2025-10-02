@@ -11,11 +11,18 @@ namespace Prog_3._1_RPG_game.States
     {
         private MapComponent _worldMap;
         private RenderManager _renderManager;
+        private CollisionManager _collisionManager;
 
-        public ExploringWorldState(MapComponent world_map, RenderManager render_manager)
+        //Stuff that you're meant to do
+        //Walk around (Except through walls)
+        //See the map (See Render Function)
+        //Enter Cities
+
+        public ExploringWorldState(MapComponent world_map, RenderManager render_manager, CollisionManager collision_manager)
         {
             _worldMap = world_map;
             _renderManager = render_manager;
+            _collisionManager = collision_manager;
         }
 
         public void Enter()
@@ -28,9 +35,16 @@ namespace Prog_3._1_RPG_game.States
 
         }
 
-        public void Update()
+        public void Update(float delta_time)
         {
+            _renderManager.Update(delta_time);
+            _collisionManager.Update(delta_time);
+        }
 
+        public void FixedUpdate(float fixed_time_until_update, float delta_time)
+        {
+            _renderManager.FixedUpdate(fixed_time_until_update, delta_time);
+            _collisionManager.FixedUpdate(fixed_time_until_update, delta_time);
         }
 
         public void ProcessInput()

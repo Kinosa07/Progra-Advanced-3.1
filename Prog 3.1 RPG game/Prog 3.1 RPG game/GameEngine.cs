@@ -51,7 +51,6 @@ namespace Prog_3._1_RPG_game
             {
                 //Work your magic
                 ProcessInput();
-                _player.FixedUpdate(_lastUpdateTime);
                 _collisionManager.Update();
             }
         }

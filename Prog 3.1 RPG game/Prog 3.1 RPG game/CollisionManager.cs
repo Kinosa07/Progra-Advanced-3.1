@@ -111,16 +111,19 @@ namespace Prog_3._1_RPG_game
             }
         }
         public void FixedUpdate(float fixed_time_until_update, float delta_time)
-        { 
-            //Repousser les objets au positions de base
-            if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() == null))
+        {
+            if (delta_time >= fixed_time_until_update)
             {
-                _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MovementComponent>().MoveObject(_previousColliderPosX, _previousColliderPosY);
-            }
+                //Repousser les objets au positions de base
+                if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() == null))
+                {
+                    _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MovementComponent>().MoveObject(_previousColliderPosX, _previousColliderPosY);
+                }
 
-            else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() != null))
-            {
-                _supposedPlayerLocation = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>();
+                else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() != null))
+                {
+                    _supposedPlayerLocation = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>();
+                }
             }
         }
 

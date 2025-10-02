@@ -25,7 +25,7 @@ namespace Prog_3._1_RPG_game
 
             while (!_shouldQuit)
             {
-                ReadInput();
+                
                 Update(_lastUpdateTime);
                 FixedUpdate(1.0f);
                 Render();
@@ -50,7 +50,6 @@ namespace Prog_3._1_RPG_game
             if (fixed_time_until_update <= _lastUpdateTime)
             {
                 //Work your magic
-                ProcessInput();
                 _collisionManager.Update();
             }
         }
@@ -85,39 +84,6 @@ namespace Prog_3._1_RPG_game
 
                     _playerInput = "Escape";
                 }
-            }
-        }
-
-        public void ProcessInput()
-        {
-            if (_playerInput == "up")
-            {
-                //Move Up
-                
-            }
-
-            if (_playerInput == "down")
-            {
-                //Move Down
-                
-            }
-
-            if (_playerInput == "left")
-            {
-                //Move Left
-               
-            }
-
-            if (_playerInput == "right")
-            {
-                //Move Right
-                
-            }
-
-            if (_playerInput == "escape")
-            {
-                //Quitting
-                _shouldQuit = true;
             }
         }
     }

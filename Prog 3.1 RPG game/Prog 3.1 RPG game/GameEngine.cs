@@ -11,9 +11,10 @@ namespace Prog_3._1_RPG_game
 {
     internal class GameEngine
     {
-        //élément du GameEngine
-        RenderManager _renderManager = new RenderManager();
+        //(Potentiellement migrable vers GameManager)
         CollisionManager _collisionManager = new CollisionManager();
+
+        //élément du GameEngine
         GameManager _gameManager = new GameManager();
         private float _lastUpdateTime = 0;
         private bool _shouldQuit = false;

@@ -54,36 +54,6 @@ namespace Prog_3._1_RPG_game
             }
         }
 
-        private void ReadInput()
-        {
-            if (Console.KeyAvailable)
-            {
-                ConsoleKeyInfo key = Console.ReadKey(true);
-                if (key.Key == ConsoleKey.UpArrow)
-                {
-                    _playerInput = "up";
-                }
-
-                if (key.Key == ConsoleKey.DownArrow)
-                {
-                    _playerInput = "down";
-                }
-
-                if (key.Key == ConsoleKey.LeftArrow)
-                {
-                    _playerInput = "left";
-                }
-
-                if (key.Key == ConsoleKey.RightArrow)
-                {
-                    _playerInput = "right";
-                }
-
-                if (key.Key == ConsoleKey.Escape)
-                {
-
-                    _playerInput = "Escape";
-                }
             }
         }
     }

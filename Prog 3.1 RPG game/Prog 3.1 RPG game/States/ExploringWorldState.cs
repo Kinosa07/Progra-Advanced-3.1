@@ -12,17 +12,19 @@ namespace Prog_3._1_RPG_game.States
         private MapComponent _worldMap;
         private RenderManager _renderManager;
         private CollisionManager _collisionManager;
+        private EventManager _eventManager;
 
         //Stuff that you're meant to do
         //Walk around (Except through walls)
         //See the map (See Render Function)
         //Enter Cities
 
-        public ExploringWorldState(MapComponent world_map, RenderManager render_manager, CollisionManager collision_manager)
+        public ExploringWorldState(MapComponent world_map, RenderManager render_manager, CollisionManager collision_manager, EventManager event_manager)
         {
             _worldMap = world_map;
             _renderManager = render_manager;
             _collisionManager = collision_manager;
+            _eventManager = event_manager;
         }
 
         public void Enter()

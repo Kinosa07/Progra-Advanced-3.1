@@ -52,6 +52,11 @@ namespace Prog_3._1_RPG_game
 
         }
 
+        public void FixedUpdate(float fixed_time_until_new_update, float time_since_last_update)
+        {
+            _renderManager.FixedUpdate(fixed_time_until_new_update, time_since_last_update);
+        }
+
         private GameObject CreateWorld(int x_size, int y_size)
         {
             GameObject location = new GameObject();

@@ -16,7 +16,7 @@ namespace Prog_3._1_RPG_game
 
         public EventManager()
         {
-
+            _eventTable = new Dictionary<Type, List<Action<GameEvent>>>();
         }
 
         public void RegisterToEvent<EVENT_TYPE>(Action<GameEvent> action_linked_to_event) where EVENT_TYPE : GameEvent

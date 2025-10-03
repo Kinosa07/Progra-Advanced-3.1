@@ -9,11 +9,13 @@ namespace Prog_3._1_RPG_game.States
 {
     internal class ExploringWorldState : IState
     {
+        //Logic "Components"
         private MapComponent _worldMap;
         private RenderManager _renderManager;
         private CollisionManager _collisionManager;
         private EventManager _eventManager;
 
+        //Objects present in State
         private GameObject _player;
 
         //Stuff that you're meant to do

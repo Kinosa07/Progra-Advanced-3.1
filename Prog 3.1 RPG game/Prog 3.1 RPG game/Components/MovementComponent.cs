@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Prog_3._1_RPG_game.Events;
 
 namespace Prog_3._1_RPG_game.Components
 {
@@ -11,12 +7,16 @@ namespace Prog_3._1_RPG_game.Components
         private PositionComponent _positionComponent;
         private GameObject _parentGameObject;
         private bool _hasMovedlast;
+        private EventManager _eventManager;
 
-        public MovementComponent(PositionComponent position_component, GameObject parent)
+        public MovementComponent(PositionComponent position_component, GameObject parent, EventManager event_manager)
         {
             _positionComponent = position_component;
             _parentGameObject = parent;
             _hasMovedlast = false;
+            _eventManager = event_manager;
+
+            _eventManager.RegisterToEvent<KeyPressedEvent>(EventManagerAction);
         }
 
         //Fonction Update
@@ -42,6 +42,41 @@ namespace Prog_3._1_RPG_game.Components
             //Bouger l'objet selon de nouvelles positions
             _positionComponent.SetPosition(new_x_position, new_y_position);
             _hasMovedlast = true;
+        }
+
+        //RENAME CETTE FONCTION: IMPORTANT (Pas d'inspi RN)
+        public void EventManagerAction(GameEvent game_event)
+        {
+            KeyPressedEvent key_pressed_event = game_event as KeyPressedEvent;
+            int current_x_pos = _positionComponent.GetPositionX();
+            int current_y_pos = _positionComponent.GetPositionY();
+
+            if (key_pressed_event != null)
+            {
+                switch(key_pressed_event._keyPressed)
+                {
+                    case ConsoleKey.UpArrow:
+                        {
+                            MoveObject(current_x_pos, current_y_pos - 1);
+                            break;
+                        }
+                    case ConsoleKey.DownArrow:
+                        {
+                            MoveObject(current_x_pos, current_y_pos + 1);
+                            break;
+                        }
+                    case ConsoleKey.LeftArrow:
+                        {
+                            MoveObject(current_x_pos - 1, current_y_pos);
+                            break;
+                        }
+                    case ConsoleKey.RightArrow:
+                        {
+                            MoveObject(current_x_pos + 1, current_y_pos);
+                            break;
+                        }
+                }
+            }
         }
 
         public bool GetHasMoved()

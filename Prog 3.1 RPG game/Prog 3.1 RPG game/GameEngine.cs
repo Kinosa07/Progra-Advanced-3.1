@@ -11,9 +11,6 @@ namespace Prog_3._1_RPG_game
 {
     internal class GameEngine
     {
-        //(Potentiellement migrable vers GameManager)
-        CollisionManager _collisionManager = new CollisionManager();
-
         //élément du GameEngine
         GameManager _gameManager = new GameManager();
         private float _lastUpdateTime = 0;
@@ -42,7 +39,6 @@ namespace Prog_3._1_RPG_game
         {
             _lastUpdateTime = _stopWatch.ElapsedMilliseconds;
             _gameManager.Update(time_since_last_update);
-            _collisionManager.Update();
         }
 
         public void FixedUpdate(float fixed_time_until_update)
@@ -50,10 +46,6 @@ namespace Prog_3._1_RPG_game
             if (fixed_time_until_update <= _lastUpdateTime)
             {
                 //Work your magic
-                _collisionManager.Update();
-            }
-        }
-
             }
         }
     }

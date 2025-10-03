@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.Events
 {
-    internal class KeyPressedEvent
+    internal class KeyPressedEvent : GameEvent
     {
         private ConsoleKey _keyPressed;
 

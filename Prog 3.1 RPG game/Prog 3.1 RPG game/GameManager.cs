@@ -18,6 +18,7 @@ namespace Prog_3._1_RPG_game
         //Composants logique du jeu
         RenderManager _renderManager = new RenderManager();
         CollisionManager _collisionManager = new CollisionManager();
+        EventManager _eventManager = new EventManager();
 
 
         public void Placeholder()
@@ -35,11 +36,13 @@ namespace Prog_3._1_RPG_game
             MovementComponent player_move_comp = new MovementComponent(player_pos_comp, player);
             RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">", player);
             CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player);
+            InputComponent player_input = new InputComponent(player, _eventManager);
 
             player.AddComponent(player_pos_comp);
             player.AddComponent(player_move_comp);
             player.AddComponent(player_render);
             player.AddComponent(player_collision);
+            player.AddComponent(player_input);
 
             return player;
         }

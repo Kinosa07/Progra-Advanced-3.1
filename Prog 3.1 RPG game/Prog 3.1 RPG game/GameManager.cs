@@ -9,12 +9,13 @@ namespace Prog_3._1_RPG_game
 {
     internal class GameManager
     {
+        //Composants du jeu
         GameObject _player = new GameObject();
         GameObject _worldMap = new GameObject();
         GameObject _townMap = new GameObject();
         GameObject _shop = new GameObject();
         GameObject _currentLocation = new GameObject();
-        //Variables necessaires du GameEngine
+        //Composants logique du jeu
         RenderManager _renderManager = new RenderManager();
         CollisionManager _collisionManager = new CollisionManager();
 

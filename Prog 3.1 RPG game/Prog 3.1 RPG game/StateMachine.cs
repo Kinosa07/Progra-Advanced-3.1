@@ -10,10 +10,12 @@ namespace Prog_3._1_RPG_game
     internal class StateMachine
     {
         private IState _currentState;
+        private GameObject _player;
 
-        public StateMachine(IState initial_state)
+        public StateMachine(IState initial_state, GameObject player_object)
         {
             _currentState = initial_state;
+            _player = player_object;
         }
 
         public void Update()
@@ -25,7 +27,7 @@ namespace Prog_3._1_RPG_game
         {
             _currentState.Exit();
             _currentState = new_state;
-            _currentState.Enter();
+            _currentState.Enter(_player);
         }
     }
 }

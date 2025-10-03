@@ -10,7 +10,7 @@ namespace Prog_3._1_RPG_game.States
     {
         //Chaque GameState fonctionne essentiellement comme son propre mini-jeu
 
-        public void Enter();
+        public void Enter(GameObject player_object);
 
         public void Exit();
 

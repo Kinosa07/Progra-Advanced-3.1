@@ -14,6 +14,8 @@ namespace Prog_3._1_RPG_game.States
         private CollisionManager _collisionManager;
         private EventManager _eventManager;
 
+        private GameObject _player;
+
         //Stuff that you're meant to do
         //Walk around (Except through walls)
         //See the map (See Render Function)
@@ -27,9 +29,9 @@ namespace Prog_3._1_RPG_game.States
             _eventManager = event_manager;
         }
 
-        public void Enter()
+        public void Enter(GameObject player_object)
         {
-
+            _player = player_object;
         }
 
         public void Exit()

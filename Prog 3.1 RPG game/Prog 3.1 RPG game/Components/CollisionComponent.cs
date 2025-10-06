@@ -41,6 +41,7 @@ namespace Prog_3._1_RPG_game.Components
 
         public override GameObject GetParentGameObject()
         {
+            //Pas une copie (Voir Constucteurs de copies/autres)
             GameObject copy_of_parent = _parentGameObject;
             return copy_of_parent;
         }

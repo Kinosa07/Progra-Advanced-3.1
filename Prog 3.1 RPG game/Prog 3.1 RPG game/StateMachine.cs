@@ -18,8 +18,10 @@ namespace Prog_3._1_RPG_game
             _playerToTransfer = player_object;
         }
 
-        public void Update()
+        public void Update(float delta_time)
         {
+            _currentState.Update(delta_time);
+        }
 
         public void FixedUpdate(float fixed_time_until_update, float delta_time)
         {

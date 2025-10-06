@@ -45,12 +45,14 @@ namespace Prog_3._1_RPG_game.States
         {
             _renderManager.Update(delta_time);
             _collisionManager.Update(delta_time);
+            _player.Update(delta_time);
         }
 
         public void FixedUpdate(float fixed_time_until_update, float delta_time)
         {
             _renderManager.FixedUpdate(fixed_time_until_update, delta_time);
             _collisionManager.FixedUpdate(fixed_time_until_update, delta_time);
+            _player.FixedUpdate(fixed_time_until_update, delta_time);
         }
 
         public void Render()

@@ -1,4 +1,5 @@
 ﻿using Prog_3._1_RPG_game.Events;
+using System.Threading.Tasks.Sources;
 
 namespace Prog_3._1_RPG_game.Components
 {
@@ -17,6 +18,14 @@ namespace Prog_3._1_RPG_game.Components
             _eventManager = event_manager;
 
             _eventManager.RegisterToEvent<KeyPressedEvent>(EventManagerAction);
+        }
+
+        public MovementComponent(MovementComponent movement_component_to_copy)
+        {
+            _positionComponent = movement_component_to_copy._positionComponent;
+            _parentGameObject = movement_component_to_copy._parentGameObject;
+            _hasMovedlast = movement_component_to_copy._hasMovedlast;
+            _eventManager = movement_component_to_copy._eventManager;
         }
 
         //Fonction Update

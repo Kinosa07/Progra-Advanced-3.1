@@ -18,6 +18,9 @@ namespace Prog_3._1_RPG_game.States
         //Objects present in State
         private GameObject _player;
 
+        //Données test
+        private bool _isInState;
+
         //Stuff that you're meant to do
         //Walk around (Except through walls)
         //See the map (See Render Function)
@@ -34,10 +37,12 @@ namespace Prog_3._1_RPG_game.States
         public void Enter(GameObject player_object)
         {
             _player = player_object;
+            _isInState = true;
         }
 
         public GameObject Exit()
         {
+            _isInState = false;
             return _player;
         }
 
@@ -58,6 +63,12 @@ namespace Prog_3._1_RPG_game.States
         public void Render()
         {
             _renderManager.Render(_worldMap);
+        }
+
+        //fonction pour test Unitaires
+        public bool GetIsInState()
+        {
+            return _isInState;
         }
     }
 }

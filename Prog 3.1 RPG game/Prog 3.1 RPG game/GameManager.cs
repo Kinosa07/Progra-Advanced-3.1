@@ -21,12 +21,13 @@ namespace Prog_3._1_RPG_game
         EventManager _eventManager = new EventManager();
 
 
-        public void Placeholder()
-        { 
-            _player = CreatePlayer(1, 1);
-            _worldMap = CreateWorld(20, 15);
-            _townMap = CreateCity(10, 7, 1, 2, _worldMap.GetComponent<MapComponent>());
-            _shop = CreateShop(5, 5, 3, 5, _townMap.GetComponent<MapComponent>());
+        public GameManager()
+        {
+            _player = CreatePlayer(1, 1, _collisionManager);
+            _worldMap = CreateWorld(20, 15, _collisionManager);
+            _townMap = CreateCity(10, 7, 3, 5, _worldMap.GetComponent<MapComponent>(), _collisionManager);
+
+            _currentLocation = _worldMap;
         }
 
         private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos, CollisionManager collision_manager)

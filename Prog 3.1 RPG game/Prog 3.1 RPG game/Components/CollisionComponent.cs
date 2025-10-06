@@ -20,6 +20,7 @@ namespace Prog_3._1_RPG_game.Components
             _positionComponent = object_position_component;
             _movementComponent = null;
             _parentGameObject = parent;
+            _parentGameObject.AddComponent(this);
         }
 
         public CollisionComponent (PositionComponent object_position_component, MovementComponent object_movement_component, GameObject parent)

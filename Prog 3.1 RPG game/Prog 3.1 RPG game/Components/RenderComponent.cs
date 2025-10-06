@@ -19,6 +19,7 @@ namespace Prog_3._1_RPG_game.Components
             _appearanceTable.Add("base", immobile_image);
             _currentLookingDirection = "base";
             _parentGameObject = parent;
+            _parentGameObject.AddComponent(this);
 
             game_render_manager.AddRenderComponent(this);
         }

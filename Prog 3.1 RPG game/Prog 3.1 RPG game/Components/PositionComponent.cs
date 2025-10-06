@@ -18,6 +18,7 @@ namespace Prog_3._1_RPG_game.Components
         {
             SetPosition(starting_x_position, starting_y_position);
             _parentGameObject = parent;
+            _parentGameObject.AddComponent(this);
         }
 
         public PositionComponent(PositionComponent position_component_to_copy)

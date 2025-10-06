@@ -9,13 +9,14 @@ namespace Prog_3._1_RPG_game.Components
 {
     internal class InputComponent: Component
     {
-        private GameObject _parent;
+        private GameObject _parentGameObject;
         private EventManager _eventManager;
         private ConsoleKey _lastKeyPressed;
 
         public InputComponent(GameObject parent_object, EventManager event_manager)
         {
-            _parent = parent_object;
+            _parentGameObject = parent_object;
+            _parentGameObject.AddComponent(this);
             _eventManager = event_manager;
             _lastKeyPressed = ConsoleKey.RightWindows;
             //Utilisation de RightWindows comme valeur "nulle". Dû à la fréquence d'uilisation de la touche dans un environnement de jeu
@@ -33,7 +34,7 @@ namespace Prog_3._1_RPG_game.Components
 
         public override GameObject GetCopyOfParentGameObject()
         {
-            GameObject copy_of_parent = new GameObject(_parent);
+            GameObject copy_of_parent = new GameObject(_parentGameObject);
             return copy_of_parent;
         }
 

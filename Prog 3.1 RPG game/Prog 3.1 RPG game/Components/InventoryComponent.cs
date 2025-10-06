@@ -18,6 +18,7 @@ namespace Prog_3._1_RPG_game.Components
             _money = starting_money;
             _itemTable = new string[starting_item_table_size];
             _parentGameObject = parent;
+            _parentGameObject.AddComponent(this);
         }
 
         //Ajout d'objet dans le tableau

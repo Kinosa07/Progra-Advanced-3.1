@@ -42,7 +42,7 @@ namespace Prog_3._1_RPG_game.Components
             if (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
-                
+
                 _lastKeyPressed = key.Key;
             }
         }

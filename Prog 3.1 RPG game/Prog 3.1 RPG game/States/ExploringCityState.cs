@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prog_3._1_RPG_game.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,29 @@ namespace Prog_3._1_RPG_game.States
 {
     internal class ExploringCityState
     {
+        //Que faire dans le City:
+        //marcher dans la ville
+        //Voir la ville
+        //Sortir de la ville
+        //Entrer dans les Bâtiments
 
+        //Logic Components
+        private RenderManager _renderManager;
+        private CollisionManager _collisionManager;
+
+        //Objects in State
+        private MapComponent _cityMap;
+        private GameObject _player;
+
+        //Variables pour test
+
+
+        public ExploringCityState(RenderManager render_manager, CollisionManager collision_manager, MapComponent city_map, GameObject player)
+        {
+            _renderManager = render_manager;
+            _collisionManager = collision_manager;
+            _cityMap = city_map;
+            _player = player;
+        }
     }
 }

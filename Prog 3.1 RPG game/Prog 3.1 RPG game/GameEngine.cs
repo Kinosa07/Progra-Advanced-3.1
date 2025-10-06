@@ -25,7 +25,7 @@ namespace Prog_3._1_RPG_game
             while (!_shouldQuit)
             {
                 Update(_lastUpdateTime);
-                FixedUpdate(1.0f, _lastUpdateTime);
+                FixedUpdate(1000.0f/10.0f, _lastUpdateTime);
                 Render();
                 Thread.Sleep(1000 / 10);
             }

@@ -15,14 +15,12 @@ namespace Prog_3._1_RPG_game
         GameManager _gameManager = new GameManager();
         private float _lastUpdateTime = 0;
         private bool _shouldQuit = false;
-        private string _playerInput = "null";
         private Stopwatch _stopWatch = new Stopwatch();
 
         public void Run()
         {
             while (!_shouldQuit)
             {
-                
                 Update(_lastUpdateTime);
                 FixedUpdate(1.0f, _lastUpdateTime);
                 Render();

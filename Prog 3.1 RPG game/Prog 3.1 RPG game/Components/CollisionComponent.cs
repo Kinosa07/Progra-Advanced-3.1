@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.Components
 {
-    internal class CollisionComponent : Component
+    public class CollisionComponent : Component
     {
         private PositionComponent _positionComponent;
         private MovementComponent _movementComponent;

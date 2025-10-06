@@ -13,7 +13,7 @@
  * 
  * TODO: Ok-fy Movement et Render
  * 
- * Doing: States
+ * Doing: Fixing CollisionManager: Le joueur spawne OOB
  * 
  * 
  * State Machine

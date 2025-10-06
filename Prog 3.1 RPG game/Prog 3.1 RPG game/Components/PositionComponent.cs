@@ -20,6 +20,13 @@ namespace Prog_3._1_RPG_game.Components
             _parentGameObject = parent;
         }
 
+        public PositionComponent(PositionComponent position_component_to_copy)
+        {
+            _xPos = position_component_to_copy._xPos;
+            _yPos = position_component_to_copy._yPos;
+            _parentGameObject = position_component_to_copy._parentGameObject;
+        }
+
         //Fonction Update
         public override void Update(float time_since_last_update)
         {

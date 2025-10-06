@@ -106,8 +106,8 @@ namespace Prog_3._1_RPG_game
             //Si Collision, enregistrer previous position Collider
             if (_isColliding && (_tablePositionOfCollider >= 0))
             {
-                _previousColliderPosX = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionX();
-                _previousColliderPosY = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionY();
+                _previousColliderPosX = _collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionX();
+                _previousColliderPosY = _collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionY();
             }
         }
         public void FixedUpdate(float fixed_time_until_update, float delta_time)
@@ -115,14 +115,14 @@ namespace Prog_3._1_RPG_game
             if (delta_time >= fixed_time_until_update)
             {
                 //Repousser les objets au positions de base
-                if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() == null))
+                if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>() == null))
                 {
-                    _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MovementComponent>().MoveObject(_previousColliderPosX, _previousColliderPosY);
+                    _collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MovementComponent>().MoveObject(_previousColliderPosX, _previousColliderPosY);
                 }
 
-                else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>() != null))
+                else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>() != null))
                 {
-                    _supposedPlayerLocation = _collisonComponentsCollection[_tablePositionOfCollider].GetParentGameObject().GetComponent<MapComponent>();
+                    _supposedPlayerLocation = _collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>();
                 }
             }
         }

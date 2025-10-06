@@ -23,10 +23,13 @@ namespace Prog_3._1_RPG_game.Components
 
         public MovementComponent(MovementComponent movement_component_to_copy)
         {
-            _positionComponent = movement_component_to_copy._positionComponent;
-            _parentGameObject = movement_component_to_copy._parentGameObject;
-            _hasMovedlast = movement_component_to_copy._hasMovedlast;
-            _eventManager = movement_component_to_copy._eventManager;
+            if (movement_component_to_copy != null)
+            {
+                _positionComponent = movement_component_to_copy._positionComponent;
+                _parentGameObject = movement_component_to_copy._parentGameObject;
+                _hasMovedlast = movement_component_to_copy._hasMovedlast;
+                _eventManager = movement_component_to_copy._eventManager;
+            }
         }
 
         //Fonction Update

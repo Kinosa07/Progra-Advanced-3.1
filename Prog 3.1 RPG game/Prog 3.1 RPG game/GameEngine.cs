@@ -19,6 +19,8 @@ namespace Prog_3._1_RPG_game
 
         public void Run()
         {
+            _stopWatch.Start();
+
             while (!_shouldQuit)
             {
                 Update(_lastUpdateTime);
@@ -41,7 +43,7 @@ namespace Prog_3._1_RPG_game
 
         public void FixedUpdate(float fixed_time_until_update, float time_since_last_update)
         {
-            if (fixed_time_until_update <= _lastUpdateTime)
+            if (fixed_time_until_update <= time_since_last_update)
             {
                 //Work your magic
                 _gameManager.FixedUpdate(fixed_time_until_update, time_since_last_update);

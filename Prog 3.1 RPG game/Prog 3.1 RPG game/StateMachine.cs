@@ -27,6 +27,10 @@ namespace Prog_3._1_RPG_game
         {
             _currentState.FixedUpdate(fixed_time_until_update, delta_time);
         }
+
+        public void Render()
+        {
+            _currentState.Render();
         }
 
         public void ChangeState(IState new_state)

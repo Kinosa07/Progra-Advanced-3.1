@@ -95,7 +95,7 @@ namespace Prog_3._1_RPG_game
             {
                 if (_componentTable[component_table_index] != null)
                 {
-                    _componentTable[component_table_index].FixedUpdate(fixed_update_time);
+                    _componentTable[component_table_index].FixedUpdate(fixed_update_time, time_since_last_update);
                 }
             }
         }

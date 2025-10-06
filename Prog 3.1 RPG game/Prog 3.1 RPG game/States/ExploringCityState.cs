@@ -39,6 +39,11 @@ namespace Prog_3._1_RPG_game.States
             _player = player;
         }
 
+        public GameObject Exit()
+        {
+            return _player;
+        }
+
         public void Update(float delta_time)
         {
             _renderManager.Update(delta_time);

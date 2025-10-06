@@ -12,7 +12,7 @@ namespace Prog_3._1_RPG_game
         //Type comme Key pour permettre une simplicité de traversée grâce a des composants généric  
         //List comme Value pour permettre à un event d'activer plusieurs actions (Ex: Tirer envoie un balle & réduit le nombre de balles dans un chargeur
         //Action<GameEvent> pour s'assurer de pouvoir récupérer des infos transmises pas l'Event si nécessaire
-        private Dictionary<Type, List<Action<GameEvent>>> _eventTable;
+        public Dictionary<Type, List<Action<GameEvent>>> _eventTable;
 
         public EventManager()
         {

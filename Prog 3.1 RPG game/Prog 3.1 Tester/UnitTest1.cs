@@ -1,5 +1,6 @@
 using Prog_3._1_RPG_game;
 using Prog_3._1_RPG_game.Components;
+using Prog_3._1_RPG_game.Events;
 
 namespace Prog_3._1_Tester
 {
@@ -30,10 +31,29 @@ namespace Prog_3._1_Tester
             Assert.IsTrue(testerMovement.GetCopyOfParentGameObject().GetComponent<PositionComponent>() == testerPosition);
         }
 
+        public bool tester_game_event_changed;
+
         [Test]
         public void TestEvents()
         {
+            EventManager tester_event_manager = new EventManager();
 
+            tester_event_manager.RegisterToEvent<GameEvent>(TestFunction);
+
+            Assert.IsTrue(tester_event_manager._eventTable[typeof(GameEvent)] != null);
+
+            GameEvent tester_game_event = new GameEvent();
+            tester_game_event_changed = false;
+
+            tester_event_manager.TriggerEvent(tester_game_event);
+
+            Assert.IsTrue(tester_game_event_changed);
+
+        }
+
+        public void TestFunction(GameEvent gameEvent)
+        {
+            tester_game_event_changed = true;
         }
     }
 }

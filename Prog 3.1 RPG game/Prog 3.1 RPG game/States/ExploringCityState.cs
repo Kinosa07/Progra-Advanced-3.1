@@ -33,5 +33,10 @@ namespace Prog_3._1_RPG_game.States
             _cityMap = city_map;
             _player = player;
         }
+
+        public void Enter(GameObject player)
+        {
+            _player = player;
+        }
     }
 }

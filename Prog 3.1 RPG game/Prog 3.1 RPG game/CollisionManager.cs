@@ -126,10 +126,5 @@ namespace Prog_3._1_RPG_game
                 }
             }
         }
-
-        public  MapComponent GetMap()
-        {
-            return _supposedPlayerLocation;
-        }
     }
 }

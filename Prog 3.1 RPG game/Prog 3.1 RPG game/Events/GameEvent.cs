@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.Events
 {
-    internal class GameEvent
+    public class GameEvent
     {
 
     }

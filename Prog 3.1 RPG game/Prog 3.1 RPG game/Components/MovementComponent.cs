@@ -3,7 +3,7 @@ using System.Threading.Tasks.Sources;
 
 namespace Prog_3._1_RPG_game.Components
 {
-    internal class MovementComponent : Component
+    public class MovementComponent : Component
     {
         private PositionComponent _positionComponent;
         private GameObject _parentGameObject;

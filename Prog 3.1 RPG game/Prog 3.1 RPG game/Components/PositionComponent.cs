@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.Components
 {
-    internal class PositionComponent : Component
+    public class PositionComponent : Component
     {
         private int _xPos;
         private int _yPos;

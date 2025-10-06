@@ -29,13 +29,13 @@ namespace Prog_3._1_RPG_game
             _shop = CreateShop(5, 5, 3, 5, _townMap.GetComponent<MapComponent>());
         }
 
-        private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos)
+        private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos, CollisionManager collision_manager)
         {
             GameObject player = new GameObject();
             PositionComponent player_pos_comp = new PositionComponent(starting_x_pos, starting_y_pos, player);
             MovementComponent player_move_comp = new MovementComponent(player_pos_comp, player, _eventManager);
             RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">", player);
-            CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player);
+            CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player, collision_manager);
             InputComponent player_input = new InputComponent(player, _eventManager);
 
             player.AddComponent(player_pos_comp);
@@ -63,22 +63,22 @@ namespace Prog_3._1_RPG_game
             _collisionManager.FixedUpdate(fixed_time_until_new_update, time_since_last_update);
         }
 
-        private GameObject CreateWorld(int x_size, int y_size)
+        private GameObject CreateWorld(int x_size, int y_size, CollisionManager collision_manager)
         {
             GameObject location = new GameObject();
-            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location);
+            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location, collision_manager);
 
             location.AddComponent(location_map_component);
 
             return location;
         }
-        private GameObject CreateCity(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map)
+        private GameObject CreateCity(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map, CollisionManager collision_manager)
         {
             GameObject location = new GameObject();
             GameObject location_exit = new GameObject();
-            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location);
+            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location, collision_manager);
             PositionComponent location_exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
-            CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit);
+            CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit, collision_manager);
             RenderComponent location_exit_render = new RenderComponent(_renderManager, location_exit_position, "O", location_exit);
             MapComponent location_exit_new_map = exit_map;
 
@@ -92,14 +92,14 @@ namespace Prog_3._1_RPG_game
 
             return location;
         }
-        private GameObject CreateShop(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map)
+        private GameObject CreateShop(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map, CollisionManager collision_manager)
         {
             GameObject location = new GameObject();
             GameObject location_exit = new GameObject();
-            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location);
+            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location, collision_manager);
             InventoryComponent shop_inventory = new InventoryComponent(300, 4, location);
             PositionComponent location_exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
-            CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit);
+            CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit, collision_manager);
             RenderComponent location_exit_render = new RenderComponent(_renderManager, location_exit_position, "O", location_exit);
             MapComponent location_exit_new_map = exit_map;
 

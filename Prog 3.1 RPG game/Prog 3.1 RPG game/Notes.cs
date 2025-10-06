@@ -11,11 +11,9 @@
  * Interact Component???
  * 
  * 
- * Ligne 47 Game Object
- * 
  * TODO: Ok-fy Movement et Render
  * 
- * Doing: RenderManager & RenderComponent (4 directions)
+ * Doing: States
  * 
  * 
  * State Machine

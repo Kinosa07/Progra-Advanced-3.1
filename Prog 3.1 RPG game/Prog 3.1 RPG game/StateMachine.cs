@@ -35,7 +35,7 @@ namespace Prog_3._1_RPG_game
 
         public void ChangeState(IState new_state)
         {
-            _currentState.Exit();
+            _playerToTransfer = _currentState.Exit();
             _currentState = new_state;
             _currentState.Enter(_playerToTransfer);
         }

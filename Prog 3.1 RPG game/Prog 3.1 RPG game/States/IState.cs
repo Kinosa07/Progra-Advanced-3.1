@@ -12,7 +12,7 @@ namespace Prog_3._1_RPG_game.States
 
         public void Enter(GameObject player_object);
 
-        public void Exit();
+        public GameObject Exit();
 
         public void Update(float delta_time);
 

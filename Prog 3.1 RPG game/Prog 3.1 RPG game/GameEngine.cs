@@ -14,6 +14,7 @@ namespace Prog_3._1_RPG_game
         //élément du GameEngine
         GameManager _gameManager = new GameManager();
         private float _lastUpdateTime = 0;
+        private float _lastFixedUpdateTime = 0;
         private bool _shouldQuit = false;
         private Stopwatch _stopWatch = new Stopwatch();
 
@@ -43,10 +44,11 @@ namespace Prog_3._1_RPG_game
 
         public void FixedUpdate(float fixed_time_until_update, float time_since_last_update)
         {
-            if (fixed_time_until_update <= time_since_last_update)
+            if (fixed_time_until_update <= time_since_last_update - _lastFixedUpdateTime)
             {
                 //Work your magic
                 _gameManager.FixedUpdate(fixed_time_until_update, time_since_last_update);
+                _lastFixedUpdateTime = time_since_last_update;
             }
         }
     }

@@ -44,6 +44,7 @@ namespace Prog_3._1_RPG_game
                 }
                 _componentTable = temporary_table;
                 is_table_full = false;
+                free_table_slot = _componentTable.Length -5;
             }
             if (!is_table_full)
             {

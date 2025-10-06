@@ -38,7 +38,7 @@ namespace Prog_3._1_RPG_game.States
 
         public void Exit()
         {
-
+            _player = null;
         }
 
         public void Update(float delta_time)

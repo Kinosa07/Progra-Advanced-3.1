@@ -26,7 +26,7 @@ namespace Prog_3._1_RPG_game.Components
             ReadInput();
         }
 
-        public override void FixedUpdate(float fixed_time_for_new_update)
+        public override void FixedUpdate(float fixed_time_for_new_update, float time_since_last_update)
         {
             ProcessInput();
         }

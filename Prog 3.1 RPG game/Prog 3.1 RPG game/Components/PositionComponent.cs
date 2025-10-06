@@ -24,6 +24,8 @@ namespace Prog_3._1_RPG_game.Components
         {
             _xPos = position_component_to_copy._xPos;
             _yPos = position_component_to_copy._yPos;
+            _previousXPos = position_component_to_copy._previousXPos;
+            _previousYPos = position_component_to_copy._previousYPos;
             _parentGameObject = position_component_to_copy._parentGameObject;
         }
 

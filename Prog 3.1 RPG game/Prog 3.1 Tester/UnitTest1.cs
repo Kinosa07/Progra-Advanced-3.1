@@ -55,5 +55,25 @@ namespace Prog_3._1_Tester
         {
             tester_game_event_changed = true;
         }
+
+        [Test]
+        public void InputMovementTest()
+        {
+            EventManager tester_event_manager = new EventManager();
+
+            GameObject tester_object = new GameObject();
+            PositionComponent tester_position = new PositionComponent(1, 1, tester_object);
+            MovementComponent tester_movement = new MovementComponent(tester_position, tester_object, tester_event_manager);
+
+            tester_object.AddComponent(tester_position);
+            tester_object.AddComponent(tester_movement);
+
+            //Assert.IsTrue(tester_event_manager._eventTable.ContainsKey(typeof(KeyPressedEvent)));
+
+            tester_event_manager.TriggerEvent(new KeyPressedEvent(ConsoleKey.DownArrow));
+
+            Assert.IsTrue(tester_movement.GetHasMoved());
+            Assert.IsTrue(tester_position.GetPositionY() == 2);
+        }
     }
 }

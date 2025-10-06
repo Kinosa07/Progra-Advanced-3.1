@@ -69,8 +69,8 @@ namespace Prog_3._1_RPG_game
                 CollisionComponent first_collision_component = _collisonComponentsCollection[internal_table_index];
                 if (first_collision_component != null)
                 {
-                    PositionComponent first_position_component = first_collision_component.GetPositionComponent();
-                    MovementComponent first_movement_component = first_collision_component.GetMovementComponent();
+                    PositionComponent first_position_component = first_collision_component.GetCopyOfPositionComponent();
+                    MovementComponent first_movement_component = first_collision_component.GetCopyOfMovementComponent();
                     int first_element_pos_x = first_position_component.GetPositionX();
                     int first_element_pos_y = first_position_component.GetPositionY();
 
@@ -80,8 +80,8 @@ namespace Prog_3._1_RPG_game
 
                         if (second_collision_component != null)
                         {
-                            PositionComponent second_position_component = second_collision_component.GetPositionComponent();
-                            MovementComponent second_movement_component = second_collision_component.GetMovementComponent();
+                            PositionComponent second_position_component = second_collision_component.GetCopyOfPositionComponent();
+                            MovementComponent second_movement_component = second_collision_component.GetCopyOfMovementComponent();
                             int second_element_pos_x = second_position_component.GetPositionX();
                             int second_element_pos_y = second_position_component.GetPositionY();
 

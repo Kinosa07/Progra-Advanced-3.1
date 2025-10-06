@@ -45,17 +45,17 @@ namespace Prog_3._1_RPG_game.Components
             return copy_of_parent;
         }
 
-        public PositionComponent GetPositionComponent()
+        public PositionComponent GetCopyOfPositionComponent()
         {
             //Pas une copie (Voir Constucteurs de copies/autres)
-            PositionComponent copy_of_position_component = _positionComponent;
+            PositionComponent copy_of_position_component = new PositionComponent(_positionComponent);
             return copy_of_position_component;  
         }
 
-        public MovementComponent GetMovementComponent()
+        public MovementComponent GetCopyOfMovementComponent()
         {
             //Pas une copie (Voir Constucteurs de copies/autres)
-            MovementComponent copy_of_movement_component = _movementComponent;
+            MovementComponent copy_of_movement_component = new MovementComponent(_movementComponent);
             return copy_of_movement_component;
         }
     }

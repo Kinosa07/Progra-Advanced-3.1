@@ -57,5 +57,10 @@ namespace Prog_3._1_RPG_game.States
             _collisionManager.FixedUpdate(fixed_time_until_update, delta_time);
             _player.FixedUpdate(fixed_time_until_update, delta_time);
         }
+
+        public void Render()
+        {
+            _renderManager.Render(_cityMap);
+        }
     }
 }

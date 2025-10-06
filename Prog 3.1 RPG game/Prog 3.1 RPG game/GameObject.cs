@@ -16,6 +16,11 @@ namespace Prog_3._1_RPG_game
 
         }
 
+        public GameObject(GameObject objcet_to_copy)
+        {
+            _componentTable = objcet_to_copy._componentTable;
+        }
+
         //Ajouter un Component
         public void AddComponent(Component component_to_add)
         {

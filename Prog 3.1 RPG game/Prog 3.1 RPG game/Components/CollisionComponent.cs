@@ -48,12 +48,14 @@ namespace Prog_3._1_RPG_game.Components
 
         public PositionComponent GetPositionComponent()
         {
+            //Pas une copie (Voir Constucteurs de copies/autres)
             PositionComponent copy_of_position_component = _positionComponent;
             return copy_of_position_component;  
         }
 
         public MovementComponent GetMovementComponent()
         {
+            //Pas une copie (Voir Constucteurs de copies/autres)
             MovementComponent copy_of_movement_component = _movementComponent;
             return copy_of_movement_component;
         }

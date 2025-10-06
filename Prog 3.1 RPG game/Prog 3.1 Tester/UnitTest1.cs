@@ -40,7 +40,7 @@ namespace Prog_3._1_Tester
 
             tester_event_manager.RegisterToEvent<GameEvent>(TestFunction);
 
-            Assert.IsTrue(tester_event_manager._eventTable[typeof(GameEvent)] != null);
+            Assert.IsTrue(tester_event_manager.GetCopyEventTable()[typeof(GameEvent)] != null);
 
             GameEvent tester_game_event = new GameEvent();
             tester_game_event_changed = false;

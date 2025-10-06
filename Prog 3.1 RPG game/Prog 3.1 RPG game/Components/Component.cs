@@ -12,6 +12,6 @@ namespace Prog_3._1_RPG_game.Components
 
         public abstract void FixedUpdate (float fixed_update_time);
 
-        public abstract GameObject GetParentGameObject();
+        public abstract GameObject GetCopyOfParentGameObject();
     }
 }

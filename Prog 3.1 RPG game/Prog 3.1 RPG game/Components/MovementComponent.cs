@@ -30,10 +30,10 @@ namespace Prog_3._1_RPG_game.Components
         {
             _hasMovedlast = false;
         }
-        public override GameObject GetParentGameObject()
+        public override GameObject GetCopyOfParentGameObject()
         {
             //Pas une copie (Voir Constucteurs de copies/autres)
-            GameObject copy_of_parent = _parentGameObject;
+            GameObject copy_of_parent = new GameObject(_parentGameObject);
             return copy_of_parent;
         }
 

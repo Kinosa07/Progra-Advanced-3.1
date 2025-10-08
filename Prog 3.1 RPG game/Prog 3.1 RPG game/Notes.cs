@@ -13,7 +13,7 @@
  * 
  * TODO: Ok-fy Movement et Render
  * 
- * Doing: Fixing CollisionManager: Le joueur spawne OOB
+ * Doing: Fixing CollisionManager: Le joueur n'est pas bloqué par les murs
  * 
  * 
  * State Machine

@@ -75,7 +75,7 @@ namespace Prog_3._1_RPG_game
                         int first_element_pos_x = first_position_component.GetPositionX();
                         int first_element_pos_y = first_position_component.GetPositionY();
 
-                        for (int internal_table_index_2 = 0; internal_table_index_2 < _collisonComponentsTable.Length; internal_table_index_2++)
+                        for (int internal_table_index_2 = internal_table_index + 1; internal_table_index_2 < _collisonComponentsTable.Length; internal_table_index_2++)
                         {
                             CollisionComponent second_collision_component = _collisonComponentsTable[internal_table_index_2];
 

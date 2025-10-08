@@ -10,7 +10,7 @@ namespace Prog_3._1_RPG_game
 {
     public class CollisionManager
     {
-        private CollisionComponent[] _collisonComponentsCollection = new CollisionComponent[1];
+        private CollisionComponent[] _collisonComponentsTable = new CollisionComponent[1];
         private int _tablePositionOfCollider;
         private int _tablePositionOfCollidee;
         private bool _isColliding;
@@ -27,9 +27,9 @@ namespace Prog_3._1_RPG_game
         {
             //Is table Full
             bool is_table_full = true;
-            for (int collection_index = 0; collection_index < _collisonComponentsCollection.Length; collection_index++)
+            for (int collection_index = 0; collection_index < _collisonComponentsTable.Length; collection_index++)
             {
-                if (_collisonComponentsCollection[collection_index] == null)
+                if (_collisonComponentsTable[collection_index] == null)
                 {
                     is_table_full = false;
                     break;
@@ -39,22 +39,22 @@ namespace Prog_3._1_RPG_game
             if (is_table_full == true)
             {
                 //magic to expand Table
-                CollisionComponent[] temporary_table = new CollisionComponent[_collisonComponentsCollection.Length + 3];
-                for (int collection_index = 0; collection_index < _collisonComponentsCollection.Length; collection_index++)
+                CollisionComponent[] temporary_table = new CollisionComponent[_collisonComponentsTable.Length + 3];
+                for (int collection_index = 0; collection_index < _collisonComponentsTable.Length; collection_index++)
                 {
-                    temporary_table[collection_index] = _collisonComponentsCollection[collection_index];
+                    temporary_table[collection_index] = _collisonComponentsTable[collection_index];
                 }
-                _collisonComponentsCollection = temporary_table;
+                _collisonComponentsTable = temporary_table;
                 is_table_full = false;
             }
 
             if (is_table_full == false)
             {
-                for (int collection_index = 0; collection_index < _collisonComponentsCollection.Length; collection_index++)
+                for (int collection_index = 0; collection_index < _collisonComponentsTable.Length; collection_index++)
                 {
-                    if (_collisonComponentsCollection[collection_index] == null)
+                    if (_collisonComponentsTable[collection_index] == null)
                     {
-                        _collisonComponentsCollection[collection_index] = collision_component_to_add;
+                        _collisonComponentsTable[collection_index] = collision_component_to_add;
                     }
                 }
             }
@@ -63,10 +63,9 @@ namespace Prog_3._1_RPG_game
         //Analyser si Collisions
         public void Update(float delta_time)
         {
-
-            for (int internal_table_index = 0; internal_table_index < _collisonComponentsCollection.Length; internal_table_index++)
+            for (int internal_table_index = 0; internal_table_index < _collisonComponentsTable.Length; internal_table_index++)
             {
-                CollisionComponent first_collision_component = _collisonComponentsCollection[internal_table_index];
+                CollisionComponent first_collision_component = _collisonComponentsTable[internal_table_index];
                 if (first_collision_component != null)
                 {
                     PositionComponent first_position_component = first_collision_component.GetCopyOfPositionComponent();
@@ -76,9 +75,9 @@ namespace Prog_3._1_RPG_game
                         int first_element_pos_x = first_position_component.GetPositionX();
                         int first_element_pos_y = first_position_component.GetPositionY();
 
-                        for (int internal_table_index_2 = 0; internal_table_index_2 < _collisonComponentsCollection.Length; internal_table_index_2++)
+                        for (int internal_table_index_2 = 0; internal_table_index_2 < _collisonComponentsTable.Length; internal_table_index_2++)
                         {
-                            CollisionComponent second_collision_component = _collisonComponentsCollection[internal_table_index_2];
+                            CollisionComponent second_collision_component = _collisonComponentsTable[internal_table_index_2];
 
                             if (second_collision_component != null)
                             {
@@ -118,8 +117,8 @@ namespace Prog_3._1_RPG_game
             //Si Collision, enregistrer previous position Collider
             if (_isColliding && (_tablePositionOfCollider >= 0))
             {
-                _previousColliderPosX = _collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionX();
-                _previousColliderPosY = _collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionY();
+                _previousColliderPosX = _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionX();
+                _previousColliderPosY = _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionY();
             }
         }
         public void FixedUpdate(float fixed_time_until_update, float delta_time)
@@ -127,14 +126,14 @@ namespace Prog_3._1_RPG_game
             if (delta_time >= fixed_time_until_update)
             {
                 //Repousser les objets au positions de base
-                if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>() == null))
+                if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>() == null))
                 {
-                    _collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MovementComponent>().MoveObject(_previousColliderPosX, _previousColliderPosY);
+                    _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MovementComponent>().MoveObject(_previousColliderPosX, _previousColliderPosY);
                 }
 
-                else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>() != null))
+                else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>() != null))
                 {
-                    _supposedPlayerLocation = _collisonComponentsCollection[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>();
+                    _supposedPlayerLocation = _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>();
                 }
             }
         }

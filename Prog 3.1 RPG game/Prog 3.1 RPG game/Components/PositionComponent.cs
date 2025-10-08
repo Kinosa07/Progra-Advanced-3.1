@@ -16,7 +16,10 @@ namespace Prog_3._1_RPG_game.Components
 
         public PositionComponent(int starting_x_position, int starting_y_position, GameObject parent)
         {
-            SetPosition(starting_x_position, starting_y_position);
+            _xPos = starting_x_position;
+            _yPos = starting_y_position;
+            _previousXPos = _xPos;
+            _previousYPos = _yPos;
             _parentGameObject = parent;
             _parentGameObject.AddComponent(this);
         }

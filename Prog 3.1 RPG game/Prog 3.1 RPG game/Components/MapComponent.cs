@@ -69,9 +69,9 @@ namespace Prog_3._1_RPG_game.Components
                 CollisionComponent game_object_collision_component = new CollisionComponent(game_object_position_component, _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)], collision_manager);
                 RenderComponent game_object_render_component = new RenderComponent(game_render_manager, game_object_position_component, "|", _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)]);
 
-                _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)].AddComponent(game_object_position_component);
-                _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)].AddComponent(game_object_collision_component);
-                _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY)].AddComponent(game_object_render_component);
+                _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY) - 2].AddComponent(game_object_position_component);
+                _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY) - 2].AddComponent(game_object_collision_component);
+                _mapBordersTable[vertical_map_size_index + ((2 * _mapSizeX) + _mapSizeY) - 2].AddComponent(game_object_render_component);
             }
         }
 

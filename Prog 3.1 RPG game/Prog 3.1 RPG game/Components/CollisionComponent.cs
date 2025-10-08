@@ -58,8 +58,15 @@ namespace Prog_3._1_RPG_game.Components
         public MovementComponent GetCopyOfMovementComponent()
         {
             //Pas une copie (Voir Constucteurs de copies/autres)
-            MovementComponent copy_of_movement_component = new MovementComponent(_movementComponent);
-            return copy_of_movement_component;
+            if (_movementComponent != null)
+            {
+                MovementComponent copy_of_movement_component = new MovementComponent(_movementComponent);
+                return copy_of_movement_component;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

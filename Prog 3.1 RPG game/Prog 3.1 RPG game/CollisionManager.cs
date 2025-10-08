@@ -55,6 +55,7 @@ namespace Prog_3._1_RPG_game
                     if (_collisonComponentsTable[collection_index] == null)
                     {
                         _collisonComponentsTable[collection_index] = collision_component_to_add;
+                        break;
                     }
                 }
             }

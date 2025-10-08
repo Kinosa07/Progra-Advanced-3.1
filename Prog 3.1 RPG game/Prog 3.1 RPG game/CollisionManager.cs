@@ -107,8 +107,14 @@ namespace Prog_3._1_RPG_game
 
                                 else if (second_collision_component.GetCopyOfMovementComponent() == null)
                                 {
-                                    _isColliding = true;
-                                    _tablePositionOfCollider = internal_table_index;
+                                    int second_element_pos_x = second_position_component.GetPositionX();
+                                    int second_element_pos_y = second_position_component.GetPositionY();
+
+                                    if ((first_element_pos_x == second_element_pos_x) && (first_element_pos_y == second_element_pos_y))
+                                    {
+                                        _isColliding = true;
+                                        _tablePositionOfCollider = internal_table_index;
+                                    }
                                 }
                             }
                         }

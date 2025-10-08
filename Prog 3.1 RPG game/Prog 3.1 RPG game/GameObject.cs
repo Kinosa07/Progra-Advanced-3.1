@@ -10,10 +10,11 @@ namespace Prog_3._1_RPG_game
     public class GameObject
     {
         private Component[] _componentTable = new Component[5];
+        private string _name;
 
-        public GameObject()
+        public GameObject(string name)
         {
-
+            _name = name;
         }
 
         public GameObject(GameObject objcet_to_copy)

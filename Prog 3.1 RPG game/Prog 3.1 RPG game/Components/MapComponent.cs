@@ -27,7 +27,7 @@ namespace Prog_3._1_RPG_game.Components
 
             for (int border_table_index = 0; border_table_index < _mapBordersTable.Length; border_table_index++)
             {
-                _mapBordersTable[border_table_index] = new GameObject();
+                _mapBordersTable[border_table_index] = new GameObject($"Border{border_table_index + 1}");
             }
 
             for (int horizontal_map_size_index = 0; horizontal_map_size_index < _mapSizeX; horizontal_map_size_index++)

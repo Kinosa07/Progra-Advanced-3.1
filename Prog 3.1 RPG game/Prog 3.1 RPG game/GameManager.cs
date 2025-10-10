@@ -36,7 +36,7 @@ namespace Prog_3._1_RPG_game
             PositionComponent player_pos_comp = new PositionComponent(starting_x_pos, starting_y_pos, player);
             MovementComponent player_move_comp = new MovementComponent(player_pos_comp, player, _eventManager);
             RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">", player);
-            CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player, collision_manager);
+            CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player_move_comp, player, collision_manager);
             InputComponent player_input = new InputComponent(player, _eventManager);
 
             return player;

@@ -70,12 +70,12 @@ namespace Prog_3._1_RPG_game
 
                     if (result_component != null)
                     {
-                        break;
+                        return result_component;
                     }
                 }
             }
 
-            return result_component;
+            return null;
         }
 
         //Transférer l'ordre Update aux Components

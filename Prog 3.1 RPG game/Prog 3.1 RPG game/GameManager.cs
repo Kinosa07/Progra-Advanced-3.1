@@ -1,4 +1,5 @@
 ﻿using Prog_3._1_RPG_game.Components;
+using Prog_3._1_RPG_game.States;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Prog_3._1_RPG_game
         RenderManager _renderManager = new RenderManager();
         CollisionManager _collisionManager = new CollisionManager();
         EventManager _eventManager = new EventManager();
+        StateMachine _stateMachine;
 
 
         public GameManager()
@@ -28,6 +30,7 @@ namespace Prog_3._1_RPG_game
             _townMap = CreateCity(10, 7, 3, 5, _worldMap.GetComponent<MapComponent>(), _collisionManager);
 
             _currentLocation = _worldMap;
+            _stateMachine = new StateMachine(new ExploringWorldState(_worldMap.GetComponent<MapComponent>(),_renderManager,_collisionManager, _eventManager), _player);
         }
 
         private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos, CollisionManager collision_manager)
@@ -44,20 +47,17 @@ namespace Prog_3._1_RPG_game
 
         public void Render()
         {
-            _renderManager.Render(_currentLocation.GetComponent<MapComponent>());
+            _stateMachine.Render();
         }
 
         public void Update(float time_since_last_update)
         {
-            _player.Update(time_since_last_update);
-            _collisionManager.Update(time_since_last_update);
+            _stateMachine.Update(time_since_last_update);
         }
 
         public void FixedUpdate(float fixed_time_until_new_update, float time_since_last_update)
         {
-            _renderManager.FixedUpdate(fixed_time_until_new_update, time_since_last_update);
-            _collisionManager.FixedUpdate(fixed_time_until_new_update, time_since_last_update);
-            _player.FixedUpdate(time_since_last_update, time_since_last_update); 
+            _stateMachine.FixedUpdate(fixed_time_until_new_update, time_since_last_update);
         }
 
         private GameObject CreateWorld(int x_size, int y_size, CollisionManager collision_manager)

@@ -4,16 +4,16 @@
  * 
  * Addition fight ennemis quand pas sur les senties battus (& Forcer le joueur a sortir des sentiers battus)
  * 
- * Component List[ Inventaire:OK, Movement:OK, Position:OK, Render:OK, Collision:OK, Map: OK ??]
- * 
  * Menu Component???
  * Shop Component???
  * Interact Component???
  * 
  * 
- * TODO: Ok-fy Movement et Render
+ * 
  * 
  * Doing: Fixing Map inside Maps
+ * 
+ * Solution (en cours): Cleare tout les Manager à l'entrée d'un State, puis réassigner les valeurs necessaires (préalablement stocké dans le State)
  * 
  * 
  * State Machine

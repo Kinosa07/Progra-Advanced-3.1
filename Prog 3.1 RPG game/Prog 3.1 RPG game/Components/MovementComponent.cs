@@ -14,9 +14,10 @@ namespace Prog_3._1_RPG_game.Components
         {
             _positionComponent = position_component;
             _parentGameObject = parent;
-            _parentGameObject.AddComponent(this);
             _hasMovedlast = false;
             _eventManager = event_manager;
+
+            _parentGameObject.AddComponent(this);
 
             _eventManager.RegisterToEvent<KeyPressedEvent>(EventManagerAction);
         }

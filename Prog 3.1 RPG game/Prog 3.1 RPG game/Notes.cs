@@ -14,6 +14,7 @@
  * Doing: Fixing Map inside Maps
  * 
  * Solution (en cours): Cleare tout les Manager à l'entrée d'un State, puis réassigner les valeurs necessaires (préalablement stocké dans le State)
+ * RE IMPLEMENTER LES RESETS QUAND REPARES
  * 
  * 
  * State Machine

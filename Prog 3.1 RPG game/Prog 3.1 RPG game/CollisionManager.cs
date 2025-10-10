@@ -83,11 +83,12 @@ namespace Prog_3._1_RPG_game
                             if (second_collision_component != null)
                             {
                                 PositionComponent second_position_component = second_collision_component.GetCopyOfPositionComponent();
+                                int second_element_pos_x = second_position_component.GetPositionX();
+                                int second_element_pos_y = second_position_component.GetPositionY();
+
                                 if (second_collision_component.GetCopyOfMovementComponent() != null)
                                 {
                                     MovementComponent second_movement_component = second_collision_component.GetCopyOfMovementComponent();
-                                    int second_element_pos_x = second_position_component.GetPositionX();
-                                    int second_element_pos_y = second_position_component.GetPositionY();
 
                                     if ((first_element_pos_x == second_element_pos_x) && (first_element_pos_y == second_element_pos_y))
                                     {
@@ -107,9 +108,6 @@ namespace Prog_3._1_RPG_game
 
                                 else if (second_collision_component.GetCopyOfMovementComponent() == null)
                                 {
-                                    int second_element_pos_x = second_position_component.GetPositionX();
-                                    int second_element_pos_y = second_position_component.GetPositionY();
-
                                     if ((first_element_pos_x == second_element_pos_x) && (first_element_pos_y == second_element_pos_y))
                                     {
                                         _isColliding = true;

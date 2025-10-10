@@ -76,35 +76,50 @@ namespace Prog_3._1_RPG_game
                         int first_element_pos_x = first_position_component.GetPositionX();
                         int first_element_pos_y = first_position_component.GetPositionY();
 
-                        for (int internal_table_index_2 = internal_table_index + 1; internal_table_index_2 < _collisonComponentsTable.Length; internal_table_index_2++)
+                        for (int internal_table_index_2 = 0; internal_table_index_2 < _collisonComponentsTable.Length; internal_table_index_2++)
                         {
-                            CollisionComponent second_collision_component = _collisonComponentsTable[internal_table_index_2];
-
-                            if (second_collision_component != null)
+                            if (internal_table_index != internal_table_index_2)
                             {
-                                PositionComponent second_position_component = second_collision_component.GetCopyOfPositionComponent();
-                                int second_element_pos_x = second_position_component.GetPositionX();
-                                int second_element_pos_y = second_position_component.GetPositionY();
+                                CollisionComponent second_collision_component = _collisonComponentsTable[internal_table_index_2];
 
-                                if (second_collision_component.GetCopyOfMovementComponent() != null)
+                                if (second_collision_component != null)
                                 {
-                                    MovementComponent second_movement_component = second_collision_component.GetCopyOfMovementComponent();
+                                    PositionComponent second_position_component = second_collision_component.GetCopyOfPositionComponent();
+                                    int second_element_pos_x = second_position_component.GetPositionX();
+                                    int second_element_pos_y = second_position_component.GetPositionY();
 
-                                    if ((first_element_pos_x == second_element_pos_x) && (first_element_pos_y == second_element_pos_y))
+                                    if (second_collision_component.GetCopyOfMovementComponent() != null)
                                     {
-                                        _isColliding = true;
-                                        if (first_movement_component.GetHasMoved())
+                                        MovementComponent second_movement_component = second_collision_component.GetCopyOfMovementComponent();
+
+                                        if ((first_element_pos_x == second_element_pos_x) && (first_element_pos_y == second_element_pos_y))
                                         {
-                                            _tablePositionOfCollider = internal_table_index;
-                                            _tablePositionOfCollidee = internal_table_index_2;
+                                            _isColliding = true;
+                                            if (first_movement_component.GetHasMoved())
+                                            {
+                                                _tablePositionOfCollider = internal_table_index;
+                                                _tablePositionOfCollidee = internal_table_index_2;
+                                            }
+                                            else if (second_movement_component.GetHasMoved())
+                                            {
+                                                _tablePositionOfCollider = internal_table_index_2;
+                                                _tablePositionOfCollidee = internal_table_index;
+                                            }
                                         }
-                                        else if (second_movement_component.GetHasMoved())
+                                    }
+
+                                    else if (second_collision_component.GetCopyOfMovementComponent() == null)
+                                    {
+                                        if ((first_element_pos_x == second_element_pos_x) && (first_element_pos_y == second_element_pos_y))
                                         {
-                                            _tablePositionOfCollider = internal_table_index_2;
-                                            _tablePositionOfCollidee = internal_table_index;
+                                            _isColliding = true;
+                                            _tablePositionOfCollider = internal_table_index;
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
 
                                 else if (second_collision_component.GetCopyOfMovementComponent() == null)
                                 {

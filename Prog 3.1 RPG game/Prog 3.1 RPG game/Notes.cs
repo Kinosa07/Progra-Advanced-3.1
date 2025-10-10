@@ -13,7 +13,7 @@
  * 
  * TODO: Ok-fy Movement et Render
  * 
- * Doing: Fixing CollisionManager: Le joueur n'est pas bloqué par les murs
+ * Doing: Fixing Map inside Maps
  * 
  * 
  * State Machine

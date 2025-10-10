@@ -16,6 +16,8 @@ namespace Prog_3._1_RPG_game
         {
             _currentState = initial_state;
             _playerToTransfer = player_object;
+
+            _currentState.Enter(player_object);
         }
 
         public void Update(float delta_time)

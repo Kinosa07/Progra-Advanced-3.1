@@ -121,10 +121,30 @@ namespace Prog_3._1_RPG_game
                         }
                     }
 
-                                else if (second_collision_component.GetCopyOfMovementComponent() == null)
+                    else if (first_collision_component.GetCopyOfMovementComponent() == null)
+                    {
+                        int first_element_pos_x = first_position_component.GetPositionX();
+                        int first_element_pos_y = first_position_component.GetPositionY();
+
+                        for (int internal_table_index_2 = internal_table_index + 1; internal_table_index_2 < _collisonComponentsTable.Length; internal_table_index_2++)
+                        {
+                            CollisionComponent second_collision_component = _collisonComponentsTable[internal_table_index_2];
+
+                            if (second_collision_component != null)
+                            {
+                                PositionComponent second_position_component = second_collision_component.GetCopyOfPositionComponent();
+                                int second_element_pos_x = second_position_component.GetPositionX();
+                                int second_element_pos_y = second_position_component.GetPositionY();
+
+                                if (second_collision_component.GetCopyOfMovementComponent() == null)
                                 {
                                     if ((first_element_pos_x == second_element_pos_x) && (first_element_pos_y == second_element_pos_y))
                                     {
+                                        //This line of code is to identify in Visual Studio who are the two colliding components (That shouldn't)
+                                        first_collision_component = first_collision_component;
+                                        second_collision_component = second_collision_component;
+
+                                        //if you reach this, it means two objects without Movement Component are colliding
                                         _isColliding = true;
                                         _tablePositionOfCollider = internal_table_index;
                                     }

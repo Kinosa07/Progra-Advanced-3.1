@@ -53,6 +53,28 @@ namespace Prog_3._1_RPG_game
             }
         }
 
+        internal void ReturnToManagers(RenderManager render_manager, CollisionManager collision_manager)
+        {
+            for (int component_table_index = 0; component_table_index < _componentTable.Length; component_table_index++)
+            {
+                if (_componentTable[component_table_index].GetType() == typeof(CollisionComponent))
+                {
+                    collision_manager.AddCollisionComponent(_componentTable[component_table_index] as CollisionComponent);
+                }
+
+                else if (_componentTable[component_table_index].GetType() == typeof(MapComponent))
+                {
+                    MapComponent current_map = _componentTable[component_table_index] as MapComponent;
+                    MapComponent placeholder_map_component = new MapComponent(render_manager, current_map.GetSizeX(), current_map.GetSizeY(), this, collision_manager);
+                    _componentTable[component_table_index] = placeholder_map_component;
+                }
+                else if (_componentTable[component_table_index].GetType() == typeof(RenderComponent))
+                {
+                    render_manager.AddRenderComponent(_componentTable[component_table_index] as RenderComponent);
+                }
+            }
+        }
+
         //Récupérer un Component
         //Le morceau de code "<TYPE>" demande un TYPE (int, string, etc...). "Where TYPE : Component" s'assure que la fonction cherche un Component
         public TYPE GetComponent<TYPE>() where TYPE : Component

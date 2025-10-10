@@ -39,12 +39,6 @@ namespace Prog_3._1_RPG_game
             CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player, collision_manager);
             InputComponent player_input = new InputComponent(player, _eventManager);
 
-            player.AddComponent(player_pos_comp);
-            player.AddComponent(player_move_comp);
-            player.AddComponent(player_render);
-            player.AddComponent(player_collision);
-            player.AddComponent(player_input);
-
             return player;
         }
 

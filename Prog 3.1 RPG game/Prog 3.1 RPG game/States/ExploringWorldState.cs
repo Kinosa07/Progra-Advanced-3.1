@@ -32,17 +32,11 @@ namespace Prog_3._1_RPG_game.States
             _renderManager = render_manager;
             _collisionManager = collision_manager;
             _eventManager = event_manager;
-
-            _collisionManager.Reset();
-            _renderManager.Reset();
-
-            world_map.GetCopyOfParentGameObject().ReturnToManagers(_renderManager, _collisionManager);
         }
 
         public void Enter(GameObject player_object)
         {
             _player = player_object;
-            _player.ReturnToManagers(_renderManager, _collisionManager);
             _isInState = true;
         }
 

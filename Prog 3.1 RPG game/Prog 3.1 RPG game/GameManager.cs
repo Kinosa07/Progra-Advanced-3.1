@@ -65,8 +65,6 @@ namespace Prog_3._1_RPG_game
             GameObject location = new GameObject("world");
             MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location, collision_manager);
 
-            location.AddComponent(location_map_component);
-
             return location;
         }
         private GameObject CreateCity(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map, CollisionManager collision_manager)

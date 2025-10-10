@@ -161,6 +161,12 @@ namespace Prog_3._1_RPG_game
                 _previousColliderPosY = _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionY();
             }
         }
+
+        public void Reset()
+        {
+            _collisonComponentsTable = new CollisionComponent[1];
+        }
+
         public void FixedUpdate(float fixed_time_until_update, float delta_time)
         {
             if (delta_time >= fixed_time_until_update)

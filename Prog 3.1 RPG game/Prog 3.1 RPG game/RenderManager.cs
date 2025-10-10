@@ -53,6 +53,11 @@ namespace Prog_3._1_RPG_game
             }
         }
 
+        public void Reset()
+        {
+            _renderComponentsCollection = new RenderComponent[3];
+        }
+
         public void Update(float delta_time)
         {
             for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)

@@ -80,7 +80,7 @@ namespace Prog_3._1_RPG_game
             int horizontal_position = 0;
             int vertical_position = 0;
             bool is_location_empty = true;
-            RenderComponent potential_object = null;
+            bool can_object_be_rendered = false;
 
             //Parcourir le "Tableau" vide a remplir d'éléments (Vertical)
             for (int vertical_index_map = 0; vertical_index_map < current_map.GetSizeY(); vertical_index_map++)
@@ -91,9 +91,28 @@ namespace Prog_3._1_RPG_game
                     //prendre en compte tout les RenderComponents
                     for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)
                     {
-                        if (_renderComponentsCollection[collection_index] != null)
+                        //Are you from a MapComponent
+                        if ( (_renderComponentsCollection[collection_index] != null) && (_renderComponentsCollection[collection_index].GetCopyOfParentGameObject().GetComponent<MapComponent>() != null) )
                         {
-                            is_location_empty = !( (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionX() == horizontal_index_map) && (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionY() == vertical_index_map) );
+                            MapComponent object_map_component = _renderComponentsCollection[collection_index].GetCopyOfParentGameObject().GetComponent<MapComponent>();
+                            if (object_map_component == current_map)
+                            {
+                                can_object_be_rendered = true;
+                            }
+                            else
+                            {
+                                can_object_be_rendered = false;
+                            }
+                        }
+                        //Are you NOT from a MapComponent
+                        if ( (_renderComponentsCollection[collection_index] != null) && (_renderComponentsCollection[collection_index].GetCopyOfParentGameObject().GetComponent<MapComponent>() == null) )
+                        {
+                            can_object_be_rendered = true;
+                        }
+
+                        if (can_object_be_rendered)
+                        {
+                            is_location_empty = !((_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionX() == horizontal_index_map) && (_renderComponentsCollection[collection_index].GetPositionComponent().GetPositionY() == vertical_index_map));
                             if (!is_location_empty && (horizontal_index_map != current_map.GetSizeX() - 1))
                             {
                                 Console.Write(_renderComponentsCollection[collection_index].GetAppearance());
@@ -108,7 +127,7 @@ namespace Prog_3._1_RPG_game
                         }
                     }
 
-                    //vérifier si la position est déja prise
+                    //vérifier si la position est à la limite
                     if (is_location_empty && horizontal_index_map != current_map.GetSizeX() - 1)
                     {
                         Console.Write(" ");

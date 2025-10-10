@@ -20,7 +20,7 @@ namespace Prog_3._1_Tester
         [Test]
         public void TestComponents()
         {
-            GameObject testerObject = new GameObject();
+            GameObject testerObject = new GameObject("tester");
             PositionComponent testerPosition = new PositionComponent(1, 1, testerObject);
             MovementComponent testerMovement = new MovementComponent(testerPosition, testerObject, new EventManager());
 
@@ -61,7 +61,7 @@ namespace Prog_3._1_Tester
         {
             EventManager tester_event_manager = new EventManager();
 
-            GameObject tester_object = new GameObject();
+            GameObject tester_object = new GameObject("tester");
             PositionComponent tester_position = new PositionComponent(1, 1, tester_object);
             MovementComponent tester_movement = new MovementComponent(tester_position, tester_object, tester_event_manager);
 
@@ -78,13 +78,13 @@ namespace Prog_3._1_Tester
         {
             CollisionManager tester_collision_manager = new CollisionManager();
 
-            GameObject tester_object_one = new GameObject();
-            PositionComponent object_one_position = new PositionComponent(1,1, tester_object_one);
+            GameObject tester_object_one = new GameObject("tester");
+            PositionComponent object_one_position = new PositionComponent(1, 1, tester_object_one);
             MovementComponent object_one_movement = new MovementComponent(object_one_position, tester_object_one, new EventManager());
             CollisionComponent object_one_collision = new CollisionComponent(object_one_position, tester_object_one, tester_collision_manager);
 
-            GameObject tester_object_two = new GameObject();
-            PositionComponent object_two_position = new PositionComponent(1,2, tester_object_two);
+            GameObject tester_object_two = new GameObject("tester");
+            PositionComponent object_two_position = new PositionComponent(1, 2, tester_object_two);
             MovementComponent object_two_movement = new MovementComponent(object_two_position, tester_object_two, new EventManager());
             CollisionComponent object_two_collision = new CollisionComponent(object_two_position, tester_object_two, tester_collision_manager);
 
@@ -92,6 +92,10 @@ namespace Prog_3._1_Tester
             tester_collision_manager.Update(1.0f);
 
             Assert.IsTrue(object_one_position.GetPositionY() == object_two_position.GetPositionY());
+
+            tester_collision_manager.FixedUpdate(0.5f, 1.0f);
+
+            Assert.IsTrue(object_one_position.GetPositionY() != object_two_position.GetPositionY());
         }
     }
 }

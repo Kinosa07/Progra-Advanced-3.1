@@ -27,7 +27,6 @@ namespace Prog_3._1_RPG_game
         {
             _player = CreatePlayer(1, 1, _collisionManager);
             _worldMap = CreateWorld(20, 15, _collisionManager);
-            _townMap = CreateCity(10, 7, 3, 5, _worldMap.GetComponent<MapComponent>(), _collisionManager);
 
             _currentLocation = _worldMap;
             _stateMachine = new StateMachine(new ExploringWorldState(_worldMap.GetComponent<MapComponent>(),_renderManager,_collisionManager, _eventManager), _player);
@@ -77,12 +76,6 @@ namespace Prog_3._1_RPG_game
             RenderComponent location_exit_render = new RenderComponent(_renderManager, location_exit_position, "O", location_exit);
             MapComponent location_exit_new_map = exit_map;
 
-            location.AddComponent(location_map_component);
-            location_exit.AddComponent(location_exit_position);
-            location_exit.AddComponent(location_exit_collision);
-            location_exit.AddComponent(location_exit_new_map);
-            location_exit.AddComponent(location_exit_render);
-
             location.GetComponent<MapComponent>().AddMapElement(location_exit);
 
             return location;
@@ -97,13 +90,6 @@ namespace Prog_3._1_RPG_game
             CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit, collision_manager);
             RenderComponent location_exit_render = new RenderComponent(_renderManager, location_exit_position, "O", location_exit);
             MapComponent location_exit_new_map = exit_map;
-
-            location.AddComponent(location_map_component);
-            location.AddComponent(shop_inventory);
-            location_exit.AddComponent(location_exit_position);
-            location_exit.AddComponent(location_exit_collision);
-            location_exit.AddComponent(location_exit_new_map);
-            location_exit.AddComponent(location_exit_render);
 
             location.GetComponent<MapComponent>().AddMapElement(location_exit);
 

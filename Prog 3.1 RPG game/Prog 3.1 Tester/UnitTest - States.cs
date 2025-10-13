@@ -13,12 +13,6 @@ namespace Prog_3._1_Tester
         }
 
         [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
-
-        [Test]
         public void SwitchingStates()
         {
             RenderManager tester_render_manager = new RenderManager();

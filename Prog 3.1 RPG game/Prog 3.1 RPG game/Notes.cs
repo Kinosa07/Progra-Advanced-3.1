@@ -29,7 +29,7 @@
  * 
  * Event: Touches
  * 
- * 
+ * Si a le temps: Remplacer toute les mentions de FixedUpdate avec 2 paramètres
  * 
  * 
  * 

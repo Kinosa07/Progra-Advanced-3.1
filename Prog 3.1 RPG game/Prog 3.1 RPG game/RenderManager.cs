@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game
 {
-    internal class RenderManager
+    public class RenderManager
     {
         private RenderComponent[] _renderComponentsCollection = new RenderComponent[3];
 

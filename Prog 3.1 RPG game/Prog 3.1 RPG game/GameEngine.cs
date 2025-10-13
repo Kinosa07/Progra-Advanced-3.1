@@ -9,7 +9,7 @@ using System.Xml.Schema;
 
 namespace Prog_3._1_RPG_game
 {
-    internal class GameEngine
+    public class GameEngine
     {
         //élément du GameEngine
         GameManager _gameManager = new GameManager();

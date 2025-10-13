@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.Components
 {
-    internal class MapComponent : Component
+    public class MapComponent : Component
     {
         private GameObject[] _mapContentsTable;
         private GameObject[] _mapBordersTable;

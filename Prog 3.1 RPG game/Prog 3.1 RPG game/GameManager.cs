@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game
 {
-    internal class GameManager
+    public class GameManager
     {
         //Composants du jeu
         GameObject _player = new GameObject("player");

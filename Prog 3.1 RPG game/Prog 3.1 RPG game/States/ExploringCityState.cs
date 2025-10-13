@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.States
 {
-    internal class ExploringCityState : IState
+    public class ExploringCityState : IState
     {
         //Que faire dans le City:
         //marcher dans la ville

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.States
 {
-    internal class ExploringWorldState : IState
+    public class ExploringWorldState : IState
     {
         //Logic "Components"
         private MapComponent _worldMap;

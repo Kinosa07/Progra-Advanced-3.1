@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.Components
 {
-    internal class RenderComponent : Component
+    public class RenderComponent : Component
     {
         private PositionComponent _positionComponent;
         private Dictionary<string, string> _appearanceTable = new Dictionary<string, string>();

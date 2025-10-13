@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game
 {
-    internal class StateMachine
+    public class StateMachine
     {
         private IState _currentState;
         private GameObject _playerToTransfer;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.Components
 {
-    internal class InputComponent: Component
+    public class InputComponent: Component
     {
         private GameObject _parentGameObject;
         private EventManager _eventManager;

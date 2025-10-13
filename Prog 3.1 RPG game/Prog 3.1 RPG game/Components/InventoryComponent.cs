@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.Components
 {
-    internal class InventoryComponent : Component
+    public class InventoryComponent : Component
     {
         //Contenu: Argent, objets, ???
         private int _money;

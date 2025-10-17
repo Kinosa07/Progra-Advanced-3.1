@@ -26,12 +26,11 @@ namespace Prog_3._1_RPG_game.States
         //Variables pour test
 
 
-        public ExploringCityState(RenderManager render_manager, CollisionManager collision_manager, MapComponent city_map, GameObject player)
+        public ExploringCityState(RenderManager render_manager, CollisionManager collision_manager, MapComponent city_map)
         {
             _renderManager = render_manager;
             _collisionManager = collision_manager;
             _cityMap = city_map;
-            _player = player;
         }
 
         public void Enter(GameObject player)

@@ -13,6 +13,8 @@ namespace Prog_3._1_RPG_game.Components
         private int _previousXPos;
         private int _previousYPos;
         private GameObject _parentGameObject;
+        private float _ellapsedTime;
+        private float _timeSinceLastFixed;
 
         public PositionComponent(int starting_x_position, int starting_y_position, GameObject parent)
         {
@@ -36,15 +38,20 @@ namespace Prog_3._1_RPG_game.Components
         //Fonction Update
         public override void Update(float time_since_last_update)
         {
-
+            _ellapsedTime = time_since_last_update;
         }
 
         //Fonction FixedUpdate
         public override void FixedUpdate(float fixed_update_time)
         {
-            //Update previousPos
-            _previousXPos = _xPos;
-            _previousYPos = _yPos;
+            if (_ellapsedTime - _timeSinceLastFixed >= fixed_update_time)
+            {
+                //Update previousPos
+                _previousXPos = _xPos;
+                _previousYPos = _yPos;
+
+                _timeSinceLastFixed = _ellapsedTime;
+            }
         }
         public override GameObject GetCopyOfParentGameObject()
         {

@@ -93,7 +93,7 @@ namespace Prog_3._1_Tester
 
             Assert.IsTrue(object_one_position.GetPositionY() == object_two_position.GetPositionY());
 
-            tester_collision_manager.FixedUpdate(0.5f, 1.0f);
+            tester_collision_manager.FixedUpdate(0.5f);
 
             Assert.IsTrue(object_one_position.GetPositionY() != object_two_position.GetPositionY());
         }

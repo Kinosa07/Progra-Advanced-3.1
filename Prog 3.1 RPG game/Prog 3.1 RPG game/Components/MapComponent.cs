@@ -63,6 +63,12 @@ namespace Prog_3._1_RPG_game.Components
         {
             _mapBordersTable = new GameObject[to_copy_map._mapBordersTable.Length];
             GameObject[] copied_map = to_copy_map._mapBordersTable;
+
+            for (int border_table_index = 0; border_table_index < _mapBordersTable.Length; border_table_index++)
+            {
+                _mapBordersTable[border_table_index] = new GameObject($"Border{border_table_index + 1}");
+            }
+
             for (int horizontal_map_size_index = 0; horizontal_map_size_index < _mapBordersTable.Length; horizontal_map_size_index++)
             {
                 PositionComponent game_object_position_component = new PositionComponent(copied_map[horizontal_map_size_index].GetComponent<PositionComponent>());

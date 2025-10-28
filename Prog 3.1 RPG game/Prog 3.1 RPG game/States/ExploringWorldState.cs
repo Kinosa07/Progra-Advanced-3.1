@@ -28,7 +28,8 @@ namespace Prog_3._1_RPG_game.States
             render_manager = new RenderManager();
             collision_manager = new CollisionManager();
             event_manager = new EventManager();
-            _copyOfWorldMap = new MapComponent(world_map, collision_manager, render_manager);
+            MapComponent copy_of_world_map = new MapComponent(world_map, collision_manager, render_manager);
+            world_map = copy_of_world_map;
         }
 
         public void Enter(GameObject player_object)

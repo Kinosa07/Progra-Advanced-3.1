@@ -11,11 +11,11 @@ namespace Prog_3._1_RPG_game
     public class GameManager
     {
         //Composants du jeu
-        GameObject _player = new GameObject("player");
-        GameObject _worldMap = new GameObject("player");
-        GameObject _townMap = new GameObject("player");
-        GameObject _shop = new GameObject("player");
-        GameObject _currentLocation = new GameObject("player");
+        GameObject _player = new GameObject("");
+        GameObject _worldMap = new GameObject("");
+        GameObject _townMap = new GameObject("");
+        GameObject _shop = new GameObject("");
+        GameObject _currentLocation = new GameObject("");
         //Composants logique du jeu
         RenderManager _renderManager = new RenderManager();
         CollisionManager _collisionManager = new CollisionManager();

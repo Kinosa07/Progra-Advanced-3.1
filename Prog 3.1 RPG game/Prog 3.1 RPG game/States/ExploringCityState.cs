@@ -30,7 +30,7 @@ namespace Prog_3._1_RPG_game.States
         {
             _renderManager = render_manager;
             _collisionManager = collision_manager;
-            _cityMap = city_map;
+            _cityMap = new MapComponent(city_map, _collisionManager, _renderManager);
         }
 
         public void Enter(GameObject player)

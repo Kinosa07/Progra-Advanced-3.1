@@ -22,12 +22,13 @@ namespace Prog_3._1_RPG_game.States
         //Variables pour test
         bool _isInState;
 
-        public ExploringCityState(RenderManager render_manager, CollisionManager collision_manager, MapComponent city_map)
+        public ExploringCityState(RenderManager render_manager, CollisionManager collision_manager, MapComponent city_map, GameObject current_location)
         {
             render_manager = new RenderManager();
             collision_manager = new CollisionManager();
             MapComponent copy_of_world_map = new MapComponent(city_map, collision_manager, render_manager);
-            city_map = copy_of_world_map;
+            MapComponent current_location_map = current_location.GetComponent<MapComponent>();
+            current_location_map = copy_of_world_map;
         }
 
         public void Enter()

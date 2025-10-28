@@ -28,10 +28,10 @@ namespace Prog_3._1_RPG_game.States
 
         public ExploringWorldState(MapComponent world_map, RenderManager render_manager, CollisionManager collision_manager, EventManager event_manager)
         {
-            _worldMap = world_map;
             _renderManager = render_manager;
             _collisionManager = collision_manager;
             _eventManager = event_manager;
+            _worldMap = new MapComponent(world_map, _collisionManager, _renderManager);
         }
 
         public void Enter(GameObject player_object)

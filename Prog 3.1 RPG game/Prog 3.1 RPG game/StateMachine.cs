@@ -17,7 +17,7 @@ namespace Prog_3._1_RPG_game
             _currentState = initial_state;
             _playerToTransfer = player_object;
 
-            _currentState.Enter(player_object);
+            _currentState.Enter();
         }
 
         public void Update(float delta_time)
@@ -37,9 +37,9 @@ namespace Prog_3._1_RPG_game
 
         public void ChangeState(IState new_state)
         {
-            _playerToTransfer = _currentState.Exit();
+            _currentState.Exit();
             _currentState = new_state;
-            _currentState.Enter(_playerToTransfer);
+            _currentState.Enter();
         }
     }
 }

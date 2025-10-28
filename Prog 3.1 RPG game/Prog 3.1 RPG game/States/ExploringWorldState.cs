@@ -29,16 +29,14 @@ namespace Prog_3._1_RPG_game.States
             world_map = copy_of_world_map;
         }
 
-        public void Enter(GameObject player_object)
+        public void Enter()
         {
-            _player = player_object;
             _isInState = true;
         }
 
-        public GameObject Exit()
+        public void Exit()
         {
             _isInState = false;
-            return _player;
         }
 
         public void Update(float delta_time)

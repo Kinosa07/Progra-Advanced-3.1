@@ -9,6 +9,8 @@ namespace Prog_3._1_RPG_game.Components
         private GameObject _parentGameObject;
         private bool _hasMovedlast;
         private EventManager _eventManager;
+        private float _ellapsedTime;
+        private float _timeSinceLastFixed;
 
         public MovementComponent(PositionComponent position_component, GameObject parent, EventManager event_manager)
         {
@@ -36,13 +38,17 @@ namespace Prog_3._1_RPG_game.Components
         //Fonction Update
         public override void Update(float time_since_last_update)
         {
-
+            _ellapsedTime = time_since_last_update;
         }
 
         //Fonction FixedUpdate
         public override void FixedUpdate(float fixed_update_time)
         {
-            _hasMovedlast = false;
+            if (_ellapsedTime - _timeSinceLastFixed >= fixed_update_time)
+            {
+                _hasMovedlast = false;
+                _timeSinceLastFixed = _ellapsedTime;
+            }
         }
         public override GameObject GetCopyOfParentGameObject()
         {

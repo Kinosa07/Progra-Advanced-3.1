@@ -12,6 +12,9 @@ namespace Prog_3._1_RPG_game.Components
         private GameObject _parentGameObject;
         private EventManager _eventManager;
         private ConsoleKey _lastKeyPressed;
+        private float _ellapsedTime;
+        private float _timeSinceLastFixed;
+
 
         public InputComponent(GameObject parent_object, EventManager event_manager)
         {
@@ -24,12 +27,16 @@ namespace Prog_3._1_RPG_game.Components
 
         public override void Update (float time_since_last_update)
         {
-            ReadInput();
+            _ellapsedTime = time_since_last_update;
         }
 
         public override void FixedUpdate(float fixed_time_for_new_update)
         {
-            ProcessInput();
+            if (_ellapsedTime - _timeSinceLastFixed > fixed_time_for_new_update)
+            {
+                ProcessInput();
+                _timeSinceLastFixed = _ellapsedTime;
+            }
         }
 
         public override GameObject GetCopyOfParentGameObject()

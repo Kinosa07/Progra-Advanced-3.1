@@ -9,9 +9,6 @@ namespace Prog_3._1_RPG_game.States
 {
     public class ExploringWorldState : IState
     {
-        //Logic "Components"
-        private MapComponent _copyOfWorldMap;
-
         //Objects present in State
         private GameObject _player;
 

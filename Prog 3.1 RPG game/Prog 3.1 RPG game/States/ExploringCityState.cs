@@ -15,51 +15,52 @@ namespace Prog_3._1_RPG_game.States
         //Sortir de la ville
         //Entrer dans les Bâtiments
 
-        //Logic Components
-        private RenderManager _renderManager;
-        private CollisionManager _collisionManager;
-
         //Objects in State
         private MapComponent _cityMap;
         private GameObject _player;
 
         //Variables pour test
-
+        bool _isInState;
 
         public ExploringCityState(RenderManager render_manager, CollisionManager collision_manager, MapComponent city_map)
         {
-            _renderManager = render_manager;
-            _collisionManager = collision_manager;
-            _cityMap = new MapComponent(city_map, _collisionManager, _renderManager);
+            render_manager = new RenderManager();
+            collision_manager = new CollisionManager();
+            MapComponent copy_of_world_map = new MapComponent(city_map, collision_manager, render_manager);
+            city_map = copy_of_world_map;
         }
 
-        public void Enter(GameObject player)
+        public void Enter(GameObject player_object)
         {
-            _player = player;
+            _player = player_object;
+            _isInState = true;
         }
 
         public GameObject Exit()
         {
+            _isInState = false;
             return _player;
         }
 
         public void Update(float delta_time)
         {
-            _renderManager.Update(delta_time);
-            _collisionManager.Update(delta_time);
-            _player.Update(delta_time);
+            
         }
 
-        public void FixedUpdate(float fixed_time_until_update, float delta_time)
+        public void FixedUpdate(float fixed_time_until_update)
         {
-            _renderManager.FixedUpdate(fixed_time_until_update, delta_time);
-            _collisionManager.FixedUpdate(fixed_time_until_update, delta_time);
-            _player.FixedUpdate(fixed_time_until_update, delta_time);
+            
         }
 
         public void Render()
         {
-            _renderManager.Render(_cityMap);
+            
+        }
+
+        //fonction pour test Unitaires
+        public bool GetIsInState()
+        {
+            return _isInState;
         }
     }
 }

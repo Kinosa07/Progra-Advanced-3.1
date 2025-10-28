@@ -46,7 +46,7 @@ namespace Prog_3._1_RPG_game.States
             
         }
 
-        public void FixedUpdate(float fixed_time_until_update, float delta_time)
+        public void FixedUpdate(float fixed_time_until_update)
         {
             
         }

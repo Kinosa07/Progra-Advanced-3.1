@@ -67,7 +67,7 @@ namespace Prog_3._1_RPG_game
             {
                 for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)
                 {
-                    _renderComponentsCollection[collection_index].FixedUpdate(fixed_time_until_update, delta_time);
+                    _renderComponentsCollection[collection_index].FixedUpdate(fixed_time_until_update);
                 }
             }
         }

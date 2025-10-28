@@ -25,7 +25,7 @@ namespace Prog_3._1_RPG_game
             while (!_shouldQuit)
             {
                 Update(_lastUpdateTime);
-                FixedUpdate(1000.0f/10.0f, _lastUpdateTime);
+                FixedUpdate(1000.0f/10.0f);
                 Render();
                 Thread.Sleep(1000 / 10);
             }
@@ -42,14 +42,9 @@ namespace Prog_3._1_RPG_game
             _gameManager.Update(time_since_last_update);
         }
 
-        public void FixedUpdate(float fixed_time_until_update, float time_since_last_update)
+        public void FixedUpdate(float fixed_time_until_update)
         {
-            if (fixed_time_until_update <= time_since_last_update - _lastFixedUpdateTime)
-            {
-                //Work your magic
-                _gameManager.FixedUpdate(fixed_time_until_update, time_since_last_update);
-                _lastFixedUpdateTime = time_since_last_update;
-            }
+            _gameManager.FixedUpdate(fixed_time_until_update);
         }
     }
 }

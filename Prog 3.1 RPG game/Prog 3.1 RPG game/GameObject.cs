@@ -92,13 +92,13 @@ namespace Prog_3._1_RPG_game
         }
 
         //Transférer l'ordre FixedUpdate aux Components
-        public virtual void FixedUpdate(float fixed_update_time, float time_since_last_update)
+        public virtual void FixedUpdate(float fixed_update_time)
         {
             for (int component_table_index = 0; component_table_index < _componentTable.Length; component_table_index++)
             {
                 if (_componentTable[component_table_index] != null)
                 {
-                    _componentTable[component_table_index].FixedUpdate(fixed_update_time, time_since_last_update);
+                    _componentTable[component_table_index].FixedUpdate(fixed_update_time);
                 }
             }
         }

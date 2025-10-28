@@ -17,6 +17,8 @@ namespace Prog_3._1_RPG_game
         private int _previousColliderPosX;
         private int _previousColliderPosY;
         private MapComponent _supposedPlayerLocation; //modifier quand StateMachine
+        private float _ellapsedTime;
+        private float _timeSinceLastFixed;
 
         public CollisionManager()
         {
@@ -160,10 +162,11 @@ namespace Prog_3._1_RPG_game
                 _previousColliderPosX = _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionX();
                 _previousColliderPosY = _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<PositionComponent>().GetPreviousPositionY();
             }
+            _ellapsedTime = delta_time;
         }
-        public void FixedUpdate(float fixed_time_until_update, float delta_time)
+        public void FixedUpdate(float fixed_time_until_update)
         {
-            if (delta_time >= fixed_time_until_update)
+            if (_ellapsedTime - _timeSinceLastFixed >= fixed_time_until_update)
             {
                 //Repousser les objets au positions de base
                 if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>() == null))
@@ -177,6 +180,7 @@ namespace Prog_3._1_RPG_game
                     _supposedPlayerLocation = _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>();
                     _isColliding = false;
                 }
+                _timeSinceLastFixed = _ellapsedTime;
             }
         }
     }

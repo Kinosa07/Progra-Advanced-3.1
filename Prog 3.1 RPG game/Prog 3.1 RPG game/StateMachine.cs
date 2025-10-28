@@ -25,9 +25,9 @@ namespace Prog_3._1_RPG_game
             _currentState.Update(delta_time);
         }
 
-        public void FixedUpdate(float fixed_time_until_update, float delta_time)
+        public void FixedUpdate(float fixed_time_until_update)
         {
-            _currentState.FixedUpdate(fixed_time_until_update, delta_time);
+            _currentState.FixedUpdate(fixed_time_until_update);
         }
 
         public void Render()

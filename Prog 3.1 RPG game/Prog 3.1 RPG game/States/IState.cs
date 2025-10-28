@@ -16,7 +16,7 @@ namespace Prog_3._1_RPG_game.States
 
         public void Update(float delta_time);
 
-        public void FixedUpdate(float fixed_update_time, float delta_time);
+        public void FixedUpdate(float fixed_update_time);
 
         public void Render();
     }

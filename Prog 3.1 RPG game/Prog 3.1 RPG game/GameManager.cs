@@ -16,6 +16,7 @@ namespace Prog_3._1_RPG_game
         GameObject _townMap = new GameObject("");
         GameObject _shop = new GameObject("");
         GameObject _currentLocation = new GameObject("");
+        GameObject _inputManager = new GameObject("");
         //Composants logique du jeu
         RenderManager _renderManager = new RenderManager();
         CollisionManager _collisionManager = new CollisionManager();
@@ -28,6 +29,8 @@ namespace Prog_3._1_RPG_game
             _player = CreatePlayer(1, 1, _collisionManager);
             _worldMap = CreateWorld(20, 15, _collisionManager);
 
+            InputComponent player_input = new InputComponent(_inputManager, _eventManager);
+
             _currentLocation = new(_worldMap);
             _stateMachine = new StateMachine(new ExploringWorldState(_currentLocation.GetComponent<MapComponent>(),_renderManager,_collisionManager, _eventManager), _player);
         }
@@ -39,7 +42,6 @@ namespace Prog_3._1_RPG_game
             MovementComponent player_move_comp = new MovementComponent(player_pos_comp, player, _eventManager);
             RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">", player);
             CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player_move_comp, player, collision_manager);
-            InputComponent player_input = new InputComponent(player, _eventManager);
 
             return player;
         }
@@ -51,6 +53,7 @@ namespace Prog_3._1_RPG_game
 
         public void Update(float time_since_last_update)
         {
+            _inputManager.GetComponent<InputComponent>().ReadInput();
             _player.Update(time_since_last_update);
             _collisionManager.Update(time_since_last_update);
             _renderManager.Update(time_since_last_update);
@@ -58,6 +61,7 @@ namespace Prog_3._1_RPG_game
 
         public void FixedUpdate(float fixed_time_until_new_update)
         {
+            _inputManager.FixedUpdate(fixed_time_until_new_update);
             _player.FixedUpdate(fixed_time_until_new_update);
             _collisionManager.FixedUpdate(fixed_time_until_new_update);
             _renderManager.FixedUpdate(fixed_time_until_new_update);

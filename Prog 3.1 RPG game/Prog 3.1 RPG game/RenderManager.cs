@@ -10,7 +10,8 @@ namespace Prog_3._1_RPG_game
     public class RenderManager
     {
         private RenderComponent[] _renderComponentsCollection = new RenderComponent[3];
-
+        private float _ellapsedTime;
+        private float _timeSinceLastFixedUpdate;
         public RenderManager()
         {
 
@@ -59,16 +60,18 @@ namespace Prog_3._1_RPG_game
             {
                 _renderComponentsCollection[collection_index].Update(delta_time);
             }
+            _ellapsedTime = delta_time;
         }
 
-        public void FixedUpdate(float fixed_time_until_update, float delta_time)
+        public void FixedUpdate(float fixed_time_until_update)
         {
-            if (delta_time >= fixed_time_until_update)
+            if (_ellapsedTime - _timeSinceLastFixedUpdate >= fixed_time_until_update)
             {
                 for (int collection_index = 0; collection_index < _renderComponentsCollection.Length; collection_index++)
                 {
                     _renderComponentsCollection[collection_index].FixedUpdate(fixed_time_until_update);
                 }
+                _timeSinceLastFixedUpdate = _ellapsedTime;
             }
         }
 

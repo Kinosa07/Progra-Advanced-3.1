@@ -28,8 +28,8 @@ namespace Prog_3._1_RPG_game
             _player = CreatePlayer(1, 1, _collisionManager);
             _worldMap = CreateWorld(20, 15, _collisionManager);
 
-            _currentLocation = _worldMap;
             _stateMachine = new StateMachine(new ExploringWorldState(_worldMap.GetComponent<MapComponent>(),_renderManager,_collisionManager, _eventManager), _player);
+            _currentLocation = new(_worldMap);
         }
 
         private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos, CollisionManager collision_manager)

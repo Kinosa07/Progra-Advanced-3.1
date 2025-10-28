@@ -10,7 +10,7 @@ namespace Prog_3._1_RPG_game.States
     public class ExploringWorldState : IState
     {
         //Logic "Components"
-        private MapComponent _worldMap;
+        private MapComponent _copyOfWorldMap;
 
         //Objects present in State
         private GameObject _player;
@@ -28,7 +28,7 @@ namespace Prog_3._1_RPG_game.States
             render_manager = new RenderManager();
             collision_manager = new CollisionManager();
             event_manager = new EventManager();
-            _worldMap = new MapComponent(world_map, collision_manager, render_manager);
+            _copyOfWorldMap = new MapComponent(world_map, collision_manager, render_manager);
         }
 
         public void Enter(GameObject player_object)

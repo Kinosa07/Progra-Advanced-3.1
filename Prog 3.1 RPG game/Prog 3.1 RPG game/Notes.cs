@@ -29,9 +29,9 @@
  * 
  * Event: Touches
  * 
- * Si a le temps: Remplacer toute les mentions de FixedUpdate avec 2 paramètres
  * 
  * 
+ * QU'est ce qui doit être Data Driven: Tout type d'Item (Instaurer un ItemComponent), Fichiers de sauvegarde, Shops?? (Potentiellement)
  * 
  * 
 */

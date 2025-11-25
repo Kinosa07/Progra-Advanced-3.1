@@ -36,17 +36,6 @@ namespace Prog_3._1_RPG_game
             _stateMachine = new StateMachine(new ExploringWorldState(_currentLocation.GetComponent<MapComponent>(),_renderManager,_collisionManager, _eventManager), _player);
         }
 
-        private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos, CollisionManager collision_manager)
-        {
-            GameObject player = new GameObject("player");
-            PositionComponent player_pos_comp = new PositionComponent(starting_x_pos, starting_y_pos, player);
-            MovementComponent player_move_comp = new MovementComponent(player_pos_comp, player, _eventManager);
-            RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">", player);
-            CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player_move_comp, player, collision_manager);
-
-            return player;
-        }
-
         public void Render()
         {
             _renderManager.Render(_currentLocation.GetComponent<MapComponent>());
@@ -155,6 +144,18 @@ namespace Prog_3._1_RPG_game
             }
         }
 
+        private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos, CollisionManager collision_manager)
+        {
+            GameObject player = new GameObject("player");
+            PositionComponent player_pos_comp = new PositionComponent(starting_x_pos, starting_y_pos, player);
+            MovementComponent player_move_comp = new MovementComponent(player_pos_comp, player, _eventManager);
+            RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">", player);
+            CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player_move_comp, player, collision_manager);
+
+
+            return player;
+        }
+
         private GameObject CreateWorld(int x_size, int y_size, CollisionManager collision_manager)
         {
             GameObject location = new GameObject("world");
@@ -162,6 +163,7 @@ namespace Prog_3._1_RPG_game
 
             return location;
         }
+
         private GameObject CreateCity(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map, CollisionManager collision_manager)
         {
             GameObject location = new GameObject("City");
@@ -176,6 +178,7 @@ namespace Prog_3._1_RPG_game
 
             return location;
         }
+
         private GameObject CreateShop(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map, CollisionManager collision_manager)
         {
             GameObject location = new GameObject("Shop");

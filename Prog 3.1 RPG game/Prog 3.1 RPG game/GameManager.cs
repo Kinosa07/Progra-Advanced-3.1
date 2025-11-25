@@ -11,6 +11,7 @@ namespace Prog_3._1_RPG_game
     public class GameManager
     {
         //Composants du jeu
+        GameObject[] _gameObjectTable = new GameObject[10];
         GameObject _player = new GameObject("");
         GameObject _worldMap = new GameObject("");
         GameObject _townMap = new GameObject("");
@@ -65,6 +66,93 @@ namespace Prog_3._1_RPG_game
             _player.FixedUpdate(fixed_time_until_new_update);
             _collisionManager.FixedUpdate(fixed_time_until_new_update);
             _renderManager.FixedUpdate(fixed_time_until_new_update);
+        }
+
+        public void AddToObjectCollection(GameObject object_to_add)
+        {
+            //Check if empty spot
+            bool is_table_full = true;
+            int free_table_slot = -1;
+            for (int game_objects_table_index = 0; game_objects_table_index < _gameObjectTable.Length; game_objects_table_index++)
+            {
+                if (_gameObjectTable[game_objects_table_index] == null)
+                {
+                    is_table_full = false;
+                    free_table_slot = game_objects_table_index;
+                    break;
+                }
+            }
+            //Ajouter taille si plus d'empty slots
+            if (is_table_full)
+            {
+                GameObject[] temporary_table = new GameObject[_gameObjectTable.Length + 5];
+                for (int temporary_table_index = 0; temporary_table_index < _gameObjectTable.Length; temporary_table_index++)
+                {
+                    temporary_table[temporary_table_index] = _gameObjectTable[temporary_table_index];
+                }
+                _gameObjectTable = temporary_table;
+                is_table_full = false;
+                free_table_slot = _gameObjectTable.Length - 5;
+            }
+            //Ajouter object au tableau
+            if (!is_table_full)
+            {
+                _gameObjectTable[free_table_slot] = object_to_add;
+            }
+        }
+
+        public void RemoveObjectFromCollection(GameObject object_to_remove)
+        {
+            //Check si l'objet existe
+            bool exists_in_table = false;
+            int object_position_in_table = -1;
+            int empty_slots = 0;
+            for (int game_objects_table_index = 0; game_objects_table_index < _gameObjectTable.Length; game_objects_table_index++)
+            {
+                if (_gameObjectTable[game_objects_table_index] == object_to_remove)
+                {
+                    exists_in_table = true;
+                    object_position_in_table = game_objects_table_index;
+                    break;
+                }
+            }
+            //retirer object du tableau
+            if (exists_in_table)
+            {
+                _gameObjectTable[object_position_in_table] = null;
+
+                for (int temporary_table_index = 0; temporary_table_index < _gameObjectTable.Length; temporary_table_index++)
+                {
+                    if (temporary_table_index + 1 < _gameObjectTable.Length)
+                    {
+                        if ((_gameObjectTable[temporary_table_index] == null) && (_gameObjectTable[temporary_table_index + 1] != null))
+                        {
+                            _gameObjectTable[temporary_table_index] = _gameObjectTable[temporary_table_index + 1];
+                        }
+                        else if ((_gameObjectTable[temporary_table_index] == null) && (_gameObjectTable[temporary_table_index + 1] == null))
+                        {
+                            empty_slots += 1;
+                        }
+                    }
+                }
+            }
+            else if (!exists_in_table)
+            {
+
+            }
+
+            if (empty_slots >= 10)
+            {
+                //Réduire taille si plus d'empty slots
+                GameObject[] temporary_table = new GameObject[_gameObjectTable.Length - 9];
+                for (int temporary_table_index = 0; temporary_table_index < temporary_table.Length; temporary_table_index++)
+                {
+                    temporary_table[temporary_table_index] = _gameObjectTable[temporary_table_index];
+                }
+
+                _gameObjectTable = temporary_table;
+                empty_slots = 0;
+            }
         }
 
         private GameObject CreateWorld(int x_size, int y_size, CollisionManager collision_manager)

@@ -2,6 +2,7 @@
 using Prog_3._1_RPG_game.States;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +48,13 @@ namespace Prog_3._1_RPG_game
         public void Update(float time_since_last_update)
         {
             _inputManager.GetComponent<InputComponent>().ReadInput();
-            _player.Update(time_since_last_update);
+            for (int game_objects_index = 0; game_objects_index < _gameObjectTable.Length; game_objects_index++)
+            {
+                if (_gameObjectTable[game_objects_index] != null)
+                {
+                    _gameObjectTable[game_objects_index].Update(time_since_last_update);
+                }
+            }
             _collisionManager.Update(time_since_last_update);
             _renderManager.Update(time_since_last_update);
         }
@@ -55,7 +62,13 @@ namespace Prog_3._1_RPG_game
         public void FixedUpdate(float fixed_time_until_new_update)
         {
             _inputManager.FixedUpdate(fixed_time_until_new_update);
-            _player.FixedUpdate(fixed_time_until_new_update);
+            for (int game_objects_index = 0; game_objects_index < _gameObjectTable.Length; game_objects_index++)
+            {
+                if (_gameObjectTable[game_objects_index] != null)
+                {
+                    _gameObjectTable[game_objects_index].FixedUpdate(fixed_time_until_new_update);
+                }
+            }
             _collisionManager.FixedUpdate(fixed_time_until_new_update);
             _renderManager.FixedUpdate(fixed_time_until_new_update);
         }

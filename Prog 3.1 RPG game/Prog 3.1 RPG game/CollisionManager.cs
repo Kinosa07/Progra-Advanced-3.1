@@ -172,15 +172,16 @@ namespace Prog_3._1_RPG_game
             if (_ellapsedTime - _timeSinceLastFixed >= fixed_time_until_update)
             {
                 //Repousser les objets au positions de base
-                if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollidee].GetCopyOfParentGameObject().GetComponent<MapComponent>() == null))
+                if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollidee].GetCopyOfParentGameObject().GetComponent<DoorwayComponent>() == null))
                 {
                     _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MovementComponent>().MoveObject(_previousColliderPosX, _previousColliderPosY);
                     _isColliding = false;
                 }
 
-                else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollidee].GetCopyOfParentGameObject().GetComponent<MapComponent>() != null))
+                else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollidee].GetCopyOfParentGameObject().GetComponent<DoorwayComponent>() != null))
                 {
-                    _gameManager.ChangeLocation(_collisonComponentsTable[_tablePositionOfCollidee].GetCopyOfParentGameObject());
+                     DoorwayComponent doorway_of_collidee = _collisonComponentsTable[_tablePositionOfCollidee].GetCopyOfParentGameObject().GetComponent<DoorwayComponent>();
+                    _gameManager.ChangeLocation(doorway_of_collidee.GetDestination());
                     _isColliding = false;
                 }
                 _timeSinceLastFixed = _ellapsedTime;

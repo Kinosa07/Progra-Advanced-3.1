@@ -33,7 +33,8 @@ namespace Prog_3._1_RPG_game
 
             _player = CreatePlayer(1, 1, _collisionManager);
             _worldMap = CreateWorld(20, 15, _collisionManager);
-            _townMap = CreateCity("City 1", 10, 10, 5, 5, _worldMap.GetComponent<MapComponent>());
+            _townMap = CreateCity("City 1", 16, 16, 7, 7, 8, 5, _worldMap.GetComponent<MapComponent>());
+            _shop = CreateShop("Shop 1", 9, 7, 2, 12, 4, 5, _townMap.GetComponent<MapComponent>());
 
             InputComponent player_input = new InputComponent(_inputManager, _eventManager);
 
@@ -173,6 +174,9 @@ namespace Prog_3._1_RPG_game
             RemoveObjectFromCollection(_currentLocation);
             _currentLocation = new_location;
             AddToObjectCollection(_currentLocation);
+            _collisionManager.RecalculateContents(_gameObjectTable);
+            _renderManager.RecalculateContents(_gameObjectTable);
+
             _player.GetComponent<MovementComponent>().MoveObject(1, 1);
         }
 
@@ -195,33 +199,53 @@ namespace Prog_3._1_RPG_game
             return location;
         }
 
-        private GameObject CreateCity(string name,int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent entry_map)
+        private GameObject CreateCity(string name,int x_size, int y_size, int x_entrance_position, int y_entrance_position,int x_exit_position ,int y_exit_position , MapComponent entry_map)
         {
-            GameObject location = new GameObject("City");
-            GameObject location_exit = new GameObject("Exit");
-            PositionComponent location_exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
-            CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit, collision_manager);
-            RenderComponent location_exit_render = new RenderComponent(_renderManager, location_exit_position, "O", location_exit);
-            MapComponent location_exit_new_map = exit_map;
+            GameObject location = new GameObject(name);
             MapComponent location_map_component = new MapComponent(x_size, y_size, location);
 
-            location.GetComponent<MapComponent>().AddMapElement(location_exit);
+            GameObject location_entrance = new GameObject(name + " Entrance");
+            PositionComponent entrance_position = new PositionComponent(x_entrance_position, y_entrance_position, location_entrance);
+            RenderComponent entrance_render = new RenderComponent(entrance_position, "0", location_entrance);
+            CollisionComponent entrance_collision = new CollisionComponent(entrance_position, location_entrance);
+            DoorwayComponent entrance_doorway = new DoorwayComponent(location_entrance, location);
+
+            entry_map.AddMapElement(location_entrance);
+
+            GameObject location_exit = new GameObject(name + " Entrance");
+            PositionComponent exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
+            RenderComponent exit_render = new RenderComponent(exit_position, "Q", location_exit);
+            CollisionComponent exit_collision = new CollisionComponent(exit_position, location_exit);
+            DoorwayComponent exit_doorway = new DoorwayComponent(location_exit, entry_map.GetCopyOfParentGameObject());
+
+            location_map_component.AddMapElement(location_exit);
+
 
             return location;
         }
 
-        private GameObject CreateShop(int x_size, int y_size, int x_exit_position, int y_exit_position, CollisionManager collision_manager)
+        private GameObject CreateShop(string name, int x_size, int y_size, int x_entrance_position, int y_entrance_position, int x_exit_position, int y_exit_position, MapComponent entry_map)
         {
-            GameObject location = new GameObject("Shop");
-            GameObject location_exit = new GameObject("Exit");
+            GameObject location = new GameObject(name);
             MapComponent location_map_component = new MapComponent(x_size, y_size, location);
-            InventoryComponent shop_inventory = new InventoryComponent(300, 4, location);
-            PositionComponent location_exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
-            CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit, collision_manager);
-            RenderComponent location_exit_render = new RenderComponent(_renderManager, location_exit_position, "O", location_exit);
-            MapComponent location_exit_new_map = exit_map;
 
-            location.GetComponent<MapComponent>().AddMapElement(location_exit);
+            GameObject location_entrance = new GameObject(name + " Entrance");
+            PositionComponent entrance_position = new PositionComponent(x_entrance_position, y_entrance_position, location_entrance);
+            RenderComponent entrance_render = new RenderComponent(entrance_position, "0", location_entrance);
+            CollisionComponent entrance_collision = new CollisionComponent(entrance_position, location_entrance);
+            DoorwayComponent entrance_doorway = new DoorwayComponent(location_entrance, location);
+
+            entry_map.AddMapElement(location_entrance);
+
+            GameObject location_exit = new GameObject(name + " Entrance");
+            PositionComponent exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
+            RenderComponent exit_render = new RenderComponent(exit_position, "Q", location_exit);
+            CollisionComponent exit_collision = new CollisionComponent(exit_position, location_exit);
+            DoorwayComponent exit_doorway = new DoorwayComponent(location_exit, entry_map.GetCopyOfParentGameObject());
+
+            location_map_component.AddMapElement(location_exit);
+
+            InventoryComponent shop_inventory = new InventoryComponent(300, 4, location);
 
             return location;
         }

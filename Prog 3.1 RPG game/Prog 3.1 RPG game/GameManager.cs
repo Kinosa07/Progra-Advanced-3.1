@@ -23,12 +23,14 @@ namespace Prog_3._1_RPG_game
         //Composants logique du jeu
         RenderManager _renderManager = new RenderManager();
         CollisionManager _collisionManager;
-        EventManager _eventManager = new EventManager();
         StateMachine _stateMachine;
+        private EventManager _eventManager;
 
 
-        public GameManager()
+        public GameManager(EventManager engine_Event_Manager)
         {
+            _eventManager = engine_Event_Manager;
+
             _collisionManager = new CollisionManager(this);
 
             _player = CreatePlayer(1, 1, _collisionManager);

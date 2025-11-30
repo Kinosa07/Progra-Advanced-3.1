@@ -11,6 +11,12 @@ namespace Prog_3._1_RPG_game.Components
         private GameObject _parentObject;
         ItemData _data;
 
+        public ItemComponent (ItemData data, GameObject parent_object)
+        {
+            _data = data;
+            _parentObject = parent_object;
+        }
+
         public override void Update(float time_since_last_update)
         {
 

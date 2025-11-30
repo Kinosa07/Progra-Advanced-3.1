@@ -54,10 +54,10 @@ namespace Prog_3._1_RPG_game.Components
             return copy_of_parent;
         }
 
-        public void MoveObject(int new_x_position, int new_y_position)
+        public void MoveObject(int added_to_x, int added_to_y)
         {
             //Bouger l'objet selon de nouvelles positions
-            _positionComponent.SetPosition(new_x_position, new_y_position);
+            _positionComponent.SetPosition(_positionComponent.GetPositionX() + added_to_x,_positionComponent.GetPositionY() + added_to_y);
             _hasMovedlast = true;
         }
 

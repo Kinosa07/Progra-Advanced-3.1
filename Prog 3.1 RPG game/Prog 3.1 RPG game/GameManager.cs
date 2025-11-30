@@ -180,7 +180,7 @@ namespace Prog_3._1_RPG_game
             _collisionManager.RecalculateContents(_gameObjectTable);
             _renderManager.RecalculateContents(_gameObjectTable);
 
-            _player.GetComponent<MovementComponent>().MoveObject(1, 1);
+            _player.GetComponent<PositionComponent>().SetPosition(1, 1);
         }
 
         private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos, CollisionManager collision_manager)

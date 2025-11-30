@@ -1,12 +1,6 @@
 ﻿using Prog_3._1_RPG_game.Components;
+using Prog_3._1_RPG_game.Events;
 using Prog_3._1_RPG_game.States;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game
 {

@@ -20,11 +20,11 @@ namespace Prog_3._1_Tester
             EventManager tester_event_manager = new EventManager();
             GameObject tester_world_map = new GameObject("WorldMap");
             MapComponent tester_world_map_component = new MapComponent(tester_render_manager, 10, 10, tester_world_map, tester_collision_manager);
-            ExploringWorldState tester_world_state = new ExploringWorldState(tester_world_map_component,tester_render_manager,tester_collision_manager, tester_event_manager);
+            ExploringState tester_world_state = new ExploringState(tester_world_map_component,tester_render_manager,tester_collision_manager, tester_event_manager);
 
             GameObject tester_city_map = new GameObject("City");
             MapComponent tester_city_map_component = new MapComponent(tester_render_manager, 10, 5, tester_city_map, tester_collision_manager);
-            ExploringCityState tester_city_state = new ExploringCityState(tester_render_manager, tester_collision_manager, tester_city_map_component, new GameObject("currentlocation"));
+            MenuState tester_city_state = new MenuState(tester_render_manager, tester_collision_manager, tester_city_map_component, new GameObject("currentlocation"));
 
 
             GameObject player = new GameObject("Player");
@@ -51,11 +51,11 @@ namespace Prog_3._1_Tester
             MapComponent tester_city_map_component = new MapComponent(tester_render_manager, 10, 5, tester_city_map, tester_collision_manager);
 
             GameObject player = new GameObject("Player");
-            StateMachine testerStateMachine = new StateMachine(new ExploringWorldState(tester_world_map_component, tester_render_manager, tester_collision_manager, tester_event_manager), player);
+            StateMachine testerStateMachine = new StateMachine(new ExploringState(tester_world_map_component, tester_render_manager, tester_collision_manager, tester_event_manager), player);
 
             Assert.IsTrue(tester_current_location.GetComponent<MapComponent>() == tester_world_map_component);
 
-            testerStateMachine.ChangeState(new ExploringCityState(tester_render_manager, tester_collision_manager, tester_city_map_component, tester_current_location));
+            testerStateMachine.ChangeState(new MenuState(tester_render_manager, tester_collision_manager, tester_city_map_component, tester_current_location));
 
             Assert.IsTrue(tester_current_location.GetComponent<MapComponent>() != tester_world_map_component);
         }

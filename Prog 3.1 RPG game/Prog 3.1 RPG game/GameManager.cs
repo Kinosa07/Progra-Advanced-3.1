@@ -34,7 +34,7 @@ namespace Prog_3._1_RPG_game
             InputComponent player_input = new InputComponent(_inputManager, _eventManager);
 
             _currentLocation = new(_worldMap);
-            _stateMachine = new StateMachine(new ExploringWorldState(_currentLocation.GetComponent<MapComponent>(), _renderManager, _collisionManager, _eventManager), _player);
+            _stateMachine = new StateMachine(new ExploringState(_inputManager.GetComponent<InputComponent>(), _eventManager));
 
             AddToObjectCollection(_player);
             AddToObjectCollection(_currentLocation);
@@ -55,6 +55,7 @@ namespace Prog_3._1_RPG_game
                     _gameObjectTable[game_objects_index].Update(time_since_last_update);
                 }
             }
+            _stateMachine.Update(time_since_last_update);
             _collisionManager.Update(time_since_last_update);
             _renderManager.Update(time_since_last_update);
         }
@@ -167,7 +168,6 @@ namespace Prog_3._1_RPG_game
             MovementComponent player_move_comp = new MovementComponent(player_pos_comp, player, _eventManager);
             RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">", player);
             CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player_move_comp, player, collision_manager);
-
 
             return player;
         }

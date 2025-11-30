@@ -10,12 +10,10 @@ namespace Prog_3._1_RPG_game
     public class StateMachine
     {
         private IState _currentState;
-        private GameObject _playerToTransfer;
 
-        public StateMachine(IState initial_state, GameObject player_object)
+        public StateMachine(IState initial_state)
         {
             _currentState = initial_state;
-            _playerToTransfer = player_object;
 
             _currentState.Enter();
         }

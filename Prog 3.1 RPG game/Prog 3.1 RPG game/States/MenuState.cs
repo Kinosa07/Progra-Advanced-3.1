@@ -7,28 +7,23 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.States
 {
-    public class ExploringCityState : IState
+    public class MenuState : IState
     {
-        //Que faire dans le City:
-        //marcher dans la ville
-        //Voir la ville
-        //Sortir de la ville
-        //Entrer dans les Bâtiments
+        //Que faire dans les Menus:
+        //Explorer les options
+        //Sortir du menu
 
         //Objects in State
         private MapComponent _cityMap;
         private GameObject _player;
+        private GameManager _gameManager;
 
         //Variables pour test
         bool _isInState;
 
-        public ExploringCityState(RenderManager render_manager, CollisionManager collision_manager, MapComponent city_map, GameObject current_location)
+        public MenuState()
         {
-            render_manager = new RenderManager();
-            collision_manager = new CollisionManager();
-            MapComponent copy_of_world_map = new MapComponent(city_map, collision_manager, render_manager);
-            MapComponent current_location_map = current_location.GetComponent<MapComponent>();
-            current_location_map = copy_of_world_map;
+            
         }
 
         public void Enter()

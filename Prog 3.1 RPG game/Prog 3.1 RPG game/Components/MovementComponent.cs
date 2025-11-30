@@ -20,8 +20,6 @@ namespace Prog_3._1_RPG_game.Components
             _eventManager = event_manager;
 
             _parentGameObject.AddComponent(this);
-
-            _eventManager.RegisterToEvent<KeyPressedEvent>(MoveWhenTriggered);
         }
 
         public MovementComponent(MovementComponent movement_component_to_copy)
@@ -61,40 +59,6 @@ namespace Prog_3._1_RPG_game.Components
             //Bouger l'objet selon de nouvelles positions
             _positionComponent.SetPosition(new_x_position, new_y_position);
             _hasMovedlast = true;
-        }
-
-        public void MoveWhenTriggered(GameEvent game_event)
-        {
-            KeyPressedEvent key_pressed_event = game_event as KeyPressedEvent;
-            int current_x_pos = _positionComponent.GetPositionX();
-            int current_y_pos = _positionComponent.GetPositionY();
-
-            if (key_pressed_event != null)
-            {
-                switch(key_pressed_event._keyPressed)
-                {
-                    case ConsoleKey.UpArrow:
-                        {
-                            MoveObject(current_x_pos, current_y_pos - 1);
-                            break;
-                        }
-                    case ConsoleKey.DownArrow:
-                        {
-                            MoveObject(current_x_pos, current_y_pos + 1);
-                            break;
-                        }
-                    case ConsoleKey.LeftArrow:
-                        {
-                            MoveObject(current_x_pos - 1, current_y_pos);
-                            break;
-                        }
-                    case ConsoleKey.RightArrow:
-                        {
-                            MoveObject(current_x_pos + 1, current_y_pos);
-                            break;
-                        }
-                }
-            }
         }
 
         public bool GetHasMoved()

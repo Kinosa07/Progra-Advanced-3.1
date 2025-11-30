@@ -75,6 +75,51 @@ namespace Prog_3._1_RPG_game
             }
         }
 
+        public void RecalculateContents(GameObject[] active_elements)
+        {
+            _renderComponentsCollection = new RenderComponent[0];
+
+            for (int active_elements_index = 0; active_elements_index < active_elements.Length; active_elements_index++)
+            {
+                if (active_elements[active_elements_index] != null)
+                {
+                    if (active_elements[active_elements_index].GetComponent<RenderComponent>() != null)
+                    {
+                        AddRenderComponent(active_elements[active_elements_index].GetComponent<RenderComponent>());
+                    }
+
+                    else if (active_elements[active_elements_index].GetComponent<MapComponent>() != null)
+                    {
+                        MapComponent current_map_component = active_elements[active_elements_index].GetComponent<MapComponent>();
+                        GameObject[] map_contents = current_map_component.GetAllObjectsInside();
+                        GameObject[] map_borders = current_map_component.GetMapBordersTable();
+
+                        for (int map_contents_index = 0; map_contents_index < map_contents.Length; map_contents_index++)
+                        {
+                            if (map_contents[map_contents_index] != null)
+                            {
+                                if (map_contents[map_contents_index].GetComponent<RenderComponent>() != null)
+                                {
+                                    AddRenderComponent(map_contents[map_contents_index].GetComponent<RenderComponent>());
+                                }
+                            }
+                        }
+
+                        for (int map_borders_index = 0; map_borders_index < map_borders.Length; map_borders_index++)
+                        {
+                            if (map_borders[map_borders_index] != null)
+                            {
+                                if (map_borders[map_borders_index].GetComponent<RenderComponent>() != null)
+                                {
+                                    AddRenderComponent(map_borders[map_borders_index].GetComponent<RenderComponent>());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         public void Render(MapComponent current_map)
         {
             Console.Clear();

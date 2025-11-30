@@ -1,6 +1,7 @@
 ﻿using Prog_3._1_RPG_game.Components;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Prog_3._1_RPG_game
 {
     public class CollisionManager
     {
+        private GameManager _gameManager;
         private CollisionComponent[] _collisonComponentsTable = new CollisionComponent[1];
         private int _tablePositionOfCollider;
         private int _tablePositionOfCollidee;
@@ -20,9 +22,9 @@ namespace Prog_3._1_RPG_game
         private float _ellapsedTime;
         private float _timeSinceLastFixed;
 
-        public CollisionManager()
+        public CollisionManager(GameManager neighbooring_manager)
         {
-
+            _gameManager = neighbooring_manager;
         }
 
         public void AddCollisionComponent(CollisionComponent collision_component_to_add)
@@ -62,7 +64,7 @@ namespace Prog_3._1_RPG_game
                 }
             }
         }
-        
+
         //Analyser si Collisions
         public void Update(float delta_time)
         {
@@ -116,6 +118,7 @@ namespace Prog_3._1_RPG_game
                                         {
                                             _isColliding = true;
                                             _tablePositionOfCollider = internal_table_index;
+                                            _tablePositionOfCollidee = internal_table_index_2;
                                         }
                                     }
                                 }
@@ -169,18 +172,63 @@ namespace Prog_3._1_RPG_game
             if (_ellapsedTime - _timeSinceLastFixed >= fixed_time_until_update)
             {
                 //Repousser les objets au positions de base
-                if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>() == null))
+                if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollidee].GetCopyOfParentGameObject().GetComponent<MapComponent>() == null))
                 {
                     _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MovementComponent>().MoveObject(_previousColliderPosX, _previousColliderPosY);
                     _isColliding = false;
                 }
 
-                else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>() != null))
+                else if (_isColliding && (_tablePositionOfCollider >= 0) && (_collisonComponentsTable[_tablePositionOfCollidee].GetCopyOfParentGameObject().GetComponent<MapComponent>() != null))
                 {
-                    _supposedPlayerLocation = _collisonComponentsTable[_tablePositionOfCollider].GetCopyOfParentGameObject().GetComponent<MapComponent>();
+                    _gameManager.ChangeLocation(_collisonComponentsTable[_tablePositionOfCollidee].GetCopyOfParentGameObject());
                     _isColliding = false;
                 }
                 _timeSinceLastFixed = _ellapsedTime;
+            }
+        }
+
+        public void RecalculateContents(GameObject[] active_elements)
+        {
+            _collisonComponentsTable = new CollisionComponent[0];
+
+            for (int active_elements_index = 0; active_elements_index < active_elements.Length; active_elements_index++)
+            {
+                if (active_elements[active_elements_index] != null)
+                {
+                    if (active_elements[active_elements_index].GetComponent<CollisionComponent>() != null)
+                    {
+                        AddCollisionComponent(active_elements[active_elements_index].GetComponent<CollisionComponent>());
+                    }
+
+                    else if (active_elements[active_elements_index].GetComponent<MapComponent>() != null)
+                    {
+                        MapComponent current_map_component = active_elements[active_elements_index].GetComponent<MapComponent>();
+                        GameObject[] map_contents = current_map_component.GetAllObjectsInside();
+                        GameObject[] map_borders = current_map_component.GetMapBordersTable();
+
+                        for (int map_contents_index = 0; map_contents_index < map_contents.Length; map_contents_index++)
+                        {
+                            if (map_contents[map_contents_index] != null)
+                            {
+                                if (map_contents[map_contents_index].GetComponent<CollisionComponent>() != null)
+                                {
+                                    AddCollisionComponent(map_contents[map_contents_index].GetComponent<CollisionComponent>());
+                                }
+                            }
+                        }
+
+                        for (int map_borders_index = 0; map_borders_index < map_borders.Length; map_borders_index++)
+                        {
+                            if (map_borders[map_borders_index] != null)
+                            {
+                                if (map_borders[map_borders_index].GetComponent<CollisionComponent>() != null)
+                                {
+                                    AddCollisionComponent(map_borders[map_borders_index].GetComponent<CollisionComponent>());
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

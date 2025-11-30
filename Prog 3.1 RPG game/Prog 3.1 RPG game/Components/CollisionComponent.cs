@@ -15,21 +15,20 @@ namespace Prog_3._1_RPG_game.Components
         private GameObject _parentGameObject;
 
 
-        public CollisionComponent (PositionComponent object_position_component, GameObject parent, CollisionManager collision_manager)
+        public CollisionComponent (PositionComponent object_position_component, GameObject parent)
         {
             _positionComponent = object_position_component;
             _movementComponent = null;
             _parentGameObject = parent;
             _parentGameObject.AddComponent(this);
-            collision_manager.AddCollisionComponent(this);
         }
 
-        public CollisionComponent (PositionComponent object_position_component, MovementComponent object_movement_component, GameObject parent, CollisionManager collision_manager)
+        public CollisionComponent (PositionComponent object_position_component, MovementComponent object_movement_component, GameObject parent)
         {
             _positionComponent = object_position_component;
             _movementComponent = object_movement_component;
             _parentGameObject = parent;
-            collision_manager.AddCollisionComponent(this);
+            _parentGameObject.AddComponent(this);
         }
 
         public override void Update(float deltaTime)

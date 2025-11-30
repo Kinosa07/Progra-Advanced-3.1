@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,15 +22,18 @@ namespace Prog_3._1_RPG_game
         GameObject _inputManager = new GameObject("");
         //Composants logique du jeu
         RenderManager _renderManager = new RenderManager();
-        CollisionManager _collisionManager = new CollisionManager();
+        CollisionManager _collisionManager;
         EventManager _eventManager = new EventManager();
         StateMachine _stateMachine;
 
 
         public GameManager()
         {
+            _collisionManager = new CollisionManager(this);
+
             _player = CreatePlayer(1, 1, _collisionManager);
             _worldMap = CreateWorld(20, 15, _collisionManager);
+            _townMap = CreateCity("City 1", 10, 10, 5, 5, _worldMap.GetComponent<MapComponent>());
 
             InputComponent player_input = new InputComponent(_inputManager, _eventManager);
 
@@ -38,6 +42,9 @@ namespace Prog_3._1_RPG_game
 
             AddToObjectCollection(_player);
             AddToObjectCollection(_currentLocation);
+
+            _collisionManager.RecalculateContents(_gameObjectTable);
+            _renderManager.RecalculateContents(_gameObjectTable);
         }
 
         public void Render()
@@ -161,13 +168,21 @@ namespace Prog_3._1_RPG_game
             }
         }
 
+        public void ChangeLocation(GameObject new_location)
+        {
+            RemoveObjectFromCollection(_currentLocation);
+            _currentLocation = new_location;
+            AddToObjectCollection(_currentLocation);
+            _player.GetComponent<MovementComponent>().MoveObject(1, 1);
+        }
+
         private GameObject CreatePlayer(int starting_x_pos, int starting_y_pos, CollisionManager collision_manager)
         {
             GameObject player = new GameObject("player");
             PositionComponent player_pos_comp = new PositionComponent(starting_x_pos, starting_y_pos, player);
             MovementComponent player_move_comp = new MovementComponent(player_pos_comp, player, _eventManager);
-            RenderComponent player_render = new RenderComponent(_renderManager, player_pos_comp, "^", "v", "<", ">", player);
-            CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player_move_comp, player, collision_manager);
+            RenderComponent player_render = new RenderComponent(player_pos_comp, "^", "v", "<", ">", player);
+            CollisionComponent player_collision = new CollisionComponent(player_pos_comp, player_move_comp, player);
 
             return player;
         }
@@ -175,31 +190,31 @@ namespace Prog_3._1_RPG_game
         private GameObject CreateWorld(int x_size, int y_size, CollisionManager collision_manager)
         {
             GameObject location = new GameObject("world");
-            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location, collision_manager);
+            MapComponent location_map_component = new MapComponent(x_size, y_size, location);
 
             return location;
         }
 
-        private GameObject CreateCity(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map, CollisionManager collision_manager)
+        private GameObject CreateCity(string name,int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent entry_map)
         {
             GameObject location = new GameObject("City");
             GameObject location_exit = new GameObject("Exit");
-            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location, collision_manager);
             PositionComponent location_exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
             CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit, collision_manager);
             RenderComponent location_exit_render = new RenderComponent(_renderManager, location_exit_position, "O", location_exit);
             MapComponent location_exit_new_map = exit_map;
+            MapComponent location_map_component = new MapComponent(x_size, y_size, location);
 
             location.GetComponent<MapComponent>().AddMapElement(location_exit);
 
             return location;
         }
 
-        private GameObject CreateShop(int x_size, int y_size, int x_exit_position, int y_exit_position, MapComponent exit_map, CollisionManager collision_manager)
+        private GameObject CreateShop(int x_size, int y_size, int x_exit_position, int y_exit_position, CollisionManager collision_manager)
         {
             GameObject location = new GameObject("Shop");
             GameObject location_exit = new GameObject("Exit");
-            MapComponent location_map_component = new MapComponent(_renderManager, x_size, y_size, location, collision_manager);
+            MapComponent location_map_component = new MapComponent(x_size, y_size, location);
             InventoryComponent shop_inventory = new InventoryComponent(300, 4, location);
             PositionComponent location_exit_position = new PositionComponent(x_exit_position, y_exit_position, location_exit);
             CollisionComponent location_exit_collision = new CollisionComponent(location_exit_position, location_exit, collision_manager);

@@ -13,18 +13,19 @@ namespace Prog_3._1_RPG_game
     public class GameManager
     {
         //Composants du jeu
-        GameObject[] _gameObjectTable = new GameObject[10];
-        GameObject _player = new GameObject("");
-        GameObject _worldMap = new GameObject("");
-        GameObject _townMap = new GameObject("");
-        GameObject _shop = new GameObject("");
-        GameObject _currentLocation = new GameObject("");
-        GameObject _inputManager = new GameObject("");
+        private GameObject[] _gameObjectTable = new GameObject[10];
+        private GameObject _player = new GameObject("");
+        private GameObject _worldMap = new GameObject("");
+        private GameObject _townMap = new GameObject("");
+        private GameObject _shop = new GameObject("");
+        private GameObject _currentLocation = new GameObject("");
+        private GameObject _inputManager = new GameObject("");
+        private bool _isInsideInventory;
         //Composants logique du jeu
-        RenderManager _renderManager = new RenderManager();
-        CollisionManager _collisionManager;
-        StateMachine _stateMachine;
+        private RenderManager _renderManager = new RenderManager();
+        private CollisionManager _collisionManager;
         private EventManager _eventManager;
+        private StateMachine _stateMachine;
 
 
         public GameManager(EventManager engine_Event_Manager)

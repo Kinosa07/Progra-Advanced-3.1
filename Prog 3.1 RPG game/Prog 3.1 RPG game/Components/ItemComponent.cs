@@ -9,7 +9,7 @@ namespace Prog_3._1_RPG_game.Components
     public class ItemComponent : Component
     {
         private GameObject _parentObject;
-        ItemData _data;
+        private ItemData _data;
 
         public ItemComponent (ItemData data, GameObject parent_object)
         {

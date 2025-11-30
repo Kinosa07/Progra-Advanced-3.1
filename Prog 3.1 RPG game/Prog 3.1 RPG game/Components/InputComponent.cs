@@ -55,14 +55,16 @@ namespace Prog_3._1_RPG_game.Components
             }
         }
 
-        public void ProcessInput()
+        public ConsoleKey ProcessInput()
         {
+            ConsoleKey local_copy_of_last_pressed_key = _lastKeyPressed;
+
             if (_lastKeyPressed != ConsoleKey.RightWindows)
             {
-                _eventManager.TriggerEvent(new KeyPressedEvent(_lastKeyPressed));
-
                 _lastKeyPressed = ConsoleKey.RightWindows;
             }
+
+            return local_copy_of_last_pressed_key;
         }
     }
 }

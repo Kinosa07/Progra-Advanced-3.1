@@ -31,6 +31,13 @@ namespace Prog_3._1_RPG_game
             _eventTable[type_of_event].Add(action_linked_to_event);
         }
 
+        public void UnRegisterEvent<EVENT_TYPE>(Action<GameEvent> action_to_remove) where EVENT_TYPE : GameEvent
+        {
+            Type type_of_event = typeof(EVENT_TYPE);
+
+            _eventTable[type_of_event].Remove(action_to_remove);
+        }
+
         public void TriggerEvent(GameEvent game_event)
         {
             Type type_of_event = game_event.GetType();

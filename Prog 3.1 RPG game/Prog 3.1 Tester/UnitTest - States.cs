@@ -24,7 +24,7 @@ namespace Prog_3._1_Tester
 
             GameObject tester_city_map = new GameObject("City");
             MapComponent tester_city_map_component = new MapComponent(tester_render_manager, 10, 5, tester_city_map, tester_collision_manager);
-            MenuState tester_city_state = new MenuState(tester_render_manager, tester_collision_manager, tester_city_map_component, new GameObject("currentlocation"));
+            InventoryState tester_city_state = new MenuState(tester_render_manager, tester_collision_manager, tester_city_map_component, new GameObject("currentlocation"));
 
 
             GameObject player = new GameObject("Player");

@@ -1,4 +1,5 @@
 ﻿using Prog_3._1_RPG_game.Components;
+using Prog_3._1_RPG_game.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,33 +8,34 @@ using System.Threading.Tasks;
 
 namespace Prog_3._1_RPG_game.States
 {
-    public class MenuState : IState
+    public class InventoryState : IState
     {
         //Que faire dans les Menus:
         //Explorer les options
         //Sortir du menu
 
         //Objects in State
-        private MapComponent _cityMap;
-        private GameObject _player;
-        private GameManager _gameManager;
+        private EventManager _eventManager;
+        private int _positionInMenu = 0;
 
         //Variables pour test
-        bool _isInState;
+        private bool _isInState;
 
-        public MenuState()
+        public InventoryState(EventManager event_manager)
         {
-            
+            _eventManager = event_manager;
         }
 
         public void Enter()
         {
             _isInState = true;
+            _eventManager.RegisterToEvent<KeyPressedEvent>(SelectOption);
         }
 
         public void Exit()
         {
             _isInState = false;
+            _eventManager.UnRegisterEvent<KeyPressedEvent>(SelectOption);
         }
 
         public void Update(float delta_time)
@@ -55,6 +57,13 @@ namespace Prog_3._1_RPG_game.States
         public bool GetIsInState()
         {
             return _isInState;
+        }
+
+        public void SelectOption(GameEvent game_event)
+        {
+            KeyPressedEvent key_pressed_event = game_event as KeyPressedEvent;
+
+
         }
     }
 }

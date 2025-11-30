@@ -58,6 +58,7 @@ namespace Prog_3._1_RPG_game
         public void Update(float time_since_last_update)
         {
             _inputManager.GetComponent<InputComponent>().ReadInput();
+            _inputManager.Update(time_since_last_update);
             for (int game_objects_index = 0; game_objects_index < _gameObjectTable.Length; game_objects_index++)
             {
                 if (_gameObjectTable[game_objects_index] != null)

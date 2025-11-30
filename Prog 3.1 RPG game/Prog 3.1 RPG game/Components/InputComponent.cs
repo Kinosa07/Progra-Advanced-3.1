@@ -34,7 +34,13 @@ namespace Prog_3._1_RPG_game.Components
         {
             if (_ellapsedTime - _timeSinceLastFixed > fixed_time_for_new_update)
             {
-                ProcessInput();
+                ConsoleKey input = ProcessInput();
+
+                if (input != ConsoleKey.RightWindows)
+                {
+                    _eventManager.TriggerEvent(new KeyPressedEvent(input));
+                }
+
                 _timeSinceLastFixed = _ellapsedTime;
             }
         }

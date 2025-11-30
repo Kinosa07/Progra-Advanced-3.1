@@ -48,6 +48,9 @@ namespace Prog_3._1_RPG_game
 
             _collisionManager.RecalculateContents(_gameObjectTable);
             _renderManager.RecalculateContents(_gameObjectTable);
+
+            //_eventManager.RegisterToEvent<KeyPressedEvent>(OpenCloseInventory);
+            //Cause une erreur dont je ne connais ni le fonctionnement, ni sa résolution. MAIS elle s'exécute comme voulue
         }
 
         public void Render()
@@ -115,6 +118,25 @@ namespace Prog_3._1_RPG_game
             if (!is_table_full)
             {
                 _gameObjectTable[free_table_slot] = object_to_add;
+            }
+        }
+
+        public void OpenCloseInventory(GameEvent game_event)
+        {
+            KeyPressedEvent key_pressed_event = game_event as KeyPressedEvent;
+
+            if (key_pressed_event._keyPressed == ConsoleKey.I)
+            {
+                if (_isInsideInventory)
+                {
+                    _stateMachine.ChangeState(new ExploringState(_inputManager.GetComponent<InputComponent>(), _player.GetComponent<MovementComponent>(), _eventManager));
+                    _isInsideInventory = false;
+                }
+                else if (!_isInsideInventory)
+                {
+                    _stateMachine.ChangeState(new InventoryState(_eventManager));
+                    _isInsideInventory= true;
+                }
             }
         }
 

@@ -21,7 +21,7 @@ namespace Prog_3._1_RPG_game.Components
 
             _parentGameObject.AddComponent(this);
 
-            _eventManager.RegisterToEvent<KeyPressedEvent>(EventManagerAction);
+            _eventManager.RegisterToEvent<KeyPressedEvent>(MoveWhenTriggered);
         }
 
         public MovementComponent(MovementComponent movement_component_to_copy)
@@ -63,8 +63,7 @@ namespace Prog_3._1_RPG_game.Components
             _hasMovedlast = true;
         }
 
-        //RENAME CETTE FONCTION: IMPORTANT (Pas d'inspi RN)
-        public void EventManagerAction(GameEvent game_event)
+        public void MoveWhenTriggered(GameEvent game_event)
         {
             KeyPressedEvent key_pressed_event = game_event as KeyPressedEvent;
             int current_x_pos = _positionComponent.GetPositionX();

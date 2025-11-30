@@ -41,7 +41,7 @@ namespace Prog_3._1_RPG_game
             InputComponent player_input = new InputComponent(_inputManager, _eventManager);
 
             _currentLocation = new(_worldMap);
-            _stateMachine = new StateMachine(new ExploringState(_inputManager.GetComponent<InputComponent>(), _eventManager));
+            _stateMachine = new StateMachine(new ExploringState(_inputManager.GetComponent<InputComponent>(), _player.GetComponent<MovementComponent>(), _eventManager));
 
             AddToObjectCollection(_player);
             AddToObjectCollection(_currentLocation);
